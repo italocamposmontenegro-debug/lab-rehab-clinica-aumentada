@@ -113,45 +113,76 @@ const base = import.meta.env.BASE_URL;
         El Laboratorio de Rehabilitación Clínica Aumentada es un sistema educativo continuo donde clínicos desarrollan la capacidad de pensar, construir y evaluar sistemas clínicos aumentados, utilizando inteligencia artificial como soporte para la toma de decisiones clínicas, el análisis de datos y el diseño terapéutico.
       </p>
 
-      <!-- Grid: Qué NO es / Qué SÍ es -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="p-8 bg-white border border-neutral-200">
-          <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-4">Qué NO es</h3>
-          <ul class="space-y-2 text-neutral-600 text-sm leading-relaxed">
-            <li class="flex items-start gap-2"><span class="text-neutral-400 mt-0.5">—</span> No es un curso tradicional.</li>
-            <li class="flex items-start gap-2"><span class="text-neutral-400 mt-0.5">—</span> No es una colección de aplicaciones.</li>
-            <li class="flex items-start gap-2"><span class="text-neutral-400 mt-0.5">—</span> No automatiza decisiones clínicas.</li>
+      <!-- Beneficios (Cards Grid) -->
+      <div class="grid md:grid-cols-3 gap-6 mb-20">
+        <!-- Benefit 1 -->
+        <div class="bg-white p-8 border border-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-12 h-12 bg-neutral-900 flex items-center justify-center mb-6">
+            <span class="text-gold-400 text-xl">01</span>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Diferenciación Clínica</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed text-justify">
+            Domina herramientas que el 99% de tus colegas ignora. Posiciónate como un referente capaz de integrar tecnología avanzada en la práctica diaria.
+          </p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="bg-white p-8 border border-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-12 h-12 bg-neutral-900 flex items-center justify-center mb-6">
+            <span class="text-gold-400 text-xl">02</span>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Eficiencia Real</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed text-justify">
+            Reduce tiempos de análisis y documentación sin perder calidad humana. Automatiza tareas repetitivas para centrarte en el paciente.
+          </p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="bg-white p-8 border border-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-12 h-12 bg-neutral-900 flex items-center justify-center mb-6">
+            <span class="text-gold-400 text-xl">03</span>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Innovación en Evidencia</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed text-justify">
+            Integra IA no por moda, sino para resolver problemas clínicos complejos con respaldo científico y validación empírica.
+          </p>
+        </div>
+      </div>
+
+      <!-- Philosophy Section (Qué es / Qué NO es) -->
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-20 border-t border-neutral-200 pt-16">
+        <div>
+          <h3 class="font-serif text-2xl font-semibold text-neutral-900 mb-6">Lo que SÍ es</h3>
+          <ul class="space-y-4 text-neutral-600 text-sm leading-relaxed">
+            <li class="flex items-start gap-3">
+              <span class="text-gold-500 mt-1">✦</span>
+              <span>Un espacio de aprendizaje basado en experimentación clínica controlada y rigurosa.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-gold-500 mt-1">✦</span>
+              <span>Un entorno para transformar fenómenos clínicos complejos en sistemas evaluables.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-gold-500 mt-1">✦</span>
+              <span>Un laboratorio donde la IA se integra como extensión del razonamiento clínico.</span>
+            </li>
           </ul>
         </div>
-        <div class="p-10 bg-white border border-neutral-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-8 text-center text-balance">Lo que lograrás (Beneficios)</h3>
-          <ul class="space-y-6">
-            <li class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-50 flex items-center justify-center mt-0.5">
-                <span class="text-gold-600 text-sm">✓</span>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-2 md:gap-6 items-baseline">
-                <strong class="text-neutral-900 font-medium">Diferenciación Clínica</strong>
-                <span class="text-neutral-600 text-sm leading-relaxed text-justify">Domina herramientas que el 99% de tus colegas ignora.</span>
-              </div>
+
+        <div>
+           <h3 class="font-serif text-2xl font-semibold text-neutral-900 mb-6 text-neutral-400">Lo que NO es</h3>
+           <ul class="space-y-4 text-neutral-500 text-sm leading-relaxed">
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-300 mt-1">—</span>
+              <span>No es un curso tradicional pasivo ni teórico.</span>
             </li>
-            <li class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-50 flex items-center justify-center mt-0.5">
-                <span class="text-gold-600 text-sm">✓</span>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-2 md:gap-6 items-baseline">
-                <strong class="text-neutral-900 font-medium">Eficiencia Real</strong>
-                <span class="text-neutral-600 text-sm leading-relaxed text-justify">Reduce tiempos de análisis y documentación sin perder calidad humana.</span>
-              </div>
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-300 mt-1">—</span>
+              <span>No es una colección de aplicaciones o prompts genéricos.</span>
             </li>
-            <li class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-50 flex items-center justify-center mt-0.5">
-                <span class="text-gold-600 text-sm">✓</span>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-2 md:gap-6 items-baseline">
-                <strong class="text-neutral-900 font-medium">Innovación Basada en Evidencia</strong>
-                <span class="text-neutral-600 text-sm leading-relaxed text-justify">Integra IA no por moda, sino para resolver problemas clínicos complejos.</span>
-              </div>
+            <li class="flex items-start gap-3">
+              <span class="text-neutral-300 mt-1">—</span>
+              <span>No busca automatizar la decisión, sino potenciarla.</span>
             </li>
           </ul>
         </div>
