@@ -20,12 +20,24 @@ const base = import.meta.env.BASE_URL;
     <meta name="description" content={description} />
     <meta name="author" content="Ítalo Campos Montenegro" />
 
+    <meta name="keywords" content="Kinesiología, Inteligencia Artificial, Neurorehabilitación, Simulación Clínica, Educación Superior, Salud Digital, Ítalo Campos, Rehabilitación Aumentada" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={Astro.site} />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={`${base}images/italo-profile.jpg`} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content={`${Astro.site}/lab-rehab-clinica-aumentada/italo-profile.jpg`} />
     <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Laboratorio de Rehabilitación Clínica Aumentada" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${Astro.site}/lab-rehab-clinica-aumentada/italo-profile.jpg`} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
