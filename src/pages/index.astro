@@ -2,6 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/italo-profile.jpg';
+import logo1 from '../assets/logos/logo-1.jpg';
+import logo2 from '../assets/logos/logo-2.png';
+import logo3 from '../assets/logos/logo-3.jpg';
+import logo4 from '../assets/logos/logo-4.jpg';
+import logo5 from '../assets/logos/logo-5.jpg';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -58,12 +63,19 @@ const base = import.meta.env.BASE_URL;
       <p class="text-lg md:text-xl text-neutral-500 leading-relaxed mb-6 max-w-2xl mx-auto">
         Diseño sistemas clínicos aumentados de evaluación, intervención y aprendizaje en rehabilitación, integrando inteligencia artificial, simulación clínica e investigación aplicada.
       </p>
+      
+      <!-- Credentials Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full mb-8">
+        <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+        <span class="text-xs font-medium text-neutral-600 tracking-wide uppercase">Magíster en Neurorehabilitación · Especialista Certificado</span>
+      </div>
+
       <p class="text-base text-neutral-600 leading-relaxed mb-10 max-w-2xl mx-auto text-justify">
         El Laboratorio es un entorno educativo-profesional orientado a clínicos que buscan incorporar inteligencia artificial de forma rigurosa y responsable. Aquí no se enseñan aplicaciones ni modelos aislados: se aprende, haciendo, a diseñar y utilizar sistemas clínicos aumentados, capaces de adaptarse a distintos contextos, tecnologías y necesidades reales de práctica clínica.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#laboratorio" class="inline-flex items-center px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
-          Acceder al Laboratorio
+        <a href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20Laboratorio%20y%20c%C3%B3mo%20puedo%20participar." class="inline-flex items-center px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
+          Postular al Laboratorio
         </a>
         <a href="#investigacion" class="inline-flex items-center px-6 py-3.5 border border-neutral-300 text-neutral-700 text-sm font-medium rounded-none hover:border-gold-400 hover:text-gold-700 transition-colors duration-300">
           Explorar investigaciones
@@ -71,6 +83,19 @@ const base = import.meta.env.BASE_URL;
         <a href="#simulacion" class="inline-flex items-center px-6 py-3.5 border border-neutral-300 text-neutral-700 text-sm font-medium rounded-none hover:border-gold-400 hover:text-gold-700 transition-colors duration-300">
           Ver simuladores clínicos
         </a>
+      </div>
+    </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <div class="mt-20 border-t border-neutral-100 pt-10 max-w-5xl mx-auto fade-in">
+      <p class="text-xs text-center text-neutral-400 uppercase tracking-widest mb-6">Trayectoria y Colaboraciones</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <Image src={logo1} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
+        <Image src={logo2} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
+        <Image src={logo3} alt="Institución Colaboradora" class="h-10 w-auto object-contain" />
+        <Image src={logo4} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
+        <Image src={logo5} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
       </div>
     </div>
   </section>
@@ -98,12 +123,12 @@ const base = import.meta.env.BASE_URL;
             <li class="flex items-start gap-2"><span class="text-neutral-400 mt-0.5">—</span> No automatiza decisiones clínicas.</li>
           </ul>
         </div>
-        <div class="p-8 bg-white border border-neutral-200">
-          <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-4">Qué SÍ es</h3>
+        <div class="p-8 bg-white border border-neutral-200 shadow-sm">
+          <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-4">Lo que lograrás (Beneficios)</h3>
           <ul class="space-y-2 text-neutral-600 text-sm leading-relaxed">
-            <li class="flex items-start gap-2"><span class="text-gold-500 mt-0.5">—</span> Un espacio de aprendizaje basado en experimentación clínica controlada.</li>
-            <li class="flex items-start gap-2"><span class="text-gold-500 mt-0.5">—</span> Un entorno para transformar fenómenos clínicos complejos en sistemas evaluables y accionables.</li>
-            <li class="flex items-start gap-2"><span class="text-gold-500 mt-0.5">—</span> Un laboratorio donde la IA se integra como extensión del razonamiento clínico, no como reemplazo.</li>
+            <li class="flex items-start gap-2"><span class="text-gold-500 mt-0.5">✓</span> <strong class="text-neutral-800">Diferenciación Clínica:</strong> Domina herramientas que el 99% de tus colegas ignora.</li>
+            <li class="flex items-start gap-2"><span class="text-gold-500 mt-0.5">✓</span> <strong class="text-neutral-800">Eficiencia Real:</strong> Reduce tiempos de análisis y documentación sin perder calidad humana.</li>
+            <li class="flex items-start gap-2"><span class="text-gold-500 mt-0.5">✓</span> <strong class="text-neutral-800">Innovación Basada en Evidencia:</strong> Integra IA no por moda, sino para resolver problemas clínicos complejos.</li>
           </ul>
         </div>
       </div>
@@ -130,8 +155,9 @@ const base = import.meta.env.BASE_URL;
 
       <!-- CTA -->
       <div class="text-center">
-        <a href="mailto:italo.campos.montenegro@gmail.com?subject=Acceso%20al%20Laboratorio" class="inline-flex items-center px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
-          Ingresar al Laboratorio
+        <a href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20quiero%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20ingresar%20al%20Laboratorio." class="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Hablar por WhatsApp
         </a>
       </div>
 
@@ -404,7 +430,8 @@ const base = import.meta.env.BASE_URL;
         </div>
         <!-- Bio -->
         <div class="md:col-span-2">
-          <h3 class="font-serif text-2xl font-semibold text-neutral-900 mb-4">Ítalo Campos Montenegro</h3>
+          <h3 class="font-serif text-2xl font-semibold text-neutral-900 mb-2">Ítalo Campos Montenegro</h3>
+          <p class="text-sm font-medium text-gold-600 uppercase tracking-widest mb-6">Magíster en Neurorehabilitación · Especialista Certificado</p>
           <p class="text-base text-neutral-700 leading-relaxed mb-8 text-justify">
             Kinesiólogo con más de 14 años de práctica clínica en neurorehabilitación, desde la atención de personas con discapacidad múltiple y severa hasta la rehabilitación de trastornos sensorioperceptivos, cognitivos y motores. Actualmente académico en la Universidad Viña del Mar e investigador centrado en la integración de inteligencia artificial en la formación clínica y la práctica en rehabilitación.
           </p>
