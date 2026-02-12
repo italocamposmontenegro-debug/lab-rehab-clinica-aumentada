@@ -53,7 +53,7 @@ const base = import.meta.env.BASE_URL;
   <!-- ============================================================== -->
   <!-- SECTION 1: HOME / HERO -->
   <!-- ============================================================== -->
-  <section id="inicio" class="min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
+  <section id="inicio" class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16 px-6">
     <div class="max-w-3xl mx-auto text-center fade-in">
       <!-- Subtle gold line -->
       <div class="w-12 h-px bg-gold-400 mx-auto mb-8"></div>
@@ -85,17 +85,15 @@ const base = import.meta.env.BASE_URL;
         </a>
       </div>
     </div>
-    </div>
-
     <!-- Trust Bar -->
-    <div class="mt-20 border-t border-neutral-100 pt-10 max-w-5xl mx-auto fade-in">
+    <div class="mt-12 md:mt-20 border-t border-neutral-100 pt-8 md:pt-10 w-full max-w-5xl mx-auto fade-in">
       <p class="text-xs text-center text-neutral-400 uppercase tracking-widest mb-6">Trayectoria y Colaboraciones</p>
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-        <Image src={logo1} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
-        <Image src={logo2} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
-        <Image src={logo3} alt="Institución Colaboradora" class="h-10 w-auto object-contain" />
-        <Image src={logo4} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
-        <Image src={logo5} alt="Institución Colaboradora" class="h-12 w-auto object-contain" />
+      <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <Image src={logo1} alt="Institución Colaboradora" class="h-8 md:h-12 w-auto object-contain" />
+        <Image src={logo2} alt="Institución Colaboradora" class="h-8 md:h-12 w-auto object-contain" />
+        <Image src={logo3} alt="Institución Colaboradora" class="h-8 md:h-10 w-auto object-contain" />
+        <Image src={logo4} alt="Institución Colaboradora" class="h-8 md:h-12 w-auto object-contain" />
+        <Image src={logo5} alt="Institución Colaboradora" class="h-8 md:h-12 w-auto object-contain" />
       </div>
     </div>
   </section>
