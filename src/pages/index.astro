@@ -27,10 +27,11 @@ const base = import.meta.env.BASE_URL;
       </button>
       <!-- Desktop nav -->
       <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-600">
+        <li><a href="#inicio" class="hover:text-gold-600 transition-colors">Inicio</a></li>
+        <li><a href="#soluciones" class="hover:text-gold-600 transition-colors">Soluciones</a></li>
         <li><a href="#laboratorio" class="hover:text-gold-600 transition-colors">Laboratorio</a></li>
+        <li><a href="#aplicaciones" class="hover:text-gold-600 transition-colors">Aplicaciones</a></li>
         <li><a href="#investigacion" class="hover:text-gold-600 transition-colors">Investigación</a></li>
-        <li><a href="#simulacion" class="hover:text-gold-600 transition-colors">Simulación</a></li>
-        <li><a href="#herramientas" class="hover:text-gold-600 transition-colors">Herramientas</a></li>
         <li><a href="#sobre-mi" class="hover:text-gold-600 transition-colors">Sobre mí</a></li>
         <li><a href="#contacto" class="hover:text-gold-600 transition-colors">Contacto</a></li>
       </ul>
@@ -38,12 +39,11 @@ const base = import.meta.env.BASE_URL;
     <!-- Mobile nav -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-100 bg-white">
       <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-neutral-600">
+        <li><a href="#inicio" class="block hover:text-gold-600 transition-colors">Inicio</a></li>
+        <li><a href="#soluciones" class="block hover:text-gold-600 transition-colors">Soluciones</a></li>
         <li><a href="#laboratorio" class="block hover:text-gold-600 transition-colors">Laboratorio</a></li>
+        <li><a href="#aplicaciones" class="block hover:text-gold-600 transition-colors">Aplicaciones</a></li>
         <li><a href="#investigacion" class="block hover:text-gold-600 transition-colors">Investigación</a></li>
-        <li><a href="#simulacion" class="block hover:text-gold-600 transition-colors">Simulación</a></li>
-        <li><a href="#practica" class="block hover:text-gold-600 transition-colors">Práctica clínica</a></li>
-        <li><a href="#docencia" class="block hover:text-gold-600 transition-colors">Docencia</a></li>
-        <li><a href="#herramientas" class="block hover:text-gold-600 transition-colors">Herramientas</a></li>
         <li><a href="#sobre-mi" class="block hover:text-gold-600 transition-colors">Sobre mí</a></li>
         <li><a href="#contacto" class="block hover:text-gold-600 transition-colors">Contacto</a></li>
       </ul>
@@ -58,10 +58,10 @@ const base = import.meta.env.BASE_URL;
       <!-- Subtle gold line -->
       <div class="w-12 h-px bg-gold-400 mx-auto mb-8"></div>
       <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 leading-tight mb-6">
-        Laboratorio de Rehabilitación Clínica Aumentada
+        Soluciones impulsadas por IA para rehabilitación y educación en salud
       </h1>
       <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-6 max-w-2xl mx-auto">
-        Diseño sistemas clínicos aumentados de evaluación, intervención y aprendizaje en rehabilitación, integrando inteligencia artificial, simulación clínica e investigación aplicada.
+        Diseño e implemento tutores virtuales, simuladores clínicos, herramientas digitales y sistemas aplicados para equipos docentes, instituciones y profesionales de la rehabilitación.
       </p>
       
       <!-- Credentials Badge -->
@@ -70,18 +70,19 @@ const base = import.meta.env.BASE_URL;
         <span class="text-xs font-medium text-neutral-600 tracking-wide uppercase">Por Ítalo Campos M. · Mg. Neurorehabilitación e Investigador IA</span>
       </div>
 
-      <p class="text-base text-neutral-600 leading-relaxed mb-10 max-w-2xl mx-auto text-justify">
-        El Laboratorio es un entorno educativo-profesional orientado a clínicos que buscan incorporar inteligencia artificial de forma rigurosa y responsable. Aquí no se enseñan aplicaciones ni modelos aislados: se aprende, haciendo, a diseñar y utilizar sistemas clínicos aumentados, capaces de adaptarse a distintos contextos, tecnologías y necesidades reales de práctica clínica.
+      <p class="text-base font-medium text-neutral-800 leading-relaxed mb-10 max-w-2xl mx-auto text-center border-l-2 border-gold-400 pl-4 py-2 italic bg-gold-50/50">
+        Los tutores virtuales desarrollados en este entorno se apoyan en datos obtenidos en estudios sobre tutoría virtual y en experiencia académica aplicada.
       </p>
+      
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20Laboratorio%20y%20c%C3%B3mo%20puedo%20participar." class="inline-flex items-center px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
-          Postular al Laboratorio
+        <a href="#soluciones" class="inline-flex items-center px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
+          Ver soluciones
+        </a>
+        <a href="#contacto" class="inline-flex items-center px-6 py-3.5 border border-neutral-300 text-neutral-700 text-sm font-medium rounded-none hover:border-gold-400 hover:text-gold-700 transition-colors duration-300">
+          Solicitar reunión diagnóstica
         </a>
         <a href="#investigacion" class="inline-flex items-center px-6 py-3.5 border border-neutral-300 text-neutral-700 text-sm font-medium rounded-none hover:border-gold-400 hover:text-gold-700 transition-colors duration-300">
-          Explorar investigaciones
-        </a>
-        <a href="#simulacion" class="inline-flex items-center px-6 py-3.5 border border-neutral-300 text-neutral-700 text-sm font-medium rounded-none hover:border-gold-400 hover:text-gold-700 transition-colors duration-300">
-          Ver simuladores clínicos
+          Explorar investigación
         </a>
       </div>
     </div>
@@ -99,7 +100,88 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- ============================================================== -->
-  <!-- SECTION 2: EL LABORATORIO -->
+  <!-- SECTION 2: SOLUCIONES -->
+  <!-- ============================================================== -->
+  <section id="soluciones" class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto fade-in">
+      <div class="w-12 h-px bg-gold-400 mb-8 mx-auto md:mx-0"></div>
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="max-w-2xl">
+          <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-6">Soluciones para Instituciones y Clínicos</h2>
+          <p class="text-base text-neutral-600 leading-relaxed text-justify">
+            Diseño arquitecturas de inteligencia artificial que se adaptan a las necesidades del entorno clínico y académico, optimizando la formación, el seguimiento y la intervención.
+          </p>
+        </div>
+        <a href="#contacto" class="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-gold-700 transition-colors">
+          Solicitar implementación
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- A. Tutores -->
+        <div class="bg-neutral-50 p-10 border border-neutral-100 hover:border-gold-300 transition-colors group">
+          <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-4">Tutores virtuales académicos</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
+            Tutores especializados para apoyar aprendizaje clínico, estudio guiado, práctica profesional y acompañamiento docente.
+          </p>
+          <div class="mb-6 p-4 bg-white border-l-2 border-gold-400">
+            <p class="text-xs font-medium text-neutral-600 italic leading-relaxed">
+              Su arquitectura se ha nutrido de datos obtenidos en estudios sobre tutores virtuales y de experiencia académica en contextos reales de formación.
+            </p>
+          </div>
+          <a href="#contacto" class="text-sm font-medium text-gold-700 hover:text-gold-900 inline-flex items-center gap-2">
+            Ver integración
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- B. Simuladores -->
+        <div class="bg-neutral-50 p-10 border border-neutral-100 hover:border-gold-300 transition-colors group">
+          <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-4">Simuladores clínicos conversacionales</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed mb-8 text-justify">
+            Pacientes simulados y escenarios de interacción clínica para entrenar entrevista, comunicación, razonamiento y evaluación formativa.
+          </p>
+          <a href="#simulacion" class="text-sm font-medium text-gold-700 hover:text-gold-900 inline-flex items-center gap-2 mt-auto">
+            Explorar simuladores
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- C. Seguimiento -->
+        <div class="bg-neutral-50 p-10 border border-neutral-100 hover:border-gold-300 transition-colors group">
+          <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-4">Sistemas de seguimiento académico</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed mb-8 text-justify">
+            Herramientas para apoyar categorización, seguimiento y comprensión de trayectorias estudiantiles en educación superior.
+          </p>
+          <a href="#aplicaciones" class="text-sm font-medium text-gold-700 hover:text-gold-900 inline-flex items-center gap-2">
+            Ver plataforma
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- D. Clínicas -->
+        <div class="bg-neutral-50 p-10 border border-neutral-100 hover:border-gold-300 transition-colors group">
+          <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-4">Soluciones clínicas personalizadas</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed mb-8 text-justify">
+            Aplicaciones locales, sistemas de registro, evaluación digital y herramientas adaptadas a necesidades específicas de rehabilitación y formación.
+          </p>
+          <a href="#aplicaciones" class="text-sm font-medium text-gold-700 hover:text-gold-900 inline-flex items-center gap-2">
+            Ver catálogo de apps
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-8 text-center md:hidden">
+        <a href="#contacto" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-gold-700 transition-colors w-full justify-center">
+          Solicitar implementación
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- SECTION 3: EL LABORATORIO -->
   <!-- ============================================================== -->
   <section id="laboratorio" class="py-24 px-6 bg-neutral-50">
     <div class="max-w-4xl mx-auto fade-in">
@@ -206,6 +288,24 @@ const base = import.meta.env.BASE_URL;
         </ul>
       </div>
 
+      <!-- Del laboratorio a la implementación -->
+      <div class="mb-16 p-8 bg-gold-50/30 border border-gold-200">
+        <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-4">Del laboratorio a la implementación</h3>
+        <p class="text-sm text-neutral-700 leading-relaxed mb-6 text-justify">
+          Además del entorno formativo, el laboratorio desarrolla y adapta soluciones concretas para docencia, simulación, seguimiento académico y rehabilitación clínica.
+        </p>
+        <p class="text-sm text-neutral-700 font-medium italic mb-6">
+          Parte de esta infraestructura se ha construido utilizando aprendizajes obtenidos en estudios sobre tutores virtuales, integrando evidencia empírica con experiencia académica y diseño aplicado.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#soluciones" class="px-4 py-2 bg-white border border-neutral-200 text-xs font-medium text-neutral-700 hover:border-gold-400 hover:text-gold-700 transition-colors">Tutores virtuales</a>
+          <a href="#simulacion" class="px-4 py-2 bg-white border border-neutral-200 text-xs font-medium text-neutral-700 hover:border-gold-400 hover:text-gold-700 transition-colors">Simuladores clínicos</a>
+          <a href="#aplicaciones" class="px-4 py-2 bg-white border border-neutral-200 text-xs font-medium text-neutral-700 hover:border-gold-400 hover:text-gold-700 transition-colors">Aplicaciones clínicas</a>
+          <a href="#aplicaciones" class="px-4 py-2 bg-white border border-neutral-200 text-xs font-medium text-neutral-700 hover:border-gold-400 hover:text-gold-700 transition-colors">Sistemas de seguimiento</a>
+          <a href="#contacto" class="px-4 py-2 bg-white border border-neutral-200 text-xs font-medium text-neutral-700 hover:border-gold-400 hover:text-gold-700 transition-colors">Soluciones personalizadas</a>
+        </div>
+      </div>
+
       <!-- CTA -->
       <div class="text-center">
         <a href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20quiero%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20ingresar%20al%20Laboratorio." class="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
@@ -222,7 +322,129 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- ============================================================== -->
-  <!-- SECTION 3: INVESTIGACIÓN -->
+  <!-- SECTION 4: APLICACIONES Y DESARROLLOS -->
+  <!-- ============================================================== -->
+  <section id="aplicaciones" class="py-24 px-6 bg-white border-t border-neutral-100">
+    <div class="max-w-6xl mx-auto fade-in">
+      <div class="w-12 h-px bg-gold-400 mb-8 mx-auto md:mx-0"></div>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-6">Aplicaciones y desarrollos</h2>
+      <p class="text-base text-neutral-600 leading-relaxed mb-16 max-w-3xl text-justify">
+        Catálogo de soluciones activas implementadas como parte de las capacidades del laboratorio. Estas aplicaciones integran lógica clínica, visión computacional y modelos de lenguaje, listas para su adopción y adaptación institucional.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- App 1: HandMov -->
+        <article class="bg-white border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          <div class="w-full aspect-video bg-neutral-100 relative">
+            <video width="100%" height="100%" autoplay muted loop playsinline class="object-cover w-full h-full">
+              <source src="/Handmov.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-neutral-800 tracking-wide uppercase">Implementable</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-2">HandMov</h3>
+            <p class="text-xs font-medium text-gold-600 uppercase tracking-widest mb-4">Rehabilitación Motriz Bimanual</p>
+            <p class="text-sm text-neutral-600 leading-relaxed mb-6 flex-grow text-justify">
+              Aplicación terapéutica con visión computacional para entrenamiento motriz bimanual y oculo-manual sin contacto, seguimiento de sesión y exportación de métricas clínicas.
+            </p>
+            <a href="https://handmov.italocampos.cl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-gold-700 transition-colors">
+              Explorar aplicación
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- App 2: Test Salival -->
+        <article class="bg-white border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          <div class="w-full aspect-video bg-neutral-100 relative">
+            <video width="100%" height="100%" autoplay muted loop playsinline class="object-cover w-full h-full">
+              <source src="/Test_salival.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-neutral-800 tracking-wide uppercase">Demonstración</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-2">Test Salival</h3>
+            <p class="text-xs font-medium text-gold-600 uppercase tracking-widest mb-4">Evaluación Disfunción Salival</p>
+            <p class="text-sm text-neutral-600 leading-relaxed mb-6 flex-grow text-justify">
+              Digitalización del protocolo de evaluación para xerostomía. Optimiza la recolección de datos mediante cronómetros y escalas de impacto validadas (DQ5).
+            </p>
+            <a href="https://test-salival.italocampos.cl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-gold-700 transition-colors">
+              Explorar aplicación
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- App 3: FallRisk -->
+        <article class="bg-white border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          <div class="w-full aspect-video bg-neutral-100 relative">
+            <video width="100%" height="100%" autoplay muted loop playsinline class="object-cover w-full h-full">
+              <source src="/Fallrisk.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-neutral-800 tracking-wide uppercase">Implementable</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-2">FallRisk Lab</h3>
+            <p class="text-xs font-medium text-gold-600 uppercase tracking-widest mb-4">Análisis Predictivo de Caídas</p>
+            <p class="text-sm text-neutral-600 leading-relaxed mb-6 flex-grow text-justify">
+              Laboratorio digital para cuantificar factores de riesgo de caídas en adultos mayores, facilitando el diseño de intervenciones motoras oportunas y basadas en datos.
+            </p>
+            <a href="https://fallrisk.italocampos.cl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-gold-700 transition-colors">
+              Explorar aplicación
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- App 4: RehAPP -->
+        <article class="bg-white border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          <div class="w-full aspect-video bg-neutral-100 relative">
+            <video width="100%" height="100%" autoplay muted loop playsinline class="object-cover w-full h-full">
+              <source src="/Rehapp.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-neutral-800 tracking-wide uppercase">Adaptable</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-2">RehAPP</h3>
+            <p class="text-xs font-medium text-gold-600 uppercase tracking-widest mb-4">Gestión Clínica</p>
+            <p class="text-sm text-neutral-600 leading-relaxed mb-6 flex-grow text-justify">
+              Ecosistema unificado para seguimiento de rehabilitación. Estandariza la carga administrativa, informes y evolución de pacientes en entornos clínicos y centros de práctica.
+            </p>
+            <a href="https://rehapp.italocampos.cl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-gold-700 transition-colors">
+              Explorar aplicación
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- App 5: Egreso -->
+        <article class="bg-white border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          <div class="w-full aspect-video bg-neutral-100 relative">
+            <video width="100%" height="100%" autoplay muted loop playsinline class="object-cover w-full h-full">
+              <source src="/Indicador_de_egreso.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-neutral-800 tracking-wide uppercase">Implementable</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-2">Indicador de Egreso</h3>
+            <p class="text-xs font-medium text-gold-600 uppercase tracking-widest mb-4">Seguimiento Académico</p>
+            <p class="text-sm text-neutral-600 leading-relaxed mb-6 flex-grow text-justify">
+              Sistema de categorización de trayectorias estudiantiles y cálculo de competencias de egreso, enfocado en optimizar el seguimiento docente en educación superior.
+            </p>
+            <a href="https://egreso.italocampos.cl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-gold-700 transition-colors">
+              Explorar aplicación
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- SECTION 5: INVESTIGACIÓN -->
   <!-- ============================================================== -->
   <section id="investigacion" class="py-24 px-6">
     <div class="max-w-5xl mx-auto fade-in">
@@ -308,6 +530,15 @@ const base = import.meta.env.BASE_URL;
           </div>
         </article>
       </div>
+
+      <!-- Puente Visual/Comercial de Investigación -->
+      <div class="mt-16 p-8 bg-neutral-900 border border-neutral-800 text-center">
+        <h3 class="font-serif text-xl font-semibold text-white mb-4">Investigación que respalda estas implementaciones</h3>
+        <p class="text-sm text-neutral-300 leading-relaxed max-w-3xl mx-auto italic">
+          Los hallazgos generados en los estudios sobre tutores virtuales han sido utilizados para orientar el diseño de tutores con una arquitectura basada en evidencia y experiencia académica.
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -317,14 +548,30 @@ const base = import.meta.env.BASE_URL;
   <section id="simulacion" class="py-24 px-6 bg-neutral-50">
     <div class="max-w-4xl mx-auto fade-in">
       <div class="w-12 h-px bg-gold-400 mb-8"></div>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-6">Simulación clínica y tutores virtuales</h2>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-6">Simulación clínica interactiva</h2>
       <p class="text-base text-neutral-700 leading-relaxed mb-10 text-justify">
-        La simulación clínica es una de las formas más concretas de materializar un sistema clínico aumentado. Desarrollo y utilizo pacientes/usuarios simulados basados en IA, entrevistas clínicas interactivas y evaluación formativa estructurada posterior a la interacción, para entrenar toma de decisiones y comunicación clínica en entornos controlados.
+        La simulación clínica es una de las formas más concretas de materializar un sistema clínico aumentado. Desarrollo escenarios interactivos con pacientes virtuales que permiten entrenar la entrevista, la toma de decisiones clínicas y la entrega de información compleja en entornos profesionales seguros.
       </p>
-      <a href="https://chatgpt.com/g/g-6977a771081c81919254d4020a20a7c5-simulador-valentina-soto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 border border-neutral-300 text-neutral-700 text-sm font-medium rounded-none hover:border-gold-400 hover:text-gold-700 transition-colors duration-300">
-        Ver demostración — Simulador Valentina Soto
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
+
+      <div class="bg-white p-8 border border-neutral-200">
+        <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-neutral-900 mb-3">Simulador clínico de entrega de resultados asociados a TEA</h3>
+        <p class="text-sm text-neutral-600 mb-6 text-justify">
+          Paciente simulada para entrenar la entrega de observaciones clínicas sugestivas de autismo a padres, integrando evaluación formativa, contención emocional inicial y derivación ética.
+        </p>
+        <div class="p-4 bg-gold-50/50 border-l-2 border-gold-400 mb-8">
+          <p class="text-xs font-medium text-neutral-800">
+            <strong>Recomendación:</strong> actívalo en modo voz y comienza preguntando el nombre de la madre y el nombre del niño.
+          </p>
+        </div>
+        <a href="https://chatgpt.com/g/g-6977ab21a65c819187cc51635389eff5-simulador-camila-rojas" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
+          Activar demostración
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -403,63 +650,100 @@ const base = import.meta.env.BASE_URL;
   <section id="herramientas" class="py-24 px-6">
     <div class="max-w-5xl mx-auto fade-in">
       <div class="w-12 h-px bg-gold-400 mb-8"></div>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-4">Herramientas</h2>
-      <p class="text-base text-neutral-600 leading-relaxed mb-12 max-w-3xl text-justify">
-        Customización de herramientas conversacionales especializadas, diseñadas como apoyo al aprendizaje clínico y la reflexión profesional. No son asistentes genéricos y no automatizan decisiones clínicas.
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-6">Herramientas</h3>
+      <p class="text-base text-neutral-600 leading-relaxed max-w-3xl text-justify mb-8">
+        Diseño de herramientas y asistentes especializados que actúan como soporte para el razonamiento clínico y la formación.
       </p>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- GPT 1: Simulador Clínico -->
-        <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
-              <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Simulador Clínico</h3>
-            <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
-              GPT customizado para simulación clínica. Optimiza tu capacidad clínica en situaciones complejas, como la entrega de información compleja a los usuarios.
-            </p>
-          </div>
-          <a href="https://chatgpt.com/g/g-6977a771081c81919254d4020a20a7c5-simulador-valentina-soto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
-            Abrir GPT
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
+      <div class="mb-16">
+        <h3 class="font-serif text-2xl font-semibold text-neutral-900 mb-6 text-gold-700">A. Herramientas abiertas y demostrativas</h3>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <!-- GPT 2: Tutor Neurociencia del Dolor -->
-        <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
-              <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          <!-- GPT 4: Nuevo Tutor Sofía -->
+          <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5 group-hover:bg-gold-700 transition-colors">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Tutor virtual de demostración pública</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed mb-4 text-justify">
+                Tutor de internado en kinesiología. Guía la reflexión clínica mediante cuestionamiento socrático sin dar respuestas directas.
+              </p>
+              <p class="text-xs text-neutral-500 italic leading-relaxed mb-6 border-l-2 border-gold-400 pl-3">
+                Esta herramienta forma parte de una línea de tutores cuya arquitectura ha sido informada exhaustivamente por estudios previos sobre tutoría virtual y sólida experiencia académica aplicada.
+              </p>
             </div>
-            <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Tutor Neurociencia del Dolor</h3>
-            <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
-              Tutor especializado en neurociencia del dolor persistente. Profundiza en fenómenos fisiológicos asociados al dolor, su evaluación y estrategias terapéuticas para reducirlo.
-            </p>
+            <a href="https://chatgpt.com/g/g-69af7564ee6c8191836a581664b84f19-sofia-tutor-de-internado-kinesiologia-uvm-2026" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
+              Abrir demostrador
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
           </div>
-          <a href="https://chatgpt.com/g/g-689cb093d99481919eca48333e0ef7e3-tutor-de-neurociencia-del-dolor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
-            Abrir GPT
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
 
-        <!-- GPT 3: Curso VMF en Neurorehabilitación -->
-        <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
-              <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <!-- GPT 1: Simulador Clínico (Original) -->
+          <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
+                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Simulador Clínico (Valentina Soto)</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
+                GPT customizado para simulación clínica en dolor crónico y comunicación. Optimiza tu capacidad clínica en situaciones complejas.
+              </p>
             </div>
-            <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Curso VMF en Neurorehabilitación</h3>
-            <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
-              Curso de autoaprendizaje con experto en Vibración Muscular Focal aplicada a neurorehabilitación. Aprende a reducir espasticidad, potenciar plasticidad neural y optimizar la función motora con criterio clínico y respaldo científico.
-            </p>
+            <a href="https://chatgpt.com/g/g-6977a771081c81919254d4020a20a7c5-simulador-valentina-soto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
+              Abrir GPT
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
           </div>
-          <a href="https://chatgpt.com/g/g-67aa435162988191bd96e71f90f4bcb1-curso-de-autoaprendizaje-de-vmf-en-neurorehab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
-            Abrir GPT
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
+
+          <!-- GPT 2: Tutor Neurociencia del Dolor -->
+          <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
+                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Tutor Neurociencia del Dolor</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
+                Tutor especializado en neurociencia del dolor persistente. Profundiza en fenómenos fisiológicos, evaluación y estrategias terapéuticas.
+              </p>
+            </div>
+            <a href="https://chatgpt.com/g/g-689cb093d99481919eca48333e0ef7e3-tutor-de-neurociencia-del-dolor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
+              Abrir GPT
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+
+          <!-- GPT 3: Curso VMF en Neurorehabilitación -->
+          <div class="p-8 border border-neutral-200 hover:border-gold-300 transition-colors duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-neutral-900 flex items-center justify-center mb-5">
+                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold text-neutral-900 mb-3">Tutor Curso VMF</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed mb-6 text-justify">
+                Asistente de autoaprendizaje con experto en Vibración Muscular Focal aplicada a neurorehabilitación.
+              </p>
+            </div>
+            <a href="https://chatgpt.com/g/g-67aa435162988191bd96e71f90f4bcb1-curso-de-autoaprendizaje-de-vmf-en-neurorehab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-900 transition-colors">
+              Abrir GPT
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
         </div>
       </div>
+
+      <!-- Implementaciones Personalizadas -->
+      <div class="bg-gold-50/50 p-8 border border-gold-200 text-center">
+        <h3 class="font-serif text-2xl font-semibold text-neutral-900 mb-4">B. Implementaciones personalizadas</h3>
+        <p class="text-base text-neutral-700 leading-relaxed max-w-3xl mx-auto mb-6">
+          Las lógicas y arquitecturas de estos sistemas conversacionales demostrativos pueden ser adaptadas rigurosamente a contextos institucionales, docentes o clínicos, integrando protocolos locales, normativas éticas y objetivos educativos específicos de cada centro.
+        </p>
+        <a href="#contacto" class="inline-flex items-center gap-2 px-8 py-3 bg-neutral-900 text-white text-sm font-medium hover:bg-gold-700 transition-colors">
+          Coordinar adaptación institucional
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -489,7 +773,7 @@ const base = import.meta.env.BASE_URL;
             Kinesiólogo con más de 15 años de práctica clínica en neurorehabilitación, desde la atención de personas con discapacidad múltiple y severa hasta la rehabilitación de trastornos sensorioperceptivos, cognitivos y motores. Actualmente académico en la Universidad Viña del Mar e investigador centrado en la integración de inteligencia artificial en la formación clínica y la práctica en rehabilitación.
           </p>
 
-          <ul class="space-y-4 text-sm text-neutral-600">
+          <ul class="space-y-4 text-sm text-neutral-600 mb-8">
             <li class="flex items-start gap-3">
               <span class="text-gold-500 mt-0.5">✦</span>
               <span><strong class="text-neutral-800">Clínico en neurorehabilitación</strong> — Trayectoria en Sanatorio Marítimo San Juan de Dios (2010–2022) e Instituto de Neurorehabilitación Luis Krebs (2022–2024).</span>
@@ -503,6 +787,16 @@ const base = import.meta.env.BASE_URL;
               <span><strong class="text-neutral-800">Investigador</strong> — Líneas: neurorehabilitación e IA clínica, riesgo de caída, neuromodulación de la espasticidad (VMF), evaluación digital, simulación y tecnologías asistivas.</span>
             </li>
           </ul>
+
+          <div class="p-6 bg-gold-50/40 border-l-2 border-gold-400">
+            <p class="text-sm text-neutral-800 leading-relaxed font-medium mb-2">
+              Actualmente dirijo el Laboratorio de Rehabilitación Clínica Aumentada, desde donde desarrollo e implemento soluciones para docencia, simulación y práctica clínica.
+            </p>
+            <p class="text-sm text-neutral-600 leading-relaxed italic">
+              Este trabajo integra experiencia clínica, trayectoria docente y aprendizajes obtenidos en investigaciones sobre tutores virtuales y educación en salud.
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -511,17 +805,30 @@ const base = import.meta.env.BASE_URL;
   <!-- ============================================================== -->
   <!-- SECTION 9: CONTACTO -->
   <!-- ============================================================== -->
-  <section id="contacto" class="py-24 px-6">
+  <section id="contacto" class="py-24 px-6 bg-neutral-900 text-white">
     <div class="max-w-3xl mx-auto text-center fade-in">
-      <div class="w-12 h-px bg-gold-400 mx-auto mb-8"></div>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-neutral-900 mb-6">Contacto</h2>
-      <p class="text-base text-neutral-600 leading-relaxed mb-10">
-        Colaboraciones, docencia, investigación aplicada y acceso institucional al Laboratorio.
+      <div class="w-12 h-px bg-gold-500 mx-auto mb-8"></div>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-6">Empecemos a conversar</h2>
+      <p class="text-lg font-medium text-gold-400 mb-4">
+        ¿Quieres explorar una implementación, piloto o colaboración?
       </p>
-      <a href="mailto:italo.campos.montenegro@gmail.com" class="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white text-sm font-medium rounded-none hover:bg-gold-700 transition-colors duration-300">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        italo.campos.montenegro@gmail.com
-      </a>
+      <p class="text-base text-neutral-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+        Puedo ayudarte a integrar tutores virtuales, simuladores clínicos, herramientas de seguimiento académico o soluciones aplicadas a rehabilitación en tu contexto profesional o institucional.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+        <a href="mailto:italo.campos.montenegro@gmail.com?subject=Solicitud%20de%20reunión%20diagnóstica" class="inline-flex items-center justify-center px-8 py-3.5 bg-gold-500 text-neutral-900 text-sm font-semibold hover:bg-gold-400 transition-colors duration-300 w-full sm:w-auto">
+          Solicitar reunión diagnóstica
+        </a>
+        <a href="mailto:italo.campos.montenegro@gmail.com?subject=Consulta%20por%20piloto%20institucional" class="inline-flex items-center justify-center px-8 py-3.5 border border-neutral-600 text-neutral-300 text-sm font-medium hover:border-gold-500 hover:text-gold-400 transition-colors duration-300 w-full sm:w-auto">
+          Consultar por piloto
+        </a>
+        <a href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20quisiera%20explorar%20una%20implementaci%C3%B3n%20en%20mi%20instituci%C3%B3n." class="inline-flex items-center justify-center px-8 py-3.5 border border-neutral-600 text-neutral-300 text-sm font-medium hover:border-gold-500 hover:text-gold-400 transition-colors duration-300 w-full sm:w-auto">
+          Escribir por WhatsApp
+        </a>
+      </div>
+      <p class="text-sm text-neutral-500">
+        O escríbeme directamente a <a href="mailto:italo.campos.montenegro@gmail.com" class="text-gold-500 hover:underline">italo.campos.montenegro@gmail.com</a>
+      </p>
     </div>
   </section>
 
