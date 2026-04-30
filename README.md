@@ -10,7 +10,10 @@ npm install
 
 # Iniciar servidor de desarrollo
 npm run dev
-# → http://localhost:4321/lab-rehab-clinica-aumentada
+# → http://localhost:4321/
+
+# Validar tipos y estructura Astro
+npm run lint
 
 # Build de producción
 npm run build
@@ -24,7 +27,7 @@ npm run preview
 - **Astro** — Generador de sitios estáticos
 - **Tailwind CSS** — Utilidades CSS
 - **Google Fonts** — Playfair Display (títulos) + Inter (cuerpo)
-- **GitHub Pages** — Hosting
+- **GitHub Pages** — Hosting con dominio personalizado `italocampos.cl`
 
 ## Estructura
 
@@ -39,7 +42,7 @@ public/
 
 ## Despliegue
 
-El sitio se despliega automáticamente a GitHub Pages con cada push a `main` mediante GitHub Actions (`.github/workflows/deploy.yml`).
+El sitio se despliega automáticamente a GitHub Pages con cada push a `main` mediante GitHub Actions (`.github/workflows/deploy.yml`) y se publica en `https://italocampos.cl/`.
 
 ## Actualizar contenido
 

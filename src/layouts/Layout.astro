@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content={`${Astro.site}/lab-rehab-clinica-aumentada/italo-profile.jpg`} />
+    <meta property="og:image" content={`${Astro.site}/italo-profile.jpg`} />
     <meta property="og:locale" content="es_CL" />
     <meta property="og:site_name" content="Laboratorio de Rehabilitación Clínica Aumentada" />
 
@@ -37,7 +37,11 @@ const base = import.meta.env.BASE_URL;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${Astro.site}/lab-rehab-clinica-aumentada/italo-profile.jpg`} />
+    <meta name="twitter:image" content={`${Astro.site}/italo-profile.jpg`} />
+
+    <script is:inline>
+      document.documentElement.classList.add('motion-ready');
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,7 +54,7 @@ const base = import.meta.env.BASE_URL;
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <title>{title}</title>
   </head>
-  <body class="bg-white text-neutral-800 font-sans antialiased">
+  <body class="bg-neutral-950 text-neutral-800 font-sans antialiased">
     <slot />
   </body>
 </html>
@@ -62,20 +66,209 @@ const base = import.meta.env.BASE_URL;
 
   html {
     scroll-behavior: smooth;
+    background: #0a0a0a;
+    overflow-x: hidden;
   }
 
   ::selection {
     background-color: rgba(196, 163, 68, 0.25);
   }
 
-  /* Subtle fade-in animation for sections */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  body {
+    min-width: 320px;
+    overflow-x: hidden;
   }
-  .fade-in.visible {
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .motion-safe {
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .motion-ready [data-motion] {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition:
+      opacity 780ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+      transform 780ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1));
+    transition-delay: var(--motion-delay, 0ms);
+  }
+
+  .motion-ready [data-motion='fadeIn'] {
+    transform: none;
+  }
+
+  .motion-ready [data-motion='subtleScale'] {
+    transform: scale(0.985);
+  }
+
+  .motion-ready [data-motion].motion-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+
+  .motion-ready [data-stagger] .motion-child {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition:
+      opacity 700ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+      transform 700ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+      border-color 300ms ease,
+      background-color 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  .motion-ready [data-stagger].motion-visible .motion-child {
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(2) {
+    transition-delay: 90ms;
+  }
+
+  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(3) {
+    transition-delay: 180ms;
+  }
+
+  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(4) {
+    transition-delay: 270ms;
+  }
+
+  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(5) {
+    transition-delay: 360ms;
+  }
+
+  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(6) {
+    transition-delay: 450ms;
+  }
+
+  .animated-card,
+  .product-card,
+  .research-card {
+    box-shadow: 0 18px 44px rgba(15, 15, 15, 0);
+  }
+
+  .animated-card:hover,
+  .animated-card:focus-within,
+  .product-card:hover,
+  .product-card:focus-within,
+  .research-card:hover,
+  .research-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 58px rgba(15, 15, 15, 0.12);
+  }
+
+  .product-card:hover,
+  .product-card:focus-within,
+  .research-card:hover,
+  .research-card:focus-within {
+    border-color: rgba(197, 163, 68, 0.55);
+  }
+
+  .animated-button {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .animated-button::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(197, 163, 68, 0.32), transparent 45%, rgba(255, 255, 255, 0.14));
+    transition: opacity 300ms ease;
+  }
+
+  .animated-button:hover::before,
+  .animated-button:focus-visible::before {
+    opacity: 1;
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.35rem;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: right;
+    background: #c5a344;
+    transition: transform 260ms ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  #navbar.is-scrolled {
+    background: rgba(10, 10, 10, 0.86);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero-shell {
+    background:
+      radial-gradient(circle at 50% 18%, rgba(197, 163, 68, 0.18), transparent 34%),
+      linear-gradient(180deg, #090909 0%, #141414 52%, #0a0a0a 100%);
+  }
+
+  .hero-network {
+    background-image:
+      linear-gradient(rgba(197, 163, 68, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 163, 68, 0.07) 1px, transparent 1px);
+    background-size: 68px 68px;
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 72%, transparent);
+  }
+
+  .hero-network::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, transparent 18%, rgba(197, 163, 68, 0.14), transparent 34%),
+      linear-gradient(30deg, transparent 52%, rgba(255, 255, 255, 0.08), transparent 68%);
+    opacity: 0.55;
+  }
+
+  .clinical-rule {
+    background: linear-gradient(90deg, #c5a344, rgba(197, 163, 68, 0.2), transparent);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
+    }
+
+    [data-motion],
+    [data-stagger] .motion-child {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 </style>
