@@ -1,0 +1,38 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'gold' | 'ghost';
+  external?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  external = false,
+  class: className = '',
+} = Astro.props;
+
+const styles = {
+  primary: 'bg-neutral-950 text-white border-neutral-950 hover:bg-gold-700 hover:border-gold-700 focus-visible:ring-gold-400',
+  secondary: 'bg-white/5 text-neutral-100 border-white/20 hover:border-gold-400 hover:text-gold-200 hover:bg-white/10 focus-visible:ring-gold-300',
+  gold: 'bg-gold-400 text-neutral-950 border-gold-300 hover:bg-gold-300 hover:border-gold-200 focus-visible:ring-white',
+  ghost: 'bg-transparent text-neutral-800 border-neutral-300 hover:border-gold-400 hover:text-gold-700 hover:bg-gold-50 focus-visible:ring-gold-500',
+};
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  class:list={[
+    'animated-button group inline-flex min-h-12 items-center justify-center gap-2 border px-6 py-3 text-sm font-semibold transition duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950',
+    styles[variant],
+    className,
+  ]}
+>
+  <slot />
+  <svg class="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+  </svg>
+</a>

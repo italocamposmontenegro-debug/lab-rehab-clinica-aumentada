@@ -1,0 +1,23 @@
+---
+interface Item {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="lab-timeline grid gap-5 md:grid-cols-3" data-stagger>
+  {items.map((item) => (
+    <article class="motion-child relative border border-white/10 bg-white/[0.045] p-7 text-white transition duration-300 ease-out hover:border-gold-400/50 hover:bg-white/[0.07]">
+      <span class="text-sm font-bold uppercase tracking-[0.2em] text-gold-300">{item.number}</span>
+      <h3 class="mt-5 font-serif text-xl font-semibold">{item.title}</h3>
+      <p class="mt-4 text-sm leading-relaxed text-neutral-300">{item.description}</p>
+    </article>
+  ))}
+</div>

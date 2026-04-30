@@ -1,0 +1,56 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  align?: 'left' | 'center';
+  inverse?: boolean;
+  id?: string;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  align = 'left',
+  inverse = false,
+  id,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class:list={[
+  'section-heading',
+  align === 'center' ? 'mx-auto text-center' : '',
+  className,
+]}>
+  <div class:list={[
+    'mb-6 h-px w-12',
+    align === 'center' ? 'mx-auto' : '',
+    inverse ? 'bg-gold-300' : 'bg-gold-400',
+  ]}></div>
+  {eyebrow && (
+    <p class:list={[
+      'mb-3 text-xs font-semibold uppercase tracking-[0.22em]',
+      inverse ? 'text-gold-300' : 'text-gold-700',
+    ]}>
+      {eyebrow}
+    </p>
+  )}
+  <h2 id={id} class:list={[
+    'font-serif text-3xl font-semibold leading-tight md:text-4xl',
+    inverse ? 'text-white' : 'text-neutral-950',
+  ]}>
+    {title}
+  </h2>
+  {lead && (
+    <p class:list={[
+      'mt-5 max-w-3xl text-base leading-relaxed md:text-lg',
+      align === 'center' ? 'mx-auto' : '',
+      inverse ? 'text-neutral-300' : 'text-neutral-600',
+    ]}>
+      {lead}
+    </p>
+  )}
+</div>

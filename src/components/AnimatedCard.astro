@@ -1,0 +1,25 @@
+---
+interface Props {
+  as?: 'article' | 'div' | 'li';
+  class?: string;
+  tone?: 'light' | 'dark' | 'soft';
+}
+
+const { as = 'article', class: className = '', tone = 'light' } = Astro.props as Props;
+const Tag = as;
+
+const tones: Record<NonNullable<Props['tone']>, string> = {
+  light: 'border-neutral-200 bg-white text-neutral-800 hover:border-gold-300',
+  dark: 'border-white/10 bg-white/[0.045] text-neutral-200 hover:border-gold-400/50',
+  soft: 'border-neutral-200 bg-neutral-50 text-neutral-800 hover:border-gold-300',
+};
+---
+
+<Tag class:list={[
+  'animated-card motion-child group relative overflow-hidden border p-7 transition duration-300 ease-out focus-within:border-gold-400 md:p-8',
+  tones[tone],
+  className,
+]}>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-300/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+  <slot />
+</Tag>

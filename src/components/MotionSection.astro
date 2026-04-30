@@ -1,0 +1,21 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  innerClass?: string;
+  labelledBy?: string;
+}
+
+const {
+  id,
+  class: className = '',
+  innerClass = 'mx-auto max-w-6xl px-6',
+  labelledBy,
+} = Astro.props;
+---
+
+<section id={id} aria-labelledby={labelledBy} class:list={['section-band py-24 md:py-28', className]}>
+  <div class:list={[innerClass]} data-motion="sectionReveal">
+    <slot />
+  </div>
+</section>

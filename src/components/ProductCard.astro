@@ -1,0 +1,35 @@
+---
+import AnimatedButton from './AnimatedButton.astro';
+
+interface Props {
+  title: string;
+  category: string;
+  description: string;
+  status: string;
+  video: string;
+  href: string;
+  cta: string;
+  external?: boolean;
+}
+
+const { title, category, description, status, video, href, cta, external = false } = Astro.props;
+---
+
+<article class="product-card motion-child group flex h-full flex-col overflow-hidden border border-neutral-200 bg-white transition duration-300 ease-out focus-within:border-gold-400">
+  <div class="relative aspect-video overflow-hidden bg-neutral-100">
+    <video autoplay muted loop playsinline preload="metadata" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.025]">
+      <source src={video} type="video/mp4" />
+    </video>
+    <span class="absolute right-4 top-4 border border-white/70 bg-white/90 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-neutral-800 shadow-sm backdrop-blur">
+      {status}
+    </span>
+  </div>
+  <div class="flex flex-1 flex-col p-7">
+    <p class="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gold-700">{category}</p>
+    <h3 class="font-serif text-2xl font-semibold text-neutral-950">{title}</h3>
+    <p class="mt-4 flex-1 text-sm leading-relaxed text-neutral-600">{description}</p>
+    <AnimatedButton href={href} external={external} variant="ghost" class="mt-7 w-full justify-between px-5 py-3 text-neutral-900">
+      {cta}
+    </AnimatedButton>
+  </div>
+</article>
