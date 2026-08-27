@@ -9,13 +9,13 @@ interface Props {
 const {
   id,
   class: className = '',
-  innerClass = 'mx-auto max-w-6xl px-6',
+  innerClass = 'section-shell',
   labelledBy,
 } = Astro.props;
 ---
 
-<section id={id} aria-labelledby={labelledBy} class:list={['section-band py-24 md:py-28', className]}>
-  <div class:list={[innerClass]} data-motion="sectionReveal">
+<section id={id} aria-labelledby={labelledBy} class:list={['py-20 md:py-28', className]}>
+  <div class:list={[innerClass]}>
     <slot />
   </div>
 </section>

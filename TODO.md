@@ -1,15 +1,12 @@
-# Pendientes — Laboratorio de Rehabilitación Clínica Aumentada
+# Pendientes — italocampos.cl
 
-## Contenido por confirmar
+## Configuración por confirmar
 
-- [ ] **Estudio 3 (Investigación)**: Título, propósito, diseño, hallazgos clave y contribución del tercer estudio del documento "resumenes de investigaciones en 2025.docx" — actualmente marcado como "(Por confirmar)".
-- [ ] **GA4 ID**: Agregar ID de Google Analytics 4 en `src/layouts/Layout.astro` (actualmente placeholder comentado).
+- [ ] **Analítica**: Conectar los eventos `data-event` existentes a una propiedad analítica institucional cuando se disponga de un identificador autorizado.
+- [ ] **Formulario**: Evaluar un formulario breve solamente si existe un servicio de recepción y tratamiento de datos aprobado.
 
 ## Mejoras futuras
 
-- [ ] Configurar dominio personalizado (CNAME)
-- [ ] Agregar sistema de checkout o lista de espera para el Laboratorio
-- [ ] Integrar formulario de contacto (Netlify Forms o similar)
-- [ ] Agregar sección de testimonios
-- [ ] Optimizar imagen de perfil (WebP, responsive sizes)
-- [ ] Agregar sitemap.xml y robots.txt
+- [ ] Agregar una imagen social horizontal específica cuando exista una fotografía autorizada para ese formato.
+- [ ] Incorporar nuevas publicaciones únicamente después de confirmar su versión canónica y DOI.
+- [ ] Revisar anualmente estados y descripciones de los sistemas enlazados.

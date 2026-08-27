@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://italocamposmontenegro-debug.github.io/lab-rehab-clinica-aumentada/sitemap.xml
+Sitemap: https://italocampos.cl/sitemap.xml

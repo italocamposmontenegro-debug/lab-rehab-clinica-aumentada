@@ -1,6 +1,6 @@
-# Laboratorio de Rehabilitación Clínica Aumentada
+# Ítalo Campos — sitio profesional
 
-Sitio web profesional del **Laboratorio de Rehabilitación Clínica Aumentada** — Ítalo Campos Montenegro.
+Hub profesional de **Ítalo Campos Montenegro**, kinesiólogo, académico e investigador. El sitio presenta su programa de investigación, los sistemas construidos desde el Laboratorio de Rehabilitación Clínica Aumentativa, su trayectoria y rutas de colaboración.
 
 ## Desarrollo local
 
@@ -33,11 +33,15 @@ npm run preview
 
 ```
 src/
-├── layouts/Layout.astro    # Shell HTML (SEO, fonts, meta)
-├── pages/index.astro       # Página principal (single-page)
+├── layouts/Layout.astro    # Shell HTML, metadata y estilos globales
+├── pages/index.astro       # Home profesional de una sola página
+├── components/             # Componentes editoriales reutilizables
 public/
-├── images/italo-profile.jpg
-├── favicon.svg
+├── robots.txt
+├── sitemap.xml
+├── italo-profile.jpg       # Imagen social
+├── *.mp4                   # Demostraciones de sistemas
+└── favicon.svg
 ```
 
 ## Despliegue
@@ -46,7 +50,7 @@ El sitio se despliega automáticamente a GitHub Pages con cada push a `main` med
 
 ## Actualizar contenido
 
-Todo el contenido se encuentra en `src/pages/index.astro`. Las secciones están claramente separadas con comentarios. Para actualizar:
+El contenido principal se encuentra en `src/pages/index.astro`. Para actualizar:
 
 1. Editar la sección correspondiente en `index.astro`
 2. Hacer commit y push a `main`
