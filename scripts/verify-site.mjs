@@ -35,6 +35,9 @@ if (existsSync(htmlPath)) {
   expect(html.includes('italo_campos_montenegro'), 'Falta el perfil profesional de Instagram.');
   expect(html.includes('italo-campos-montenegro-789534376'), 'Falta el perfil profesional de LinkedIn.');
   expect(!/\baumentad[oa]s?\b/i.test(html), 'Persiste terminología aumentada/aumentado en el contenido publicado.');
+  const testSalivalVideo = html.match(/<video[^>]+aria-label="Demostración en video del sistema Test Salival"[^>]*>/)?.[0] ?? '';
+  expect(Boolean(testSalivalVideo), 'Falta el video demostrativo de Test Salival.');
+  expect(['autoplay', 'muted', 'loop', 'playsinline'].every((attribute) => new RegExp(`\\b${attribute}(?:=|\\s|>)`).test(testSalivalVideo)), 'El video de Test Salival no conserva la configuración de reproducción automática móvil.');
   expect(!html.toLowerCase().includes('regresión lineal múltiple'), 'Persiste la metodología incorrecta: regresión lineal múltiple.');
   expect(!html.toLowerCase().includes('la intensidad de uso no fue un predictor relevante'), 'Persiste la afirmación incorrecta sobre intensidad de uso.');
 
