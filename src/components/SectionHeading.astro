@@ -20,33 +20,25 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={[
-  'section-heading',
-  align === 'center' ? 'mx-auto text-center' : '',
-  className,
-]}>
-  <div class:list={[
-    'mb-6 h-px w-12',
-    align === 'center' ? 'mx-auto' : '',
-    inverse ? 'bg-gold-300' : 'bg-gold-400',
-  ]}></div>
+<div class:list={['section-heading', align === 'center' ? 'mx-auto text-center' : '', className]}>
   {eyebrow && (
     <p class:list={[
-      'mb-3 text-xs font-semibold uppercase tracking-[0.22em]',
-      inverse ? 'text-gold-300' : 'text-gold-700',
+      'mb-4 text-xs font-bold uppercase tracking-[0.19em]',
+      inverse ? 'text-gold-300' : 'text-gold-800',
     ]}>
       {eyebrow}
     </p>
   )}
   <h2 id={id} class:list={[
-    'font-serif text-3xl font-semibold leading-tight md:text-4xl',
+    'text-balance max-w-4xl font-serif text-3xl font-semibold leading-[1.12] md:text-5xl',
+    align === 'center' ? 'mx-auto' : '',
     inverse ? 'text-white' : 'text-neutral-950',
   ]}>
     {title}
   </h2>
   {lead && (
     <p class:list={[
-      'mt-5 max-w-3xl text-base leading-relaxed md:text-lg',
+      'text-pretty mt-6 max-w-3xl text-base leading-8 md:text-lg',
       align === 'center' ? 'mx-auto' : '',
       inverse ? 'text-neutral-300' : 'text-neutral-600',
     ]}>

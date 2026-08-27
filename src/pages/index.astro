@@ -1,719 +1,833 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
 import AnimatedButton from '../components/AnimatedButton.astro';
-import AnimatedCard from '../components/AnimatedCard.astro';
-import LabTimeline from '../components/LabTimeline.astro';
 import MotionSection from '../components/MotionSection.astro';
-import ProductCard from '../components/ProductCard.astro';
-import ResearchCard from '../components/ResearchCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import profileImage from '../assets/italo-profile.jpg';
-import logo1 from '../assets/logos/logo-1.jpg';
-import logo2 from '../assets/logos/logo-2.png';
-import logo3 from '../assets/logos/logo-3.jpg';
-import logo4 from '../assets/logos/logo-4.jpg';
-import logo5 from '../assets/logos/logo-5.jpg';
 
 const navItems = [
   { href: '#inicio', label: 'Inicio' },
-  { href: '#soluciones', label: 'Soluciones' },
-  { href: '#laboratorio', label: 'Laboratorio' },
-  { href: '#aplicaciones', label: 'Aplicaciones' },
   { href: '#investigacion', label: 'Investigación' },
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#sistemas', label: 'Sistemas' },
+  { href: '#trayectoria', label: 'Trayectoria' },
+  { href: '#colaborar', label: 'Colaborar' },
 ];
 
-const logos = [logo1, logo2, logo3, logo4, logo5];
-
-const solutions = [
+const evidenceItems = [
+  { value: '15+', label: 'años de experiencia clínica', href: '#trayectoria' },
+  { value: '2', label: 'publicaciones científicas en 2026', href: '#publicaciones' },
   {
-    title: 'Tutores virtuales académicos',
-    description: 'Tutores especializados para apoyar aprendizaje clínico, estudio guiado, práctica profesional y acompañamiento docente.',
-    evidence: 'Arquitectura nutrida por estudios sobre tutores virtuales y experiencia académica en contextos reales de formación.',
-    href: '#contacto',
-    cta: 'Ver integración',
+    value: 'UVM',
+    label: 'académico de la Universidad Viña del Mar',
+    href: 'https://www.uvm.cl/noticias/academico-uvm-presenta-avances-inteligencia-artificial-aplicada-rehabilitacion-teleton-valparaiso/',
+    external: true,
   },
-  {
-    title: 'Simuladores clínicos conversacionales',
-    description: 'Pacientes simulados y escenarios de interacción clínica para entrenar entrevista, comunicación, razonamiento y evaluación formativa.',
-    href: '#simulacion',
-    cta: 'Explorar simuladores',
-  },
-  {
-    title: 'Sistemas de seguimiento académico',
-    description: 'Herramientas para apoyar categorización, seguimiento y comprensión de trayectorias estudiantiles en educación superior.',
-    href: '#aplicaciones',
-    cta: 'Ver plataforma',
-  },
-  {
-    title: 'Soluciones clínicas personalizadas',
-    description: 'Aplicaciones locales, sistemas de registro, evaluación digital y herramientas adaptadas a necesidades específicas de rehabilitación y formación.',
-    href: '#aplicaciones',
-    cta: 'Ver catálogo de apps',
-  },
+  { value: 'I + I', label: 'investigación e implementación', href: '#sistemas' },
 ];
 
-const labTimelineItems = [
+const workLines = [
   {
     number: '01',
-    title: 'Diferenciación clínica',
-    description: 'Integra tecnología avanzada en la práctica diaria con criterio clínico, lenguaje profesional y una posición clara frente a la evidencia.',
+    title: 'Aprendizaje clínico aumentativo',
+    description: 'Estudio y diseño tutores virtuales, simuladores y sistemas educativos que permitan utilizar IA para aprender, practicar y tomar mejores decisiones sin erosionar la autonomía cognitiva del estudiante o profesional.',
+    topics: ['Tutores virtuales', 'Simulación clínica', 'Alfabetización en IA', 'Razonamiento clínico', 'Metacognición', 'Delegación cognitiva'],
   },
   {
     number: '02',
-    title: 'Eficiencia real',
-    description: 'Reduce fricción en análisis, documentación y seguimiento sin perder calidad humana ni responsabilidad profesional.',
+    title: 'Rehabilitación aumentativa',
+    description: 'Transformo problemas de evaluación y rehabilitación en sistemas digitales que permitan registrar, visualizar o analizar fenómenos clínicos manteniendo al profesional dentro del circuito de decisión.',
+    topics: ['HandMov', 'Test Salival', 'Análisis de movimiento', 'Riesgo de caída', 'Evaluación digital', 'Visión computacional'],
   },
   {
     number: '03',
-    title: 'Innovación en evidencia',
-    description: 'Usa IA para resolver problemas clínicos complejos con validación empírica, diseño progresivo y evaluación continua.',
+    title: 'Adopción responsable y gobernanza',
+    description: 'Trabajo sobre las capacidades que profesionales e instituciones necesitan para integrar inteligencia artificial con criterios de evidencia, ética, seguridad, protección de datos y responsabilidad clínica.',
+    topics: ['Alfabetización', 'Adopción institucional', 'Human-in-the-loop', 'Gobernanza', 'Implementación responsable'],
   },
 ];
 
-const applications = [
+const publications = [
   {
-    title: 'HandMov',
-    category: 'Rehabilitación motriz bimanual',
-    description: 'Aplicación terapéutica con visión computacional para entrenamiento motriz bimanual y oculo-manual sin contacto, seguimiento de sesión y exportación de métricas clínicas.',
-    status: 'Implementable',
-    video: '/Handmov.mp4',
-    href: 'https://handmov.italocampos.cl',
-    cta: 'Explorar aplicación',
-    external: true,
+    number: '01',
+    title: 'Alfabetización en IA y experiencia subjetiva con un tutor virtual basado en GPT en estudiantes de Kinesiología',
+    authors: 'Ítalo Campos Montenegro · Maximiliano Martínez Mena',
+    journal: 'Revista Española de Educación Médica / Spanish Journal of Medical Education',
+    year: '2026',
+    doi: '10.6018/edumed.715291',
+    articleUrl: 'https://revistas.um.es/edumed/article/view/715291',
+    doiUrl: 'https://doi.org/10.6018/edumed.715291',
+    design: 'Estudio observacional analítico transversal · n = 23',
+    finding: 'La intensidad de uso, la alfabetización autorreportada en IA y las conductas de verificación se asociaron positivamente con la motivación académica en esta cohorte.',
+    metrics: [
+      ['Intensidad de uso', 'r = 0,703'],
+      ['Alfabetización en IA', 'r = 0,767'],
+      ['Verificación académica', 'r = 0,773'],
+    ],
+    interpretation: 'Los resultados sugieren que la experiencia con un tutor virtual depende del modo en que los estudiantes se relacionan con la herramienta y justifican seguir estudiando condiciones de uso, alfabetización y verificación.',
+    limitation: 'Estudio exploratorio, transversal y basado en autorreporte. Las asociaciones no demuestran causalidad ni efectividad sobre el rendimiento académico.',
   },
   {
-    title: 'Test Salival',
-    category: 'Evaluación de disfunción salival',
-    description: 'Digitalización del protocolo de evaluación para sialorrea. Optimiza la recolección de datos mediante cronómetros y escalas de impacto validadas (DQ5).',
-    status: 'Demostración',
-    video: '/test_salival.mp4',
-    href: 'https://test-salival.italocampos.cl',
-    cta: 'Explorar aplicación',
-    external: true,
+    number: '02',
+    title: 'Preferencias declaradas por estilos de tutoría virtual en dos cohortes curriculares de Kinesiología: estudio transversal exploratorio',
+    authors: 'Ítalo Campos Montenegro',
+    journal: 'Revista Española de Educación Médica / Spanish Journal of Medical Education',
+    year: '2026',
+    doi: '10.6018/edumed.723391',
+    articleUrl: 'https://revistas.um.es/edumed/article/view/723391',
+    doiUrl: 'https://doi.org/10.6018/edumed.723391',
+    design: 'Estudio transversal exploratorio · 44 de 70 estudiantes invitados · 6.º y 8.º semestre',
+    finding: 'La preferencia declarada por el tutor reflexivo-socrático fue reportada por el 10% de los estudiantes de sexto semestre y por el 70,8% de los estudiantes de octavo semestre.',
+    metrics: [['Preferencia declarada por tutor reflexivo-socrático', '10% → 70,8%']],
+    interpretation: 'Las diferencias observadas generan una hipótesis relevante: la configuración del tutor, el contexto curricular, las características de la tarea y el grado de autonomía esperado podrían influir en la forma en que los estudiantes prefieren utilizar estos sistemas.',
+    limitation: 'La asociación se mantuvo significativa después del ajuste mediante regresión logística penalizada de Firth. Las cohortes correspondieron a asignaturas y tutores contextualizados diferentes; la diferencia no puede atribuirse de forma causal al nivel formativo.',
+  },
+];
+
+const catalogItems = [
+  {
+    title: 'HandMov',
+    status: 'Implementable',
+    problem: 'Práctica de movimientos bimanuales y óculo-manuales con registro de sesión.',
+    action: 'Propone actividades sin contacto apoyadas por visión computacional y exporta métricas de uso.',
+    context: 'Rehabilitación motriz · Aplicación web',
+    href: 'https://handmov.italocampos.cl',
+    cta: 'Abrir HandMov',
   },
   {
     title: 'FallRisk Lab',
-    category: 'Análisis predictivo de caídas',
-    description: 'Laboratorio digital para cuantificar factores de riesgo de caídas en adultos mayores, facilitando el diseño de intervenciones motoras oportunas y basadas en datos.',
-    status: 'Implementable',
-    video: '/Fallrisk.mp4',
+    status: 'Demostrador',
+    problem: 'Organización de variables vinculadas al riesgo de caída en personas mayores.',
+    action: 'Reúne evaluaciones y visualizaciones para apoyar el análisis profesional del riesgo.',
+    context: 'Evaluación digital · Uso exploratorio',
     href: '#contacto',
-    cta: 'Solicitar demo',
+    cta: 'Consultar por el sistema',
   },
   {
     title: 'RehAPP',
-    category: 'Gestión clínica',
-    description: 'Ecosistema unificado para seguimiento de rehabilitación. Estandariza la carga administrativa, informes y evolución de pacientes en entornos clínicos y centros de práctica.',
-    status: 'Adaptable',
-    video: '/Rehapp.mp4',
+    status: 'Prototipo',
+    problem: 'Seguimiento disperso de procesos de rehabilitación y documentación clínica.',
+    action: 'Organiza registros, evolución e informes dentro de un flujo digital común.',
+    context: 'Gestión clínica · Prototipo navegable',
     href: 'https://rehapp.italocampos.cl',
-    cta: 'Explorar aplicación',
-    external: true,
+    cta: 'Abrir RehAPP',
   },
   {
     title: 'Indicador de Egreso',
-    category: 'Seguimiento académico',
-    description: 'Sistema de categorización de trayectorias estudiantiles y cálculo de competencias de egreso, enfocado en optimizar el seguimiento docente en educación superior.',
     status: 'Implementable',
-    video: '/Indicador_de_egreso.mp4',
+    problem: 'Seguimiento de trayectorias y competencias de egreso en educación superior.',
+    action: 'Apoya la categorización y lectura de información académica para equipos docentes.',
+    context: 'Educación en salud · Seguimiento académico',
     href: '#contacto',
-    cta: 'Solicitar demo',
+    cta: 'Consultar por el sistema',
   },
 ];
 
-const researchItems = [
+const demonstrations = [
   {
-    study: 'Estudio 1',
-    title: 'Etapa formativa y preferencia por el estilo de tutor virtual en estudiantes de Kinesiología',
-    purpose: 'Analizar si el nivel formativo (6° vs. 8° semestre) se asocia con la preferencia por un estilo de tutor virtual directivo o socrático.',
-    design: 'Estudio observacional transversal.',
-    findings: [
-      'La etapa formativa influye en la preferencia por el tipo de tutor virtual.',
-      'Respalda la necesidad de diseñar tutores adaptativos según nivel del estudiante.',
-    ],
-    contribution: 'Evidencia para el diseño diferenciado de tutores GPT según etapa formativa.',
+    title: 'Simulador clínico: Camila Rojas',
+    href: 'https://chatgpt.com/g/g-6977ab21a65c819187cc51635389eff5-simulador-camila-rojas',
   },
   {
-    study: 'Estudio 2',
-    title: 'Uso situado de un tutor GPT y reducción de ansiedad en práctica clínica',
-    purpose: 'Evaluar el efecto de un tutor GPT contextualizado sobre la ansiedad percibida en estudiantes en práctica profesional.',
-    design: 'Estudio observacional transversal.',
-    findings: [
-      'El tutor GPT situado contribuye a reducir la ansiedad en contextos de práctica clínica.',
-      'Demuestra que cómo se usa la IA es más importante que cuánto se usa.',
-    ],
-    contribution: 'Respalda la necesidad de formar en alfabetización en IA para maximizar valor pedagógico.',
+    title: 'Simulador clínico: Valentina Soto',
+    href: 'https://chatgpt.com/g/g-6977a771081c81919254d4020a20a7c5-simulador-valentina-soto',
   },
   {
-    study: 'Estudio 3',
-    title: 'Alfabetización en IA y experiencia con tutor GPT en educación superior',
-    purpose: 'Analizar cómo la alfabetización en IA, la intensidad de uso y las conductas de verificación influyen en la experiencia subjetiva con un tutor virtual GPT.',
-    design: 'Estudio transversal (cohorte 2025); n = 23; Regresión lineal múltiple.',
-    findings: [
-      'Asociación significativa entre alfabetización y motivación/calidad percibida.',
-      'La intensidad de uso no fue un predictor relevante.',
-    ],
-    contribution: 'Demuestra que cómo se usa la IA es más importante que cuánto se usa, respaldando la formación en alfabetización en IA.',
+    title: 'Tutor de internado en Kinesiología',
+    href: 'https://chatgpt.com/g/g-69af7564ee6c8191836a581664b84f19-sofia-tutor-de-internado-kinesiologia-uvm-2026',
+  },
+  {
+    title: 'Tutor de neurociencia del dolor',
+    href: 'https://chatgpt.com/g/g-689cb093d99481919eca48333e0ef7e3-tutor-de-neurociencia-del-dolor',
+  },
+  {
+    title: 'Tutor del curso de VMF en neurorehabilitación',
+    href: 'https://chatgpt.com/g/g-67aa435162988191bd96e71f90f4bcb1-curso-de-autoaprendizaje-de-vmf-en-neurorehab',
   },
 ];
 
-const clinicalPractice = [
+const trajectory = [
   {
-    period: '2010-2022',
+    period: '2010–2022',
     title: 'Sanatorio Marítimo San Juan de Dios',
-    role: 'Kinesiólogo · Encargado equipo de salud',
-    description: 'Apoyo a inclusión educativa de personas con discapacidad múltiple y severa a lo largo del ciclo vital, implementando estrategias que habilitaron participación activa en comunidad.',
+    role: 'Kinesiólogo · Encargado de equipo de salud',
+    description: 'Trabajo clínico con personas con discapacidad múltiple y severa, sus familias y equipos de apoyo a lo largo del ciclo vital.',
   },
   {
-    period: '2022-2024',
+    period: '2022–2024',
     title: 'Instituto de Neurorehabilitación Luis Krebs',
     role: 'Kinesiólogo · Docente clínico',
-    description: 'Rehabilitación integral en trastornos sensorioperceptivos, cognitivos y/o motores; exploración de alternativas terapéuticas basadas en evidencia y personalización.',
+    description: 'Rehabilitación de trastornos sensorioperceptivos, cognitivos y motores, junto con formación situada de estudiantes.',
+  },
+  {
+    period: '2024–actualidad',
+    title: 'Universidad Viña del Mar',
+    role: 'Académico · Escuela de Kinesiología',
+    description: 'Docencia, investigación y desarrollo de sistemas aplicados a educación en salud y rehabilitación.',
   },
 ];
 
-const educationItems = [
+const collaborationRoutes = [
   {
-    title: 'Universidad Viña del Mar - Escuela de Kinesiología',
-    meta: 'Cargo académico · Desde 2024 a la fecha',
-    description: 'Docencia en neurorrehabilitación, integración de IA en formación clínica y diseño de sistemas educativos aumentados.',
+    key: 'A',
+    title: 'Proponer una colaboración científica',
+    audience: 'Investigadores, grupos académicos, universidades, estudiantes de posgrado y equipos interdisciplinarios.',
+    text: 'Conversemos sobre preguntas, diseños de estudio o líneas de investigación compartidas.',
+    cta: 'Conversar sobre investigación',
+    subject: 'Colaboración científica desde italocampos.cl',
+    event: 'collaboration_research_click',
   },
   {
-    title: 'Colaboraciones docentes clínicas',
-    meta: 'Desde 2013',
-    description: 'Colaboración como docente clínico con Universidad Santo Tomás, Universidad de Playa Ancha, Universidad Andrés Bello y Universidad Viña del Mar.',
+    key: 'B',
+    title: 'Explorar un problema clínico o educativo',
+    audience: 'Universidades, centros clínicos, equipos de rehabilitación y organizaciones.',
+    text: 'Podemos explorar si un problema concreto admite investigación, diseño, pilotaje o desarrollo de una solución.',
+    cta: 'Explorar colaboración institucional',
+    subject: 'Colaboración institucional desde italocampos.cl',
+    event: 'collaboration_institution_click',
+  },
+  {
+    key: 'C',
+    title: 'Invitarme a conversar o enseñar',
+    audience: 'Congresos, seminarios, universidades, organizaciones profesionales y equipos institucionales.',
+    text: 'Temas: IA y rehabilitación, educación en salud, aprendizaje clínico aumentativo, delegación cognitiva y adopción responsable.',
+    cta: 'Consultar disponibilidad',
+    subject: 'Invitación a conferencia o formación desde italocampos.cl',
+    event: 'speaking_contact_click',
   },
 ];
 
-const tools = [
-  {
-    title: 'Tutor virtual de demostración pública',
-    description: 'Tutor de internado en kinesiología. Guía la reflexión clínica mediante cuestionamiento socrático sin dar respuestas directas.',
-    note: 'Arquitectura informada por estudios previos sobre tutoría virtual y experiencia académica aplicada.',
-    href: 'https://chatgpt.com/g/g-69af7564ee6c8191836a581664b84f19-sofia-tutor-de-internado-kinesiologia-uvm-2026',
-    cta: 'Abrir demostrador',
-  },
-  {
-    title: 'Simulador Clínico (Valentina Soto)',
-    description: 'GPT customizado para simulación clínica en dolor crónico y comunicación. Optimiza tu capacidad clínica en situaciones complejas.',
-    href: 'https://chatgpt.com/g/g-6977a771081c81919254d4020a20a7c5-simulador-valentina-soto',
-    cta: 'Abrir GPT',
-  },
-  {
-    title: 'Tutor Neurociencia del Dolor',
-    description: 'Tutor especializado en neurociencia del dolor persistente. Profundiza en fenómenos fisiológicos, evaluación y estrategias terapéuticas.',
-    href: 'https://chatgpt.com/g/g-689cb093d99481919eca48333e0ef7e3-tutor-de-neurociencia-del-dolor',
-    cta: 'Abrir GPT',
-  },
-  {
-    title: 'Tutor Curso VMF',
-    description: 'Asistente de autoaprendizaje con experto en Vibración Muscular Focal aplicada a neurorehabilitación.',
-    href: 'https://chatgpt.com/g/g-67aa435162988191bd96e71f90f4bcb1-curso-de-autoaprendizaje-de-vmf-en-neurorehab',
-    cta: 'Abrir GPT',
-  },
-];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://italocampos.cl/#person',
+      name: 'Ítalo Campos Montenegro',
+      alternateName: 'Italo Campos Montenegro',
+      url: 'https://italocampos.cl/',
+      image: 'https://italocampos.cl/italo-profile.jpg',
+      jobTitle: 'Kinesiólogo, académico e investigador',
+      affiliation: {
+        '@type': 'Organization',
+        name: 'Universidad Viña del Mar',
+        url: 'https://www.uvm.cl/',
+      },
+      sameAs: [
+        'https://orcid.org/0009-0007-0325-3344',
+        'https://www.instagram.com/italo_campos_montenegro/',
+        'https://cl.linkedin.com/in/italo-campos-montenegro-789534376',
+      ],
+      knowsAbout: [
+        'Neurorehabilitación',
+        'Educación en salud',
+        'Inteligencia artificial',
+        'Aprendizaje clínico',
+        'Rehabilitación aumentativa',
+        'Adopción responsable de inteligencia artificial',
+      ],
+    },
+    {
+      '@type': 'ScholarlyArticle',
+      headline: publications[0].title,
+      author: [
+        { '@type': 'Person', name: 'Ítalo Campos Montenegro', '@id': 'https://italocampos.cl/#person' },
+        { '@type': 'Person', name: 'Maximiliano Martínez Mena' },
+      ],
+      datePublished: '2026-06-10',
+      identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: publications[0].doi },
+      publisher: { '@type': 'Organization', name: 'Ediciones de la Universidad de Murcia' },
+      isPartOf: { '@type': 'Periodical', name: publications[0].journal },
+      url: publications[0].articleUrl,
+    },
+    {
+      '@type': 'ScholarlyArticle',
+      headline: publications[1].title,
+      author: { '@type': 'Person', name: 'Ítalo Campos Montenegro', '@id': 'https://italocampos.cl/#person' },
+      datePublished: '2026-07-28',
+      identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: publications[1].doi },
+      publisher: { '@type': 'Organization', name: 'Ediciones de la Universidad de Murcia' },
+      isPartOf: { '@type': 'Periodical', name: publications[1].journal },
+      url: publications[1].articleUrl,
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Test Salival',
+      applicationCategory: 'HealthApplication',
+      operatingSystem: 'Web',
+      url: 'https://test-salival.italocampos.cl',
+      description: 'Sistema digital de apoyo a la evaluación y registro de sialorrea.',
+      author: { '@id': 'https://italocampos.cl/#person' },
+    },
+  ],
+};
 ---
 
-<Layout>
-  <header id="navbar" class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-neutral-950/55 text-white backdrop-blur-md transition-all duration-300">
-    <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Navegación principal">
-      <a href="#inicio" class="font-serif text-lg font-semibold tracking-tight text-white transition-colors duration-300 hover:text-gold-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950">
-        Laboratorio RCA
+<Layout structuredData={structuredData}>
+  <a href="#contenido" class="fixed left-4 top-3 z-[60] -translate-y-24 bg-neutral-950 px-4 py-3 text-sm font-semibold text-white transition-transform focus:translate-y-0">
+    Saltar al contenido principal
+  </a>
+
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 border-b border-stone-200/80 bg-stone-50/90 backdrop-blur transition-colors">
+    <nav class="section-shell flex min-h-20 items-center justify-between" aria-label="Navegación principal">
+      <a href="#inicio" class="font-serif text-xl font-semibold tracking-tight text-neutral-950">
+        Ítalo Campos
       </a>
 
-      <button id="menu-toggle" class="inline-flex min-h-11 min-w-11 items-center justify-center border border-white/15 text-neutral-100 transition-colors duration-300 hover:border-gold-400 hover:text-gold-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950 md:hidden" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú de navegación">
-        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4 7h16M4 12h16M4 17h16"></path>
-        </svg>
+      <button
+        id="menu-toggle"
+        class="inline-flex min-h-11 items-center justify-center border border-neutral-300 bg-white px-4 text-sm font-semibold text-neutral-950 md:hidden"
+        type="button"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Abrir menú de navegación"
+      >
+        <span id="menu-label" aria-hidden="true">Menú</span>
       </button>
 
-      <ul class="hidden items-center gap-7 text-sm font-medium text-neutral-300 md:flex">
+      <ul class="hidden items-center gap-8 text-sm font-semibold text-neutral-700 md:flex">
         {navItems.map((item) => (
-          <li>
-            <a href={item.href} class="nav-link transition-colors duration-300 hover:text-gold-200 focus:outline-none focus-visible:text-gold-200">
-              {item.label}
-            </a>
-          </li>
+          <li><a href={item.href} class="border-b border-transparent py-2 transition-colors hover:border-gold-600 hover:text-neutral-950">{item.label}</a></li>
         ))}
       </ul>
     </nav>
 
-    <div id="mobile-menu" class="hidden border-t border-white/10 bg-neutral-950/95 px-6 pb-5 pt-2 backdrop-blur md:hidden">
-      <ul class="mx-auto flex max-w-6xl flex-col gap-1 text-sm font-medium text-neutral-200">
+    <div id="mobile-menu" class="hidden border-t border-stone-200 bg-stone-50 px-6 pb-5 md:hidden">
+      <ul class="mx-auto max-w-6xl py-2 text-base font-semibold text-neutral-800">
         {navItems.map((item) => (
-          <li>
-            <a href={item.href} class="block border-b border-white/5 px-1 py-3 transition-colors duration-300 hover:text-gold-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300">
-              {item.label}
-            </a>
-          </li>
+          <li><a href={item.href} class="block border-b border-stone-200 py-4">{item.label}</a></li>
         ))}
       </ul>
     </div>
   </header>
 
-  <main class="overflow-x-hidden bg-white">
-    <section id="inicio" class="hero-shell relative isolate overflow-hidden px-6 pb-16 pt-32 text-white md:pb-20 md:pt-36">
-      <div class="hero-network pointer-events-none absolute inset-0 opacity-80" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-neutral-950" aria-hidden="true"></div>
-
-      <div class="relative mx-auto flex min-h-[78svh] max-w-6xl flex-col justify-center">
-        <div class="max-w-[22rem] sm:max-w-4xl">
-          <div class="clinical-rule mb-8 h-px w-24" data-motion="fadeIn"></div>
-          <p class="mb-5 max-w-full text-xs font-bold uppercase tracking-[0.16em] text-gold-200 sm:tracking-[0.28em]" data-motion="fadeUp" style="--motion-delay: 80ms">
-            Laboratorio de Rehabilitación Clínica Aumentada
-          </p>
-          <h1 class="text-balance max-w-full font-serif text-[2rem] font-semibold leading-[1.05] tracking-normal text-white sm:text-4xl md:text-6xl lg:text-7xl" data-motion="fadeUp" style="--motion-delay: 160ms">
-            Sistemas clínico-tecnológicos aplicados a rehabilitación y educación en salud
+  <main id="contenido">
+    <section id="inicio" class="bg-stone-50 pb-16 pt-32 md:pb-24 md:pt-40" aria-labelledby="hero-title">
+      <div class="section-shell grid gap-12 lg:grid-cols-[1.22fr_0.78fr] lg:items-center lg:gap-16">
+        <div class="min-w-0">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-800">Neurorehabilitación · Educación en salud · Inteligencia artificial</p>
+          <h1 id="hero-title" class="text-balance mt-7 max-w-4xl font-serif text-[2.55rem] font-semibold leading-[1.05] tracking-[-0.025em] text-neutral-950 sm:text-5xl lg:text-[4rem]">
+            Investigo y construyo sistemas para integrar inteligencia artificial en la formación clínica y la rehabilitación.
           </h1>
-          <p class="mt-5 max-w-3xl text-base leading-relaxed text-neutral-200 md:mt-7 md:text-xl" data-motion="fadeUp" style="--motion-delay: 240ms">
-            Diseño e implemento tutores virtuales, simuladores clínicos, herramientas digitales y sistemas aplicados para equipos docentes, instituciones y profesionales de la rehabilitación.
+          <p class="text-pretty mt-7 max-w-3xl text-lg leading-8 text-neutral-700 md:text-xl md:leading-9">
+            Soy Ítalo Campos, kinesiólogo, académico e investigador. Conecto experiencia clínica, educación en salud, investigación y desarrollo tecnológico. Me interesa que la inteligencia artificial amplíe nuestras capacidades sin desplazar el criterio ni la responsabilidad profesional.
           </p>
-          <p class="mt-5 max-w-3xl border-l border-gold-300/80 pl-5 text-sm font-medium leading-relaxed text-neutral-300 md:mt-6 md:text-base" data-motion="fadeUp" style="--motion-delay: 320ms">
-            Este no es solo un portafolio. Es una infraestructura pública de trabajo clínico-tecnológico: práctica clínica, docencia, IA, simulación, datos e investigación aplicada en un mismo ecosistema.
-          </p>
-
-          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:mt-9" data-motion="fadeUp" style="--motion-delay: 400ms">
-            <AnimatedButton href="#soluciones" variant="gold" class="sm:w-auto">Ver soluciones</AnimatedButton>
-            <AnimatedButton href="#contacto" variant="secondary" class="sm:w-auto">Solicitar reunión diagnóstica</AnimatedButton>
-            <AnimatedButton href="#investigacion" variant="secondary" class="sm:w-auto">Explorar investigación</AnimatedButton>
+          <p class="mt-6 text-sm font-semibold text-neutral-600">Kinesiólogo · Magíster en Neurorehabilitación · Académico · Investigador</p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <AnimatedButton href="#lineas" variant="primary">Conocer mi trabajo</AnimatedButton>
+            <AnimatedButton href="#investigacion" variant="secondary">Ver investigación</AnimatedButton>
+            <a href="#colaborar" class="quiet-link inline-flex min-h-12 items-center justify-center px-2 text-sm font-semibold text-neutral-700 underline sm:justify-start">
+              Explorar colaboración
+            </a>
           </div>
         </div>
 
-        <div class="mt-14 border-t border-white/10 pt-7 md:mt-20" data-motion="fadeIn" style="--motion-delay: 520ms">
-          <p class="mb-6 text-xs font-semibold uppercase tracking-[0.24em] text-neutral-400">Trayectoria y colaboraciones</p>
-          <div class="flex flex-wrap items-center gap-7 opacity-70 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 md:gap-12">
-            {logos.map((logo) => (
-              <Image src={logo} alt="Institución colaboradora" class="h-8 w-auto object-contain md:h-11" loading="lazy" />
-            ))}
-          </div>
-        </div>
+        <figure class="mx-auto w-full max-w-md border border-gold-400/70 p-4 lg:max-w-none lg:p-5">
+          <Image
+            src={profileImage}
+            alt="Ítalo Campos Montenegro en retrato profesional, de pie y con los brazos cruzados"
+            class="block aspect-[4/5] w-full object-cover object-top"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1024px) 36vw, (min-width: 640px) 448px, calc(100vw - 48px)"
+            loading="eager"
+            fetchpriority="high"
+            quality={86}
+          />
+          <figcaption class="text-pretty mt-6 border-l border-gold-500 px-4 text-sm leading-7 text-neutral-600">
+            Sistemas aumentativos para el aprendizaje clínico y la rehabilitación, con inteligencia artificial y responsabilidad profesional.
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <MotionSection id="soluciones" class="bg-white" labelledBy="soluciones-title">
-      <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-        <SectionHeading
-          id="soluciones-title"
-          eyebrow="Soluciones"
-          title="Soluciones para instituciones y clínicos"
-          lead="Diseño arquitecturas de inteligencia artificial que se adaptan a necesidades clínicas y académicas, optimizando formación, seguimiento e intervención."
-        />
-        <AnimatedButton href="#contacto" class="hidden shrink-0 md:inline-flex">Solicitar implementación</AnimatedButton>
-      </div>
-
-      <div class="mt-14 grid gap-6 md:grid-cols-2" data-stagger>
-        {solutions.map((solution) => (
-          <AnimatedCard class="flex min-h-[260px] flex-col justify-between">
-            <div>
-              <span class="mb-6 block h-px w-14 bg-gold-400/80"></span>
-              <h3 class="font-serif text-2xl font-semibold text-neutral-950">{solution.title}</h3>
-              <p class="mt-5 text-sm leading-relaxed text-neutral-600">{solution.description}</p>
-              {solution.evidence && (
-                <p class="mt-5 border-l border-gold-400 pl-4 text-xs font-medium leading-relaxed text-neutral-600">
-                  {solution.evidence}
-                </p>
-              )}
-            </div>
-            <a href={solution.href} class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-700 transition-colors hover:text-gold-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500">
-              {solution.cta}
-              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </a>
-          </AnimatedCard>
+    <section class="border-y border-stone-200 bg-white" aria-label="Evidencia profesional destacada">
+      <div class="section-shell grid gap-px bg-stone-200 sm:grid-cols-2 lg:grid-cols-4">
+        {evidenceItems.map((item) => (
+          <a
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+            class="group flex min-h-36 flex-col justify-center bg-white py-7 sm:px-6 lg:min-h-40"
+          >
+            <span class="font-serif text-3xl font-semibold text-neutral-950 group-hover:text-gold-800">{item.value}</span>
+            <span class="mt-2 max-w-[14rem] text-sm leading-6 text-neutral-600">{item.label}</span>
+            {item.external && <span class="sr-only"> (abre en una pestaña nueva)</span>}
+          </a>
         ))}
       </div>
+    </section>
 
-      <div class="mt-8 md:hidden">
-        <AnimatedButton href="#contacto" class="w-full">Solicitar implementación</AnimatedButton>
-      </div>
-    </MotionSection>
-
-    <MotionSection id="laboratorio" class="bg-neutral-950 text-white" innerClass="mx-auto max-w-6xl px-6" labelledBy="laboratorio-title">
-      <SectionHeading
-        id="laboratorio-title"
-        eyebrow="Núcleo estratégico"
-        title="El Laboratorio"
-        inverse
-        lead="El Laboratorio de Rehabilitación Clínica Aumentada es un sistema educativo continuo donde clínicos aprenden a pensar, construir y evaluar sistemas clínicos aumentados con inteligencia artificial, datos y simulación."
-      />
-
-      <div class="mt-14">
-        <LabTimeline items={labTimelineItems} />
-      </div>
-
-      <div class="mt-16 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div class="border border-white/10 bg-white/[0.045] p-7 md:p-9" data-motion="fadeUp">
-          <p class="text-xs font-bold uppercase tracking-[0.22em] text-gold-300">Qué es</p>
-          <h3 class="mt-4 font-serif text-2xl font-semibold text-white">Un entorno para transformar fenómenos clínicos complejos en sistemas evaluables</h3>
-          <div class="mt-7 grid gap-5 sm:grid-cols-2">
-            <div>
-              <h4 class="text-sm font-semibold text-white">Lo que sí es</h4>
-              <ul class="mt-4 space-y-3 text-sm leading-relaxed text-neutral-300">
-                <li>Un espacio de experimentación clínica controlada y rigurosa.</li>
-                <li>Un sistema de aprendizaje práctico y progresivo con casos reales.</li>
-                <li>Una integración de IA como extensión del razonamiento clínico.</li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="text-sm font-semibold text-neutral-300">Lo que no es</h4>
-              <ul class="mt-4 space-y-3 text-sm leading-relaxed text-neutral-400">
-                <li>No es un curso tradicional pasivo ni teórico.</li>
-                <li>No es una colección de aplicaciones o prompts genéricos.</li>
-                <li>No busca automatizar la decisión, sino potenciarla.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="space-y-5" data-stagger>
-          <AnimatedCard tone="dark">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-300">Cómo se aprende</p>
-            <p class="mt-4 text-sm leading-relaxed text-neutral-300">
-              El aprendizaje utiliza casos reales: análisis de control postural mediante sistemas de COP con hardware accesible, rehabilitación de extremidad superior apoyada por IA y evaluación clínica digital de variables complejas como la sialorrea.
-            </p>
-          </AnimatedCard>
-          <AnimatedCard tone="dark">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-300">Qué incluye</p>
-            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-neutral-300">
-              <li>Curso base de entrada al Laboratorio.</li>
-              <li>Acceso continuo al entorno del Laboratorio.</li>
-              <li>Casos clínicos documentados y sistemas aumentados adaptables.</li>
-              <li>Actualizaciones periódicas según avances clínicos y tecnológicos.</li>
-            </ul>
-          </AnimatedCard>
-        </div>
-      </div>
-
-      <div class="mt-12 border border-gold-300/25 bg-gold-300/[0.07] p-7 md:p-9" data-motion="fadeUp">
-        <div class="grid gap-7 md:grid-cols-[1fr_auto] md:items-center">
-          <div>
-            <h3 class="font-serif text-2xl font-semibold text-white">Del laboratorio a la implementación</h3>
-            <p class="mt-4 max-w-3xl text-sm leading-relaxed text-neutral-300">
-              Además del entorno formativo, el laboratorio desarrolla y adapta soluciones concretas para docencia, simulación, seguimiento académico y rehabilitación clínica, integrando evidencia empírica con experiencia académica y diseño aplicado.
-            </p>
-          </div>
-          <AnimatedButton href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20quiero%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20ingresar%20al%20Laboratorio." external variant="gold">
-            Hablar por WhatsApp
-          </AnimatedButton>
-        </div>
-      </div>
-
-      <p class="mt-8 border-t border-white/10 pt-6 text-center text-xs leading-relaxed text-neutral-500">
-        Uso educativo y formativo. No entrega diagnóstico ni recomendaciones clínicas personalizadas para pacientes. La responsabilidad clínica recae siempre en el profesional tratante.
+    <MotionSection class="bg-neutral-950 text-white" innerClass="mx-auto max-w-5xl px-6 md:px-8" labelledBy="pregunta-title">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-300">Una pregunta que atraviesa mi trabajo</p>
+      <h2 id="pregunta-title" class="text-balance mt-7 font-serif text-3xl font-medium leading-tight md:text-5xl">
+        ¿Qué capacidades podemos delegar a la inteligencia artificial sin debilitar el razonamiento clínico, la autonomía profesional y la responsabilidad humana?
+      </h2>
+      <p class="text-pretty mt-8 max-w-3xl text-base leading-8 text-neutral-300 md:text-lg">
+        Esta pregunta conecta todo lo que hago: educación en salud, tutores virtuales, simulación clínica, delegación cognitiva, sistemas de evaluación y rehabilitación aumentativa. La tecnología cambia rápido. Mi desafío es decidir qué conviene ampliar, qué podemos delegar y qué debemos seguir sosteniendo como responsabilidad humana.
       </p>
+      <p class="mt-7 inline-flex border border-gold-300/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold-200">Línea de investigación emergente</p>
     </MotionSection>
 
-    <MotionSection id="aplicaciones" class="bg-neutral-50" labelledBy="aplicaciones-title">
+    <MotionSection id="lineas" class="bg-white" labelledBy="lineas-title">
       <SectionHeading
-        id="aplicaciones-title"
-        eyebrow="Aplicaciones"
-        title="Aplicaciones y desarrollos"
-        lead="Catálogo de soluciones activas implementadas como parte de las capacidades del laboratorio. Integran lógica clínica, visión computacional y modelos de lenguaje, listas para adopción y adaptación institucional."
+        id="lineas-title"
+        eyebrow="Tres líneas de trabajo"
+        title="Tres formas de abordar una misma preocupación"
+        lead="Parto de problemas clínicos, educativos e institucionales concretos. Los investigo, construyo formas de abordarlos y observo qué ocurre al llevarlos a la práctica, siempre con el criterio profesional dentro del proceso."
       />
-
-      <div class="mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-3" data-stagger>
-        {applications.map((app) => (
-          <ProductCard {...app} />
+      <div class="mt-14 grid gap-px overflow-hidden border border-stone-200 bg-stone-200 lg:grid-cols-3">
+        {workLines.map((line) => (
+          <article data-work-line class="bg-stone-50 p-7 md:p-9">
+            <span class="font-serif text-2xl font-semibold text-gold-700">{line.number}</span>
+            <h3 class="mt-8 font-serif text-2xl font-semibold leading-tight text-neutral-950">{line.title}</h3>
+            <p class="mt-5 text-sm leading-7 text-neutral-700">{line.description}</p>
+            <ul class="mt-7 flex flex-wrap gap-2" aria-label={`Temas relacionados con ${line.title}`}>
+              {line.topics.map((topic) => <li class="border border-stone-300 bg-white px-3 py-2 text-xs font-medium text-neutral-600">{topic}</li>)}
+            </ul>
+          </article>
         ))}
       </div>
     </MotionSection>
 
-    <MotionSection id="investigacion" class="bg-white" labelledBy="investigacion-title">
-      <SectionHeading
-        id="investigacion-title"
-        eyebrow="Evidencia aplicada"
-        title="Investigación"
-        lead="La investigación funciona como respaldo del laboratorio: orienta el diseño de tutores virtuales, simulación clínica y aprendizaje autónomo guiado en educación superior y formación clínica."
-      />
-
-      <div class="mt-14 grid gap-6 lg:grid-cols-3" data-stagger>
-        {researchItems.map((item) => (
-          <ResearchCard {...item} />
-        ))}
+    <MotionSection id="investigacion" class="border-y border-stone-200 bg-stone-100" labelledBy="investigacion-title">
+      <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+        <SectionHeading
+          id="investigacion-title"
+          eyebrow="Investigación"
+          title="Cómo aprendemos, razonamos y utilizamos IA en formación clínica"
+          lead="Investigo cómo las personas aprenden, razonan y utilizan inteligencia artificial en contextos de formación clínica, y cómo estas tecnologías pueden incorporarse de forma responsable a educación en salud y rehabilitación."
+        />
+        <a
+          href="https://orcid.org/0009-0007-0325-3344"
+          target="_blank"
+          rel="me noopener noreferrer"
+          data-event="orcid_click"
+          data-event-label="research_header"
+          class="quiet-link inline-flex min-h-12 items-center font-semibold text-gold-800 underline"
+        >
+          ORCID 0009-0007-0325-3344<span class="sr-only"> (abre en una pestaña nueva)</span>
+        </a>
       </div>
 
-      <div class="mt-14 border border-neutral-800 bg-neutral-950 p-7 text-center text-white md:p-9" data-motion="fadeUp">
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-gold-300">Arquitectura basada en evidencia</p>
-        <h3 class="mx-auto mt-4 max-w-3xl font-serif text-2xl font-semibold">Investigación que respalda estas implementaciones</h3>
-        <p class="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-neutral-300">
-          Los hallazgos generados en los estudios sobre tutores virtuales orientan el diseño de tutores con arquitectura basada en evidencia, experiencia académica y aplicación institucional.
-        </p>
-      </div>
-    </MotionSection>
+      <div id="publicaciones" class="mt-16" aria-labelledby="publicadas-title">
+        <div class="editorial-rule h-px w-full"></div>
+        <h3 id="publicadas-title" class="mt-6 text-sm font-bold uppercase tracking-[0.18em] text-neutral-700">Publicado</h3>
 
-    <MotionSection id="simulacion" class="bg-neutral-950 text-white" innerClass="mx-auto max-w-5xl px-6" labelledBy="simulacion-title">
-      <SectionHeading
-        id="simulacion-title"
-        eyebrow="Demo destacada"
-        title="Simulación clínica interactiva"
-        inverse
-        lead="La simulación clínica materializa un sistema clínico aumentado: pacientes virtuales para entrenar entrevista, toma de decisiones y entrega de información compleja en entornos profesionales seguros."
-      />
+        <div class="mt-7 space-y-8">
+          {publications.map((publication) => (
+            <article class="interactive-card border border-stone-300 bg-white p-6 md:p-9 lg:p-11">
+              <div class="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(17rem,0.8fr)] lg:gap-12">
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-gold-800">
+                    <span>Publicación {publication.number}</span><span aria-hidden="true">·</span><span>{publication.year}</span>
+                  </div>
+                  <h4 class="text-balance mt-5 font-serif text-2xl font-semibold leading-snug text-neutral-950 md:text-3xl">{publication.title}</h4>
+                  <p class="mt-5 text-sm font-semibold leading-6 text-neutral-800">{publication.authors}</p>
+                  <p class="mt-2 text-sm leading-6 text-neutral-600">{publication.journal}</p>
+                  <p class="mt-1 font-mono text-xs text-neutral-600">DOI {publication.doi}</p>
+                  <p class="mt-6 border-l-2 border-gold-500 pl-4 text-sm font-medium leading-7 text-neutral-700">{publication.design}</p>
 
-      <article class="mt-12 overflow-hidden border border-white/10 bg-white/[0.045]" data-motion="subtleScale">
-        <div class="grid gap-0 lg:grid-cols-[0.88fr_1.12fr]">
-          <div class="relative min-h-[260px] border-b border-white/10 bg-neutral-900 p-8 lg:border-b-0 lg:border-r">
-            <div class="absolute inset-0 hero-network opacity-35" aria-hidden="true"></div>
-            <div class="relative flex h-full flex-col justify-between">
-              <span class="w-fit border border-gold-300/40 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-gold-200">Simulador conversacional</span>
-              <div>
-                <p class="text-6xl font-semibold text-gold-300/90">TEA</p>
-                <p class="mt-2 text-sm leading-relaxed text-neutral-400">Entrega ética de observaciones clínicas y contención inicial.</p>
+                  <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <AnimatedButton
+                      href={publication.articleUrl}
+                      external
+                      variant="primary"
+                      event="research_publication_click"
+                      eventLabel={`${publication.doi}:article`}
+                    >
+                      Leer publicación
+                    </AnimatedButton>
+                    <AnimatedButton
+                      href={publication.doiUrl}
+                      external
+                      variant="secondary"
+                      event="research_publication_click"
+                      eventLabel={`${publication.doi}:doi`}
+                    >
+                      Ver DOI
+                    </AnimatedButton>
+                  </div>
+                </div>
+
+                <div class="border-t border-stone-200 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                  <p class="text-xs font-bold uppercase tracking-[0.16em] text-neutral-500">Hallazgo</p>
+                  <p class="mt-3 text-sm leading-7 text-neutral-800">{publication.finding}</p>
+                  <dl class="mt-6 grid gap-3">
+                    {publication.metrics.map(([label, value]) => (
+                      <div class="border border-stone-200 bg-stone-50 p-4">
+                        <dt class="text-xs leading-5 text-neutral-600">{label}</dt>
+                        <dd class="mt-1 font-serif text-xl font-semibold text-neutral-950">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p class="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-neutral-500">Interpretación</p>
+                  <p class="mt-3 text-sm leading-7 text-neutral-700">{publication.interpretation}</p>
+                  <p class="mt-6 border-t border-stone-200 pt-5 text-xs leading-6 text-neutral-600"><strong class="text-neutral-800">Límite interpretativo:</strong> {publication.limitation}</p>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="p-7 md:p-10">
-            <h3 class="font-serif text-2xl font-semibold text-white">Simulador clínico de entrega de resultados asociados a TEA</h3>
-            <p class="mt-5 text-sm leading-relaxed text-neutral-300">
-              Paciente simulada para entrenar la entrega de observaciones clínicas sugestivas de autismo a padres, integrando evaluación formativa, contención emocional inicial y derivación ética.
-            </p>
-            <p class="mt-6 border-l border-gold-300 pl-4 text-xs font-medium leading-relaxed text-neutral-300">
-              Recomendación: actívalo en modo voz y comienza preguntando el nombre de la madre y el nombre del niño.
-            </p>
-            <AnimatedButton href="https://chatgpt.com/g/g-6977ab21a65c819187cc51635389eff5-simulador-camila-rojas" external variant="gold" class="mt-8">
-              Activar demostración
-            </AnimatedButton>
-          </div>
-        </div>
-      </article>
-    </MotionSection>
-
-    <MotionSection id="practica" class="bg-white" innerClass="mx-auto max-w-5xl px-6" labelledBy="practica-title">
-      <SectionHeading
-        id="practica-title"
-        eyebrow="Base clínica"
-        title="Práctica clínica"
-        lead="La autoridad del laboratorio nace de una trayectoria clínica concreta en neurorehabilitación, docencia clínica y acompañamiento de procesos complejos."
-      />
-
-      <div class="mt-12 grid gap-6 md:grid-cols-2" data-stagger>
-        {clinicalPractice.map((item) => (
-          <AnimatedCard>
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-700">{item.period}</span>
-            <h3 class="mt-4 font-serif text-2xl font-semibold text-neutral-950">{item.title}</h3>
-            <p class="mt-2 text-sm font-semibold text-neutral-500">{item.role}</p>
-            <p class="mt-5 text-sm leading-relaxed text-neutral-600">{item.description}</p>
-          </AnimatedCard>
-        ))}
-      </div>
-    </MotionSection>
-
-    <MotionSection id="docencia" class="bg-neutral-50" innerClass="mx-auto max-w-5xl px-6" labelledBy="docencia-title">
-      <SectionHeading
-        id="docencia-title"
-        eyebrow="Formación profesional"
-        title="Docencia y sistemas educativos"
-        lead="El diseño de sistemas educativos aumentados extiende el trabajo del Laboratorio: simulación clínica, tutores virtuales y evaluación formativa como herramientas nucleares para transformar la formación clínica."
-      />
-
-      <div class="mt-12 grid gap-5" data-stagger>
-        {educationItems.map((item) => (
-          <AnimatedCard class="p-6 md:p-7">
-            <div class="flex gap-4">
-              <span class="mt-2 h-2 w-2 shrink-0 bg-gold-500"></span>
-              <div>
-                <h3 class="font-semibold text-neutral-950">{item.title}</h3>
-                <p class="mt-1 text-sm font-medium text-neutral-500">{item.meta}</p>
-                <p class="mt-3 text-sm leading-relaxed text-neutral-600">{item.description}</p>
-              </div>
-            </div>
-          </AnimatedCard>
-        ))}
-      </div>
-    </MotionSection>
-
-    <MotionSection id="herramientas" class="bg-white" labelledBy="herramientas-title">
-      <SectionHeading
-        id="herramientas-title"
-        eyebrow="Herramientas"
-        title="Herramientas y asistentes especializados"
-        lead="Asistentes abiertos y demostrativos que operan como soporte para razonamiento clínico, aprendizaje guiado y adaptación institucional."
-      />
-
-      <div class="mt-12">
-        <h3 class="font-serif text-2xl font-semibold text-gold-700">A. Herramientas abiertas y demostrativas</h3>
-        <div class="mt-7 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-stagger>
-          {tools.map((tool) => (
-            <AnimatedCard class="flex h-full flex-col justify-between">
-              <div>
-                <span class="mb-5 flex h-10 w-10 items-center justify-center bg-neutral-950 text-gold-300">
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.25v13M5 8.5h14M7.5 4.5h9a2 2 0 012 2v11a2 2 0 01-2 2h-9a2 2 0 01-2-2v-11a2 2 0 012-2z"></path>
-                  </svg>
-                </span>
-                <h4 class="font-serif text-lg font-semibold text-neutral-950">{tool.title}</h4>
-                <p class="mt-4 text-sm leading-relaxed text-neutral-600">{tool.description}</p>
-                {tool.note && <p class="mt-4 border-l border-gold-400 pl-3 text-xs font-medium leading-relaxed text-neutral-500">{tool.note}</p>}
-              </div>
-              <a href={tool.href} target="_blank" rel="noopener noreferrer" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-700 transition-colors hover:text-gold-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500">
-                {tool.cta}
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                </svg>
-              </a>
-            </AnimatedCard>
+            </article>
           ))}
         </div>
       </div>
 
-      <div class="mt-14 border border-gold-200 bg-gold-50/70 p-7 text-center md:p-9" data-motion="fadeUp">
-        <h3 class="font-serif text-2xl font-semibold text-neutral-950">B. Implementaciones personalizadas</h3>
-        <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-neutral-700">
-          Las lógicas y arquitecturas de estos sistemas conversacionales demostrativos pueden adaptarse rigurosamente a contextos institucionales, docentes o clínicos, integrando protocolos locales, normativas éticas y objetivos educativos específicos.
-        </p>
-        <AnimatedButton href="#contacto" class="mt-7">Coordinar adaptación institucional</AnimatedButton>
+      <div class="mt-12 grid gap-6 border-t border-stone-300 pt-10 md:grid-cols-[0.32fr_0.68fr]">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.18em] text-neutral-700">Investigación en desarrollo</p>
+          <span class="mt-4 inline-flex border border-gold-500 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-gold-800">Línea en desarrollo</span>
+        </div>
+        <div>
+          <h3 class="font-serif text-2xl font-semibold text-neutral-950">Delegación cognitiva y calibración metacognitiva frente a IA</h3>
+          <p class="mt-4 max-w-3xl text-sm leading-7 text-neutral-700">Exploro cómo estudiantes y profesionales deciden cuándo confiar, verificar o sostener por sí mismos una tarea cognitiva al trabajar con inteligencia artificial. Esta línea formula preguntas para nuevos estudios; no se presenta aquí como un hallazgo demostrado.</p>
+        </div>
       </div>
     </MotionSection>
 
-    <MotionSection id="sobre-mi" class="bg-neutral-50" innerClass="mx-auto max-w-5xl px-6" labelledBy="sobre-mi-title">
+    <MotionSection class="bg-neutral-950 text-white" innerClass="mx-auto max-w-5xl px-6 md:px-8" labelledBy="laboratorio-title">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-300">Del conocimiento al sistema</p>
+      <h2 id="laboratorio-title" class="text-balance mt-6 font-serif text-3xl font-semibold leading-tight md:text-5xl">Cuando una pregunta necesita una herramienta, la construyo para poder probarla.</h2>
+      <p class="text-pretty mt-7 max-w-3xl text-base leading-8 text-neutral-300 md:text-lg">Uso el Laboratorio de Rehabilitación Clínica Aumentativa como espacio de construcción y experimentación. Allí convierto problemas que surgen en la docencia y la práctica clínica en prototipos, sistemas evaluables y experiencias de implementación.</p>
+      <p class="mt-9 border-l border-gold-400 pl-5 font-serif text-2xl text-white">Laboratorio de Rehabilitación Clínica Aumentativa</p>
+    </MotionSection>
+
+    <MotionSection id="sistemas" class="bg-white" labelledBy="sistemas-title">
       <SectionHeading
-        id="sobre-mi-title"
-        eyebrow="Autoridad humana"
-        title="Sobre mí"
-        lead="Una trayectoria que integra práctica clínica, docencia, investigación aplicada y desarrollo de sistemas digitales para rehabilitación."
+        id="sistemas-title"
+        eyebrow="Sistemas construidos"
+        title="Tres sistemas que nacieron de preguntas concretas"
+        lead="Los presento por el problema que abordan, el contexto en que surgieron y su estado real. Son herramientas para observar, aprender o apoyar una tarea; el juicio profesional sigue siendo humano."
       />
 
-      <div class="mt-12 grid gap-10 md:grid-cols-[0.88fr_1.45fr] md:items-start">
-        <div data-motion="subtleScale">
-          <Image
-            src={profileImage}
-            alt="Ítalo Campos Montenegro, kinesiólogo, académico e investigador"
-            class="aspect-[3/4] w-full object-cover object-top grayscale transition duration-700 hover:grayscale-0"
-            loading="lazy"
-          />
+      <div class="mt-14 space-y-7">
+        <article data-featured-case class="interactive-card grid overflow-hidden border border-stone-300 bg-stone-50 lg:grid-cols-[0.72fr_1.28fr]">
+          <div class="flex min-h-64 flex-col justify-between bg-neutral-950 p-7 text-white md:p-9">
+            <span class="text-xs font-bold uppercase tracking-[0.17em] text-gold-300">Aprendizaje clínico aumentativo</span>
+            <div>
+              <p class="font-serif text-6xl text-gold-300" aria-hidden="true">01</p>
+              <p class="mt-3 max-w-xs text-sm leading-6 text-neutral-400">Problema: acompañar el aprendizaje sin sustituir la elaboración y el razonamiento del estudiante.</p>
+            </div>
+          </div>
+          <div class="p-7 md:p-10">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-neutral-700">En funcionamiento</span>
+              <span class="text-xs text-neutral-500">Formación clínica · Investigación asociada</span>
+            </div>
+            <h3 class="mt-6 font-serif text-3xl font-semibold text-neutral-950">Tutor virtual clínico-educativo</h3>
+            <p class="mt-5 max-w-3xl text-sm leading-7 text-neutral-700">Sistema conversacional utilizado para acompañar aprendizaje y reflexión clínica mediante distintas arquitecturas de tutoría. Su implementación ha generado además preguntas de investigación sobre alfabetización, uso y preferencias de tutoría virtual.</p>
+            <p class="mt-6 text-sm font-semibold text-neutral-800">Problema → implementación → investigación publicada</p>
+            <AnimatedButton
+              href="https://chatgpt.com/g/g-69af7564ee6c8191836a581664b84f19-sofia-tutor-de-internado-kinesiologia-uvm-2026"
+              external
+              variant="ghost"
+              event="system_case_click"
+              eventLabel="tutor_virtual_clinico_educativo"
+              class="mt-5"
+            >
+              Abrir demostrador
+            </AnimatedButton>
+          </div>
+        </article>
+
+        <article data-featured-case class="interactive-card grid overflow-hidden border border-stone-300 bg-stone-50 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="relative min-h-72 overflow-hidden bg-neutral-900">
+            <video class="aspect-video w-full object-cover lg:aspect-auto lg:h-full" controls playsinline preload="metadata" aria-label="Demostración en video del sistema Test Salival">
+              <source src="/test_salival.mp4" type="video/mp4" />
+              Tu navegador no puede reproducir el video. Puedes abrir la aplicación mediante el enlace del caso.
+            </video>
+          </div>
+          <div class="p-7 md:p-10">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="border border-gold-500 bg-gold-50 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-gold-900">En funcionamiento</span>
+              <span class="text-xs text-neutral-500">Cocreación clínica</span>
+            </div>
+            <h3 class="mt-6 font-serif text-3xl font-semibold text-neutral-950">Test Salival</h3>
+            <p class="mt-5 max-w-3xl text-sm leading-7 text-neutral-700">Sistema digital para apoyar la evaluación y registro de sialorrea, desarrollado desde una necesidad clínica concreta y cocreado junto a una profesional de fonoaudiología de Teletón Valparaíso.</p>
+            <p class="mt-5 text-xs leading-6 text-neutral-600">Se presenta como sistema de apoyo y registro. No se afirma validación clínica ni eficacia diagnóstica.</p>
+            <AnimatedButton
+              href="https://test-salival.italocampos.cl"
+              external
+              variant="ghost"
+              event="system_case_click"
+              eventLabel="test_salival"
+              class="mt-5"
+            >
+              Abrir Test Salival
+            </AnimatedButton>
+          </div>
+        </article>
+
+        <article data-featured-case class="interactive-card grid overflow-hidden border border-stone-300 bg-stone-50 lg:grid-cols-[0.72fr_1.28fr]">
+          <div class="flex min-h-64 flex-col justify-between bg-gold-50 p-7 md:p-9">
+            <span class="text-xs font-bold uppercase tracking-[0.17em] text-gold-900">Visión computacional · En desarrollo</span>
+            <div>
+              <p class="font-serif text-6xl text-gold-700" aria-hidden="true">03</p>
+              <p class="mt-3 max-w-xs text-sm leading-6 text-neutral-700">Problema: explorar formas objetivas y reproducibles de analizar movimiento a partir de video.</p>
+            </div>
+          </div>
+          <div class="p-7 md:p-10">
+            <span class="inline-flex border border-gold-600 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-gold-900">En desarrollo</span>
+            <h3 class="mt-6 font-serif text-3xl font-semibold text-neutral-950">Evaluación de movimientos generales mediante video</h3>
+            <p class="mt-5 max-w-3xl text-sm leading-7 text-neutral-700">Sistema en desarrollo orientado a explorar apoyo computacional para el análisis objetivo de movimientos generales del recién nacido a partir de video.</p>
+            <p class="mt-5 border-l border-gold-500 pl-4 text-xs leading-6 text-neutral-600">No es una herramienta diagnóstica ni se presenta como sustituto de una evaluación clínica especializada.</p>
+          </div>
+        </article>
+      </div>
+
+      <details class="mt-12 border border-stone-300 bg-stone-50">
+        <summary class="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-neutral-950 md:px-8">
+          <span>Explorar sistemas y desarrollos</span>
+          <span class="text-2xl font-normal text-gold-800" aria-hidden="true">+</span>
+        </summary>
+        <div class="border-t border-stone-300 p-6 md:p-8">
+          <div class="grid gap-5 md:grid-cols-2">
+            {catalogItems.map((item) => (
+              <article class="border border-stone-300 bg-white p-6">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h3 class="font-serif text-2xl font-semibold text-neutral-950">{item.title}</h3>
+                  <span class="border border-stone-300 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.13em] text-neutral-700">{item.status}</span>
+                </div>
+                <dl class="mt-6 space-y-4 text-sm leading-6">
+                  <div><dt class="font-semibold text-neutral-900">Problema</dt><dd class="mt-1 text-neutral-600">{item.problem}</dd></div>
+                  <div><dt class="font-semibold text-neutral-900">Qué hace</dt><dd class="mt-1 text-neutral-600">{item.action}</dd></div>
+                  <div><dt class="font-semibold text-neutral-900">Contexto</dt><dd class="mt-1 text-neutral-600">{item.context}</dd></div>
+                </dl>
+                <AnimatedButton href={item.href} external={item.href.startsWith('http')} variant="ghost" event="system_case_click" eventLabel={item.title} class="mt-5">{item.cta}</AnimatedButton>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8 border-t border-stone-300 pt-8">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h3 class="font-serif text-2xl font-semibold text-neutral-950">Simuladores y asistentes</h3>
+                <p class="mt-2 text-sm leading-6 text-neutral-600">Demostradores conversacionales para aprendizaje, comunicación y razonamiento clínico.</p>
+              </div>
+              <span class="border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-neutral-700">Demostrador</span>
+            </div>
+            <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+              {demonstrations.map((demo) => (
+                <li>
+                  <a href={demo.href} target="_blank" rel="noopener noreferrer" data-event="system_case_click" data-event-label={demo.title} class="quiet-link inline-flex min-h-11 items-center text-sm font-semibold text-gold-800 underline">
+                    {demo.title}<span class="sr-only"> (abre en una pestaña nueva)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div data-motion="fadeUp" style="--motion-delay: 120ms">
-          <h3 class="font-serif text-3xl font-semibold text-neutral-950">Ítalo Campos Montenegro</h3>
-          <p class="mt-3 text-xs font-bold uppercase tracking-[0.2em] text-gold-700">Magíster en Neurorehabilitación · Especialista Certificado</p>
-          <p class="mt-7 text-base leading-relaxed text-neutral-700">
-            Kinesiólogo con más de 15 años de práctica clínica en neurorehabilitación, desde la atención de personas con discapacidad múltiple y severa hasta la rehabilitación de trastornos sensorioperceptivos, cognitivos y motores. Actualmente académico en la Universidad Viña del Mar e investigador centrado en la integración de inteligencia artificial en la formación clínica y la práctica en rehabilitación.
-          </p>
+      </details>
+    </MotionSection>
 
-          <div class="mt-8 grid gap-4" data-stagger>
-            <div class="motion-child border-l border-gold-400 pl-5">
-              <h4 class="font-semibold text-neutral-950">Clínico en neurorehabilitación</h4>
-              <p class="mt-1 text-sm leading-relaxed text-neutral-600">Trayectoria en Sanatorio Marítimo San Juan de Dios (2010-2022) e Instituto de Neurorehabilitación Luis Krebs (2022-2024).</p>
-            </div>
-            <div class="motion-child border-l border-gold-400 pl-5">
-              <h4 class="font-semibold text-neutral-950">Académico</h4>
-              <p class="mt-1 text-sm leading-relaxed text-neutral-600">Universidad Viña del Mar, Escuela de Kinesiología (desde 2024). Colaboraciones docentes desde 2013.</p>
-            </div>
-            <div class="motion-child border-l border-gold-400 pl-5">
-              <h4 class="font-semibold text-neutral-950">Investigador</h4>
-              <p class="mt-1 text-sm leading-relaxed text-neutral-600">Líneas: neurorehabilitación e IA clínica, riesgo de caída, neuromodulación de la espasticidad (VMF), evaluación digital, simulación y tecnologías asistivas.</p>
-            </div>
-          </div>
+    <MotionSection class="border-y border-stone-200 bg-gold-50/60" labelledBy="transferencia-title">
+      <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-800">Transferencia · Teletón Valparaíso · 2026</p>
+          <h2 id="transferencia-title" class="text-balance mt-6 font-serif text-3xl font-semibold leading-tight text-neutral-950 md:text-5xl">Del trabajo académico a contextos reales</h2>
+        </div>
+        <article class="border-l border-gold-500 pl-6 md:pl-9">
+          <h3 class="font-serif text-3xl font-semibold text-neutral-950">Inteligencia artificial y futuro de la rehabilitación</h3>
+          <p class="mt-6 text-base leading-8 text-neutral-700">En agosto de 2026 presenté ante profesionales y jefaturas de Teletón Valparaíso una mirada sobre incorporación responsable de inteligencia artificial en rehabilitación, junto con experiencias concretas de desarrollo clínico y educativo. La conversación abrió posibilidades de colaboración en formación, investigación aplicada y desarrollo de soluciones.</p>
+          <ul class="mt-7 grid gap-3 text-sm leading-6 text-neutral-700 sm:grid-cols-3">
+            <li class="border-t border-stone-300 pt-3">Tutor clínico-educativo</li>
+            <li class="border-t border-stone-300 pt-3">Test Salival</li>
+            <li class="border-t border-stone-300 pt-3">Movimientos generales en desarrollo</li>
+          </ul>
+          <AnimatedButton
+            href="https://www.uvm.cl/noticias/academico-uvm-presenta-avances-inteligencia-artificial-aplicada-rehabilitacion-teleton-valparaiso/"
+            external
+            variant="ghost"
+            class="mt-7"
+          >
+            Leer nota institucional UVM
+          </AnimatedButton>
+          <p class="mt-3 text-xs leading-6 text-neutral-600">La actividad se presenta como experiencia de transferencia y conversación institucional; no implica patrocinio, alianza contractual ni aprobación comercial de Teletón.</p>
+        </article>
+      </div>
+    </MotionSection>
 
-          <div class="mt-8 border border-gold-200 bg-white p-6">
-            <p class="text-sm font-semibold leading-relaxed text-neutral-900">
-              Actualmente dirijo el Laboratorio de Rehabilitación Clínica Aumentada, desde donde desarrollo e implemento soluciones para docencia, simulación y práctica clínica.
-            </p>
-            <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Este trabajo integra experiencia clínica, trayectoria docente y aprendizajes obtenidos en investigaciones sobre tutores virtuales y educación en salud.
-            </p>
-          </div>
+    <MotionSection id="trayectoria" class="bg-white" labelledBy="trayectoria-title">
+      <SectionHeading
+        id="trayectoria-title"
+        eyebrow="Trayectoria"
+        title="Una trayectoria clínica que explica por qué trabajo estos problemas"
+        lead="Antes de construir sistemas digitales trabajé durante años directamente con personas, familias, estudiantes y equipos de rehabilitación. Esa experiencia sigue siendo el punto de referencia desde donde evalúo qué tecnología aporta y cuál agrega complejidad sin resolver el problema."
+      />
+      <ol class="mt-14 border-t border-stone-300">
+        {trajectory.map((item, index) => (
+          <li class="grid gap-4 border-b border-stone-300 py-8 md:grid-cols-[0.24fr_0.76fr] md:gap-10 md:py-10">
+            <div>
+              <span class="font-serif text-2xl font-semibold text-gold-800">{item.period}</span>
+              <span class="mt-2 block text-xs font-bold uppercase tracking-[0.15em] text-neutral-500">Etapa {String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl font-semibold text-neutral-950">{item.title}</h3>
+              <p class="mt-2 text-sm font-semibold text-neutral-600">{item.role}</p>
+              <p class="mt-4 max-w-3xl text-sm leading-7 text-neutral-700">{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </MotionSection>
+
+    <MotionSection id="perfil" class="border-y border-stone-200 bg-stone-100" labelledBy="perfil-title">
+      <div class="grid gap-10 lg:grid-cols-[0.36fr_0.64fr] lg:gap-16">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-800">Perfil profesional</p>
+          <h2 id="perfil-title" class="mt-5 font-serif text-4xl font-semibold leading-tight text-neutral-950">Ítalo Campos Montenegro</h2>
+          <p class="mt-5 text-sm font-semibold leading-7 text-neutral-700">Kinesiólogo · Magíster en Neurorehabilitación · Académico · Investigador</p>
+          <a href="https://orcid.org/0009-0007-0325-3344" target="_blank" rel="me noopener noreferrer" data-event="orcid_click" data-event-label="profile" class="quiet-link mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-gold-800 underline">Ver perfil ORCID<span class="sr-only"> (abre en una pestaña nueva)</span></a>
+        </div>
+        <div class="space-y-5 text-base leading-8 text-neutral-700">
+          <p>Kinesiólogo y Magíster en Neurorehabilitación. Mi trayectoria comenzó en la práctica clínica y progresivamente se extendió hacia la docencia, la investigación y el desarrollo de sistemas digitales aplicados a educación en salud y rehabilitación.</p>
+          <p>Actualmente soy académico de la Universidad Viña del Mar. Investigo la interacción entre estudiantes, profesionales e inteligencia artificial y desarrollo experiencias donde estos hallazgos puedan transformarse en herramientas, procesos o sistemas concretos.</p>
+          <p>Me interesa especialmente una pregunta: cuánto podemos ampliar nuestras capacidades mediante IA sin perder aquello que hace responsable una decisión clínica o educativa.</p>
         </div>
       </div>
     </MotionSection>
 
-    <section id="contacto" class="relative isolate overflow-hidden bg-neutral-950 px-6 py-24 text-white md:py-28" aria-labelledby="contacto-title">
-      <div class="hero-network pointer-events-none absolute inset-0 opacity-35" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-4xl text-center" data-motion="sectionReveal">
-        <div class="mx-auto mb-8 h-px w-12 bg-gold-400"></div>
-        <p class="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-gold-300">Colaboración profesional</p>
-        <h2 id="contacto-title" class="text-balance font-serif text-3xl font-semibold md:text-5xl">Empecemos a conversar</h2>
-        <p class="mt-5 text-lg font-medium text-gold-200">¿Quieres explorar una implementación, piloto o colaboración?</p>
-        <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-300">
-          Puedo ayudarte a integrar tutores virtuales, simuladores clínicos, herramientas de seguimiento académico o soluciones aplicadas a rehabilitación en tu contexto profesional o institucional.
-        </p>
-        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-          <AnimatedButton href="mailto:italo.campos.montenegro@gmail.com?subject=Solicitud%20de%20reunión%20diagnóstica" variant="gold" class="w-full sm:w-auto">
-            Solicitar reunión diagnóstica
+    <MotionSection id="colaborar" class="bg-neutral-950 text-white" labelledBy="colaborar-title">
+      <SectionHeading
+        id="colaborar-title"
+        eyebrow="Colaboración"
+        title="Podemos trabajar juntos"
+        lead="Si estás trabajando sobre un problema relacionado con educación en salud, rehabilitación o incorporación responsable de inteligencia artificial, probablemente valga la pena conversar."
+        inverse
+      />
+      <div class="mt-14 grid gap-px overflow-hidden border border-white/15 bg-white/15 lg:grid-cols-3">
+        {collaborationRoutes.map((route) => (
+          <article data-collaboration-route class="flex h-full flex-col bg-neutral-950 p-7 md:p-9">
+            <span class="font-serif text-3xl text-gold-300">{route.key}</span>
+            <h3 class="mt-8 font-serif text-2xl font-semibold leading-tight text-white">{route.title}</h3>
+            <p class="mt-5 text-sm font-semibold leading-6 text-gold-200">{route.audience}</p>
+            <p class="mt-4 flex-1 text-sm leading-7 text-neutral-300">{route.text}</p>
+            <a
+              href={`mailto:italo.campos.montenegro@gmail.com?subject=${encodeURIComponent(route.subject)}`}
+              data-event={route.event}
+              data-event-label={route.key}
+              class="mt-8 inline-flex min-h-12 items-center justify-between gap-4 border-t border-white/20 pt-5 text-sm font-semibold text-white transition-colors hover:text-gold-200"
+            >
+              {route.cta}
+            </a>
+          </article>
+        ))}
+      </div>
+    </MotionSection>
+
+    <MotionSection id="contacto" class="bg-white" labelledBy="contacto-title">
+      <div class="grid gap-10 lg:grid-cols-[0.7fr_0.3fr] lg:items-end">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-800">Contacto</p>
+          <h2 id="contacto-title" class="text-balance mt-6 max-w-3xl font-serif text-3xl font-semibold leading-tight text-neutral-950 md:text-5xl">Conversemos desde un problema concreto</h2>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-neutral-700">Cuéntame brevemente el contexto, la institución si corresponde y qué te gustaría investigar, construir o compartir. Responderé por el mismo medio.</p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <AnimatedButton
+            href="mailto:italo.campos.montenegro@gmail.com?subject=Contacto%20desde%20italocampos.cl"
+            variant="primary"
+            event="email_contact_click"
+            eventLabel="contact_primary"
+            class="w-full"
+          >
+            Escribir por correo
           </AnimatedButton>
-          <AnimatedButton href="mailto:italo.campos.montenegro@gmail.com?subject=Consulta%20por%20piloto%20institucional" variant="secondary" class="w-full sm:w-auto">
-            Consultar por piloto
-          </AnimatedButton>
-          <AnimatedButton href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20quisiera%20explorar%20una%20implementaci%C3%B3n%20en%20mi%20instituci%C3%B3n." external variant="secondary" class="w-full sm:w-auto">
-            Escribir por WhatsApp
+          <AnimatedButton
+            href="https://wa.me/56977402337?text=Hola%20%C3%8Dtalo%2C%20te%20contacto%20desde%20italocampos.cl%20para%20conversar%20sobre%20una%20posible%20colaboraci%C3%B3n."
+            external
+            variant="secondary"
+            event="whatsapp_contact_click"
+            eventLabel="contact_alternative"
+            class="w-full"
+          >
+            WhatsApp como alternativa
           </AnimatedButton>
         </div>
-        <p class="mt-9 text-sm text-neutral-500">
-          O escríbeme directamente a <a href="mailto:italo.campos.montenegro@gmail.com" class="text-gold-300 underline-offset-4 transition-colors hover:text-gold-100 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300">italo.campos.montenegro@gmail.com</a>
-        </p>
       </div>
-    </section>
+      <p class="mt-10 border-t border-stone-200 pt-6 text-sm text-neutral-600">Correo: <a href="mailto:italo.campos.montenegro@gmail.com" data-event="email_contact_click" data-event-label="contact_plain" class="quiet-link font-semibold text-gold-800 underline">italo.campos.montenegro@gmail.com</a></p>
+    </MotionSection>
   </main>
 
-  <footer class="border-t border-white/10 bg-neutral-950 px-6 py-10 text-neutral-500">
-    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
-      <p class="text-xs">&copy; 2025 Ítalo Campos Montenegro. Todos los derechos reservados.</p>
-      <p class="max-w-md text-center text-xs leading-relaxed md:text-right">
-        Uso educativo y formativo. No entrega diagnóstico ni recomendaciones clínicas personalizadas para pacientes. La responsabilidad clínica recae siempre en el profesional tratante.
-      </p>
+  <footer class="border-t border-white/10 bg-neutral-950 px-6 py-12 text-neutral-300">
+    <div class="mx-auto max-w-6xl">
+      <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
+        <div>
+          <p class="font-serif text-2xl font-semibold text-white">Ítalo Campos Montenegro</p>
+          <p class="mt-3 text-sm leading-6 text-neutral-400">Kinesiólogo · Magíster en Neurorehabilitación · Académico · Investigador</p>
+        </div>
+        <nav aria-label="Navegación del pie de página">
+          <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
+            <li><a href="#investigacion" class="hover:text-gold-200">Investigación</a></li>
+            <li><a href="https://orcid.org/0009-0007-0325-3344" target="_blank" rel="me noopener noreferrer" data-event="orcid_click" data-event-label="footer" class="hover:text-gold-200">ORCID<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
+            <li><a href="#sistemas" class="hover:text-gold-200">Sistemas</a></li>
+            <li><a href="#colaborar" class="hover:text-gold-200">Colaborar</a></li>
+            <li><a href="https://www.instagram.com/italo_campos_montenegro?utm_source=ig_web_button_share_sheet&amp;igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="me noopener noreferrer" data-event="social_instagram_click" data-event-label="footer" class="hover:text-gold-200">Instagram<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
+            <li><a href="https://cl.linkedin.com/in/italo-campos-montenegro-789534376" target="_blank" rel="me noopener noreferrer" data-event="social_linkedin_click" data-event-label="footer" class="hover:text-gold-200">LinkedIn<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="mt-9 max-w-4xl border-t border-white/10 pt-7 text-xs leading-6 text-neutral-400">Los sistemas y contenidos presentados en este sitio tienen fines educativos, investigativos o de apoyo profesional según su contexto. No sustituyen evaluación, diagnóstico ni decisión clínica profesional.</p>
+      <p class="mt-5 text-xs text-neutral-400">&copy; <span id="current-year">2026</span> Ítalo Campos Montenegro.</p>
     </div>
   </footer>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuLabel = document.getElementById('menu-label');
     const navbar = document.getElementById('navbar');
-    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const currentYear = document.getElementById('current-year');
+
+    const closeMenu = () => {
+      if (!menuToggle || !mobileMenu) return;
+      mobileMenu.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+      if (menuLabel) menuLabel.textContent = 'Menú';
+    };
 
     if (menuToggle && mobileMenu) {
-      const closeMenu = () => {
-        mobileMenu.classList.add('hidden');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      };
-
       menuToggle.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.contains('hidden');
+        const willOpen = mobileMenu.classList.contains('hidden');
         mobileMenu.classList.toggle('hidden');
-        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+        menuToggle.setAttribute('aria-expanded', String(willOpen));
+        menuToggle.setAttribute('aria-label', willOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+        if (menuLabel) menuLabel.textContent = willOpen ? 'Cerrar' : 'Menú';
       });
 
-      mobileMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
+      mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+          closeMenu();
+          menuToggle.focus();
+        }
       });
     }
 
-    const updateNavbar = () => {
-      if (!navbar) return;
-      navbar.classList.toggle('is-scrolled', window.scrollY > 12);
-    };
-
+    const updateNavbar = () => navbar?.classList.toggle('is-scrolled', window.scrollY > 12);
     updateNavbar();
     window.addEventListener('scroll', updateNavbar, { passive: true });
 
-    const revealTargets = document.querySelectorAll('[data-motion], [data-stagger]');
-    const revealAll = () => {
-      revealTargets.forEach((target) => target.classList.add('motion-visible'));
+    if (currentYear) currentYear.textContent = String(new Date().getFullYear());
+
+    const trackingWindow = window as typeof window & {
+      dataLayer?: Record<string, string | undefined>[];
+      gtag?: (...args: unknown[]) => void;
     };
 
-    if (reduceMotionQuery.matches || !('IntersectionObserver' in window)) {
-      revealAll();
-      document.querySelectorAll('video[autoplay]').forEach((video) => {
-        if (video instanceof HTMLVideoElement) {
-          video.pause();
-        }
-      });
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('motion-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.14, rootMargin: '0px 0px -70px 0px' }
-      );
+    document.querySelectorAll<HTMLElement>('[data-event]').forEach((element) => {
+      element.addEventListener('click', () => {
+        const eventName = element.dataset.event;
+        if (!eventName) return;
 
-      revealTargets.forEach((target) => observer.observe(target));
-    }
+        const payload = {
+          event: eventName,
+          event_label: element.dataset.eventLabel,
+          link_url: element instanceof HTMLAnchorElement ? element.href : undefined,
+        };
+
+        trackingWindow.dataLayer = trackingWindow.dataLayer ?? [];
+        trackingWindow.dataLayer.push(payload);
+        trackingWindow.gtag?.('event', eventName, payload);
+        window.dispatchEvent(new CustomEvent('italocampos:professional-opportunity', { detail: payload }));
+      });
+    });
   </script>
 </Layout>

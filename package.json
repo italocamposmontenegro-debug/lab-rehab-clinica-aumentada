@@ -6,6 +6,8 @@
     "dev": "astro dev",
     "lint": "astro check",
     "build": "astro build",
+    "verify": "node scripts/verify-site.mjs",
+    "test": "npm run build && npm run verify",
     "preview": "astro preview",
     "astro": "astro"
   },

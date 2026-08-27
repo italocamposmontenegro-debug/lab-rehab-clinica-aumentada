@@ -2,13 +2,18 @@
 interface Props {
   title?: string;
   description?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
-  title = 'Laboratorio de Rehabilitación Clínica Aumentada | Ítalo Campos',
-  description = 'Diseño sistemas clínicos aumentados de evaluación, intervención y aprendizaje en rehabilitación, integrando inteligencia artificial, simulación clínica e investigación aplicada.'
+  title = 'Ítalo Campos | Neurorehabilitación, educación en salud e inteligencia artificial',
+  description = 'Kinesiólogo, académico e investigador. Trabajo en sistemas aumentativos para el aprendizaje clínico y la rehabilitación, investigación aplicada y adopción responsable de inteligencia artificial.',
+  structuredData,
 } = Astro.props;
 
+const siteURL = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, siteURL).toString();
+const socialImageURL = new URL('/italo-profile.jpg', siteURL).toString();
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -19,42 +24,45 @@ const base = import.meta.env.BASE_URL;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Ítalo Campos Montenegro" />
+    <meta
+      name="keywords"
+      content="Ítalo Campos, Italo Campos Montenegro, Kinesiología, inteligencia artificial, rehabilitación, neurorehabilitación, educación en salud, formación clínica, tutor virtual"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#171717" />
+    <link rel="canonical" href={canonicalURL} />
 
-    <meta name="keywords" content="Kinesiología, Inteligencia Artificial, Neurorehabilitación, Simulación Clínica, Educación Superior, Salud Digital, Ítalo Campos, Rehabilitación Aumentada" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={Astro.site} />
-
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content={`${Astro.site}/italo-profile.jpg`} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:alt" content="Retrato profesional de Ítalo Campos Montenegro" />
     <meta property="og:locale" content="es_CL" />
-    <meta property="og:site_name" content="Laboratorio de Rehabilitación Clínica Aumentada" />
+    <meta property="og:site_name" content="Ítalo Campos" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${Astro.site}/italo-profile.jpg`} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content="Retrato profesional de Ítalo Campos Montenegro" />
 
-    <script is:inline>
-      document.documentElement.classList.add('motion-ready');
-    </script>
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-
-    <!-- GA4 Placeholder -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
     <title>{title}</title>
+
+    {structuredData && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
   </head>
-  <body class="bg-neutral-950 text-neutral-800 font-sans antialiased">
+  <body class="bg-stone-50 font-sans text-neutral-800 antialiased">
     <slot />
   </body>
 </html>
@@ -64,14 +72,15 @@ const base = import.meta.env.BASE_URL;
   @tailwind components;
   @tailwind utilities;
 
-  html {
-    scroll-behavior: smooth;
-    background: #0a0a0a;
-    overflow-x: hidden;
+  :root {
+    color-scheme: light;
+    font-synthesis: none;
   }
 
-  ::selection {
-    background-color: rgba(196, 163, 68, 0.25);
+  html {
+    background: #fafaf9;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
@@ -79,176 +88,78 @@ const base = import.meta.env.BASE_URL;
     overflow-x: hidden;
   }
 
+  ::selection {
+    background: rgba(197, 163, 68, 0.28);
+    color: #171717;
+  }
+
   a,
-  button {
+  button,
+  summary {
     -webkit-tap-highlight-color: transparent;
   }
 
-  .motion-safe {
-    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid #9a7430;
+    outline-offset: 4px;
   }
 
-  .motion-ready [data-motion] {
-    opacity: 0;
-    transform: translate3d(0, 24px, 0);
-    transition:
-      opacity 780ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1)),
-      transform 780ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1));
-    transition-delay: var(--motion-delay, 0ms);
-  }
-
-  .motion-ready [data-motion='fadeIn'] {
-    transform: none;
-  }
-
-  .motion-ready [data-motion='subtleScale'] {
-    transform: scale(0.985);
-  }
-
-  .motion-ready [data-motion].motion-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .motion-ready [data-stagger] .motion-child {
-    opacity: 0;
-    transform: translate3d(0, 22px, 0);
-    transition:
-      opacity 700ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1)),
-      transform 700ms var(--motion-ease, cubic-bezier(0.22, 1, 0.36, 1)),
-      border-color 300ms ease,
-      background-color 300ms ease,
-      box-shadow 300ms ease;
-  }
-
-  .motion-ready [data-stagger].motion-visible .motion-child {
-    opacity: 1;
-    transform: none;
-  }
-
-  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(2) {
-    transition-delay: 90ms;
-  }
-
-  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(3) {
-    transition-delay: 180ms;
-  }
-
-  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(4) {
-    transition-delay: 270ms;
-  }
-
-  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(5) {
-    transition-delay: 360ms;
-  }
-
-  .motion-ready [data-stagger].motion-visible .motion-child:nth-child(6) {
-    transition-delay: 450ms;
-  }
-
-  .animated-card,
-  .product-card,
-  .research-card {
-    box-shadow: 0 18px 44px rgba(15, 15, 15, 0);
-  }
-
-  .animated-card:hover,
-  .animated-card:focus-within,
-  .product-card:hover,
-  .product-card:focus-within,
-  .research-card:hover,
-  .research-card:focus-within {
-    transform: translateY(-5px);
-    box-shadow: 0 22px 58px rgba(15, 15, 15, 0.12);
-  }
-
-  .product-card:hover,
-  .product-card:focus-within,
-  .research-card:hover,
-  .research-card:focus-within {
-    border-color: rgba(197, 163, 68, 0.55);
-  }
-
-  .animated-button {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .animated-button::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    z-index: -1;
-    opacity: 0;
-    background: linear-gradient(135deg, rgba(197, 163, 68, 0.32), transparent 45%, rgba(255, 255, 255, 0.14));
-    transition: opacity 300ms ease;
-  }
-
-  .animated-button:hover::before,
-  .animated-button:focus-visible::before {
-    opacity: 1;
-  }
-
-  .nav-link {
-    position: relative;
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -0.35rem;
-    height: 1px;
-    transform: scaleX(0);
-    transform-origin: right;
-    background: #c5a344;
-    transition: transform 260ms ease;
-  }
-
-  .nav-link:hover::after,
-  .nav-link:focus-visible::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  #navbar.is-scrolled {
-    background: rgba(10, 10, 10, 0.86);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
-  }
-
-  .hero-shell {
-    background:
-      radial-gradient(circle at 50% 18%, rgba(197, 163, 68, 0.18), transparent 34%),
-      linear-gradient(180deg, #090909 0%, #141414 52%, #0a0a0a 100%);
-  }
-
-  .hero-network {
-    background-image:
-      linear-gradient(rgba(197, 163, 68, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(197, 163, 68, 0.07) 1px, transparent 1px);
-    background-size: 68px 68px;
-    mask-image: linear-gradient(to bottom, transparent, black 18%, black 72%, transparent);
-  }
-
-  .hero-network::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(120deg, transparent 18%, rgba(197, 163, 68, 0.14), transparent 34%),
-      linear-gradient(30deg, transparent 52%, rgba(255, 255, 255, 0.08), transparent 68%);
-    opacity: 0.55;
-  }
-
-  .clinical-rule {
-    background: linear-gradient(90deg, #c5a344, rgba(197, 163, 68, 0.2), transparent);
+  section[id] {
+    scroll-margin-top: 5.5rem;
   }
 
   .text-balance {
     text-wrap: balance;
-    overflow-wrap: break-word;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .section-shell {
+    margin-inline: auto;
+    max-width: 72rem;
+    padding-inline: 1.5rem;
+  }
+
+  .editorial-rule {
+    background: linear-gradient(90deg, #b8923a 0 2.75rem, #d6d3d1 2.75rem 100%);
+  }
+
+  .quiet-link {
+    text-decoration-color: rgba(154, 116, 48, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.28em;
+  }
+
+  .quiet-link:hover {
+    color: #7a5729;
+    text-decoration-color: currentColor;
+  }
+
+  .interactive-card {
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .interactive-card:hover,
+  .interactive-card:focus-within {
+    border-color: rgba(154, 116, 48, 0.55);
+    box-shadow: 0 18px 44px rgba(23, 23, 23, 0.07);
+    transform: translateY(-2px);
+  }
+
+  #navbar.is-scrolled {
+    background: rgba(250, 250, 249, 0.96);
+    border-color: #d6d3d1;
+    box-shadow: 0 10px 30px rgba(23, 23, 23, 0.05);
+  }
+
+  @media (min-width: 768px) {
+    .section-shell {
+      padding-inline: 2rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -263,12 +174,6 @@ const base = import.meta.env.BASE_URL;
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
       transition-duration: 1ms !important;
-    }
-
-    [data-motion],
-    [data-stagger] .motion-child {
-      opacity: 1 !important;
-      transform: none !important;
     }
   }
 </style>
