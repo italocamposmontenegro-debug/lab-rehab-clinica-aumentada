@@ -34,6 +34,9 @@ if (existsSync(htmlPath)) {
   expect(html.includes('0009-0007-0325-3344'), 'Falta el ORCID canónico.');
   expect(html.includes('italo_campos_montenegro'), 'Falta el perfil profesional de Instagram.');
   expect(html.includes('italo-campos-montenegro-789534376'), 'Falta el perfil profesional de LinkedIn.');
+  expect(html.includes('https://observatorioitd.cl/'), 'Falta el enlace al Observatorio de inclusión, territorio y discapacidad.');
+  expect(html.includes('social_impact_observatory_click'), 'Falta el evento de conversión del Observatorio.');
+  expect(html.includes('Felipe Herrera Miranda'), 'Falta la atribución de cocreación del Observatorio al Dr. Felipe Herrera Miranda.');
   expect(!/\baumentad[oa]s?\b/i.test(html), 'Persiste terminología aumentada/aumentado en el contenido publicado.');
   const testSalivalVideo = html.match(/<video[^>]+aria-label="Demostración en video del sistema Test Salival"[^>]*>/)?.[0] ?? '';
   expect(Boolean(testSalivalVideo), 'Falta el video demostrativo de Test Salival.');
@@ -50,6 +53,9 @@ if (existsSync(htmlPath)) {
       expect(graph.some((item) => item['@type'] === 'Person'), 'JSON-LD no incluye Person.');
       expect(graph.filter((item) => item['@type'] === 'ScholarlyArticle').length === 2, 'JSON-LD debe incluir dos ScholarlyArticle.');
       expect(graph.filter((item) => item['@type'] === 'SoftwareApplication').length === 1, 'JSON-LD debe reservar SoftwareApplication para sistemas verificables.');
+      const observatory = graph.find((item) => item['@type'] === 'WebSite' && item.url === 'https://observatorioitd.cl/');
+      expect(Boolean(observatory), 'JSON-LD no incluye el Observatorio como WebSite.');
+      expect(Array.isArray(observatory?.creator) && observatory.creator.some((creator) => creator.name === 'Felipe Herrera Miranda'), 'JSON-LD no atribuye la cocreación del Observatorio al Dr. Felipe Herrera Miranda.');
     } catch (error) {
       failures.push(`JSON-LD inválido: ${error.message}`);
     }

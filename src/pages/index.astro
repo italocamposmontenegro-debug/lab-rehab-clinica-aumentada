@@ -259,6 +259,22 @@ const structuredData = {
       description: 'Sistema digital de apoyo a la evaluación y registro de sialorrea.',
       author: { '@id': 'https://italocampos.cl/#person' },
     },
+    {
+      '@type': 'WebSite',
+      name: 'Observatorio de inclusión, territorio y discapacidad',
+      url: 'https://observatorioitd.cl/',
+      description: 'Plataforma pública de orientación y consulta de recursos inclusivos, leyes, guías y datos territoriales.',
+      creator: [
+        { '@id': 'https://italocampos.cl/#person' },
+        {
+          '@type': 'Person',
+          name: 'Felipe Herrera Miranda',
+          honorificPrefix: 'Dr.',
+          jobTitle: 'Director del Magíster en Inclusión de Personas con Discapacidad',
+          affiliation: { '@type': 'Organization', name: 'Universidad Viña del Mar', url: 'https://www.uvm.cl/' },
+        },
+      ],
+    },
   ],
 };
 ---
@@ -617,30 +633,55 @@ const structuredData = {
       </details>
     </MotionSection>
 
-    <MotionSection class="border-y border-stone-200 bg-gold-50/60" labelledBy="transferencia-title">
+    <MotionSection id="impacto-social" class="border-y border-stone-200 bg-gold-50/60" labelledBy="transferencia-title">
       <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-800">Transferencia · Teletón Valparaíso · 2026</p>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-800">Transferencia e impacto social</p>
           <h2 id="transferencia-title" class="text-balance mt-6 font-serif text-3xl font-semibold leading-tight text-neutral-950 md:text-5xl">Del trabajo académico a contextos reales</h2>
         </div>
-        <article class="border-l border-gold-500 pl-6 md:pl-9">
-          <h3 class="font-serif text-3xl font-semibold text-neutral-950">Inteligencia artificial y futuro de la rehabilitación</h3>
-          <p class="mt-6 text-base leading-8 text-neutral-700">En agosto de 2026 presenté ante profesionales y jefaturas de Teletón Valparaíso una mirada sobre incorporación responsable de inteligencia artificial en rehabilitación, junto con experiencias concretas de desarrollo clínico y educativo. La conversación abrió posibilidades de colaboración en formación, investigación aplicada y desarrollo de soluciones.</p>
-          <ul class="mt-7 grid gap-3 text-sm leading-6 text-neutral-700 sm:grid-cols-3">
-            <li class="border-t border-stone-300 pt-3">Tutor clínico-educativo</li>
-            <li class="border-t border-stone-300 pt-3">Test Salival</li>
-            <li class="border-t border-stone-300 pt-3">Movimientos generales en desarrollo</li>
-          </ul>
-          <AnimatedButton
-            href="https://www.uvm.cl/noticias/academico-uvm-presenta-avances-inteligencia-artificial-aplicada-rehabilitacion-teleton-valparaiso/"
-            external
-            variant="ghost"
-            class="mt-7"
-          >
-            Leer nota institucional UVM
-          </AnimatedButton>
-          <p class="mt-3 text-xs leading-6 text-neutral-600">La actividad se presenta como experiencia de transferencia y conversación institucional; no implica patrocinio, alianza contractual ni aprobación comercial de Teletón.</p>
-        </article>
+        <div class="space-y-12">
+          <article class="border-l border-gold-500 pl-6 md:pl-9">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-800">Teletón Valparaíso · 2026</p>
+            <h3 class="mt-4 font-serif text-3xl font-semibold text-neutral-950">Inteligencia artificial y futuro de la rehabilitación</h3>
+            <p class="mt-6 text-base leading-8 text-neutral-700">En agosto de 2026 presenté ante profesionales y jefaturas de Teletón Valparaíso una mirada sobre incorporación responsable de inteligencia artificial en rehabilitación, junto con experiencias concretas de desarrollo clínico y educativo. La conversación abrió posibilidades de colaboración en formación, investigación aplicada y desarrollo de soluciones.</p>
+            <ul class="mt-7 grid gap-3 text-sm leading-6 text-neutral-700 sm:grid-cols-3">
+              <li class="border-t border-stone-300 pt-3">Tutor clínico-educativo</li>
+              <li class="border-t border-stone-300 pt-3">Test Salival</li>
+              <li class="border-t border-stone-300 pt-3">Movimientos generales en desarrollo</li>
+            </ul>
+            <AnimatedButton
+              href="https://www.uvm.cl/noticias/academico-uvm-presenta-avances-inteligencia-artificial-aplicada-rehabilitacion-teleton-valparaiso/"
+              external
+              variant="ghost"
+              class="mt-7"
+            >
+              Leer nota institucional UVM
+            </AnimatedButton>
+            <p class="mt-3 text-xs leading-6 text-neutral-600">La actividad se presenta como experiencia de transferencia y conversación institucional; no implica patrocinio, alianza contractual ni aprobación comercial de Teletón.</p>
+          </article>
+
+          <article class="border-l border-gold-500 pl-6 md:pl-9">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-800">Inclusión · Territorio · Discapacidad</p>
+            <h3 class="mt-4 font-serif text-3xl font-semibold text-neutral-950">Observatorio de inclusión, territorio y discapacidad</h3>
+            <p class="mt-6 text-base leading-8 text-neutral-700">También construyo herramientas cuyo impacto no se limita a la clínica o la docencia. El Observatorio fue cocreado junto al Dr. Felipe Herrera Miranda, director del Magíster en Inclusión de Personas con Discapacidad de la Universidad Viña del Mar. Es una plataforma pública de orientación y consulta de recursos inclusivos, leyes, guías y datos territoriales.</p>
+            <p class="mt-4 text-base leading-8 text-neutral-700">Su propósito social es ayudar a encontrar recursos, trámites o apoyos según la situación y el territorio, acercando información útil a personas, familias y comunidades.</p>
+            <ul class="mt-7 grid gap-3 text-sm leading-6 text-neutral-700 sm:grid-cols-3">
+              <li class="border-t border-stone-300 pt-3">Recursos, trámites y apoyos</li>
+              <li class="border-t border-stone-300 pt-3">Leyes, guías y fuentes revisadas</li>
+              <li class="border-t border-stone-300 pt-3">Información territorial</li>
+            </ul>
+            <AnimatedButton
+              href="https://observatorioitd.cl/"
+              external
+              variant="ghost"
+              event="social_impact_observatory_click"
+              eventLabel="transferencia"
+              class="mt-7"
+            >
+              Explorar el Observatorio
+            </AnimatedButton>
+          </article>
+        </div>
       </div>
     </MotionSection>
 
@@ -758,6 +799,7 @@ const structuredData = {
             <li><a href="https://orcid.org/0009-0007-0325-3344" target="_blank" rel="me noopener noreferrer" data-event="orcid_click" data-event-label="footer" class="hover:text-gold-200">ORCID<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
             <li><a href="#sistemas" class="hover:text-gold-200">Sistemas</a></li>
             <li><a href="#colaborar" class="hover:text-gold-200">Colaborar</a></li>
+            <li><a href="https://observatorioitd.cl/" target="_blank" rel="noopener noreferrer" data-event="social_impact_observatory_click" data-event-label="footer" class="hover:text-gold-200">Observatorio<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
             <li><a href="https://www.instagram.com/italo_campos_montenegro?utm_source=ig_web_button_share_sheet&amp;igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="me noopener noreferrer" data-event="social_instagram_click" data-event-label="footer" class="hover:text-gold-200">Instagram<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
             <li><a href="https://cl.linkedin.com/in/italo-campos-montenegro-789534376" target="_blank" rel="me noopener noreferrer" data-event="social_linkedin_click" data-event-label="footer" class="hover:text-gold-200">LinkedIn<span class="sr-only"> (abre en una pestaña nueva)</span></a></li>
           </ul>
