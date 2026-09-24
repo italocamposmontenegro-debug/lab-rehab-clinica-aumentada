@@ -1,6 +1,8 @@
 ---
 import Layout from '../../../layouts/RA01Layout.astro';
 import {ra01,ra01Price,paymentsEnabled} from '../../../config/ra01.config';
+import {transferQa} from '../../../config/ra01-private-build.mjs';
+const transferDetailsVisible=paymentsEnabled||transferQa;
 const bank=[['Titular',ra01.bankAccountHolder],['RUT',ra01.bankRut],['Banco',ra01.bankName],['Tipo de cuenta',ra01.bankAccountType],['Número de cuenta',ra01.bankAccountNumber],['Correo',ra01.bankEmail],['Monto',`${ra01Price} CLP`],['Referencia','RA01']];
 const copy=bank.filter(([,v])=>v).map(([k,v])=>`${k}: ${v}`).join('\n');
 const availability=ra01.transferAvailability;
@@ -19,7 +21,7 @@ const availability=ra01.transferAvailability;
  <div data-transfer-state="limited" hidden={availability!=='limited'}><p class="ra-note"><strong>Confirma disponibilidad antes de transferir.</strong></p><p>Escríbenos y espera nuestra respuesta antes de realizar la operación.</p><a class="ra-button secondary" href={`mailto:${ra01.supportEmail}?subject=RA01%20-%20disponibilidad`}>Consultar disponibilidad</a></div>
  <div data-transfer-state="closed" hidden={availability!=='closed'}><p class="ra-note">Las transferencias están cerradas. No realices el pago.</p><a class="ra-button secondary" href={`${ra01.canonicalPath}/lista-espera`}>Lista de espera</a></div>
  <div data-transfer-details hidden={availability!=='normal'}>
- {paymentsEnabled?<><div class="ra-bank"><dl>{bank.filter(([,v])=>v).map(([k,v])=><div><dt>{k}</dt><dd>{v}</dd></div>)}</dl></div><div class="ra-actions"><button class="ra-button" data-bank-copy data-copy-value={copy}>Copiar todos los datos</button><button class="ra-button secondary" data-bank-copy data-copy-value={ra01.bankAccountNumber}>Copiar cuenta</button><button class="ra-button secondary" data-bank-copy data-copy-value={ra01.bankRut}>Copiar RUT</button></div></>:<p class="ra-note">Los datos bancarios se incorporarán antes de abrir inscripciones. No transfieras durante esta prueba.</p>}
+ {transferDetailsVisible?<><div class="ra-bank"><dl>{bank.filter(([,v])=>v).map(([k,v])=><div><dt>{k}</dt><dd>{v}</dd></div>)}</dl></div><div class="ra-actions"><button class="ra-button" data-bank-copy data-copy-value={copy}>Copiar todos los datos</button><button class="ra-button secondary" data-bank-copy data-copy-value={ra01.bankAccountNumber}>Copiar cuenta</button><button class="ra-button secondary" data-bank-copy data-copy-value={ra01.bankRut}>Copiar RUT</button></div></>:<p class="ra-note">Los datos bancarios se incorporarán antes de abrir inscripciones. No transfieras durante esta prueba.</p>}
  <p role="status" data-copy-status></p><p>No envíes claves ni datos completos de tu tarjeta.</p><a href={`mailto:${ra01.supportEmail}?subject=RA01%20-%20transferencia`} data-ra-event="ra01_payment_help">Informar una transferencia o pedir ayuda</a></div>
  {ra01.mode==='preview'&&<details class="ra-capacity-preview"><summary>Probar los estados de disponibilidad</summary><p class="ra-small">Simulación de interfaz, sin consultar ni modificar cupos reales.</p><div class="ra-actions" role="group" aria-label="Simular disponibilidad"><button class="ra-button secondary" data-preview-availability="normal" aria-pressed={availability==='normal'}>Normal</button><button class="ra-button secondary" data-preview-availability="limited" aria-pressed={availability==='limited'}>Próxima al límite</button><button class="ra-button secondary" data-preview-availability="closed" aria-pressed={availability==='closed'}>Cerrada</button></div></details>}
  </section>

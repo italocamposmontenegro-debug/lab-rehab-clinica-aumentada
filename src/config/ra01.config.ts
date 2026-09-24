@@ -1,3 +1,4 @@
+import {contractFinal, privateBuild} from './ra01-private-build.mjs';
 /** Public, non-secret edition configuration. Never put Zoom, Drive grants or credentials here. */
 export const ra01 = {
   edition: 'RA01', productName: 'Rehabilitación Aumentada 01',
@@ -15,18 +16,18 @@ export const ra01 = {
   instagram: 'https://www.instagram.com/italo_campos_montenegro/',
   orcid: 'https://orcid.org/0009-0007-0325-3344',
   linkedin: 'https://cl.linkedin.com/in/italo-campos-montenegro-789534376',
-  termsVersion: '2026-09-22.1', privacyVersion: '2026-09-22.1', formVersion: 'ra01-v1',
+  termsVersion: '2026-09-24.1', privacyVersion: '2026-09-24.1', formVersion: 'ra01-v2',
   mode: 'preview' as 'preview' | 'production',
-  tally: { registrationUrl: null as string | null, technicalCheckUrl: null as string | null, waitlistUrl: null as string | null },
+  tally: { registrationUrl: 'https://tally.so/r/7RGv6a' as string | null, technicalCheckUrl: 'https://tally.so/r/pbaWj8' as string | null, waitlistUrl: 'https://tally.so/r/KYbJQX' as string | null },
   // Operator-controlled availability. Update after checking Sheets and payment channels; no live stock is implied.
   transferAvailability: 'normal' as 'normal' | 'limited' | 'closed',
-  transbankPaymentUrl: null as string | null,
-  bankAccountHolder: null as string | null, bankRut: null as string | null,
-  bankName: null as string | null, bankAccountType: null as string | null,
-  bankAccountNumber: null as string | null, bankEmail: null as string | null,
-  seller: { legalName: null as string | null, rut: null as string | null, address: null as string | null, taxDocument: null as string | null, merchantName: null as string | null },
+  transbankPaymentUrl: privateBuild.transbankPaymentUrl,
+  bankAccountHolder: privateBuild.bank?.holder ?? null, bankRut: privateBuild.bank?.rut ?? null,
+  bankName: privateBuild.bank?.bankName ?? null, bankAccountType: privateBuild.bank?.accountType ?? null,
+  bankAccountNumber: privateBuild.bank?.accountNumber ?? null, bankEmail: privateBuild.bank?.notificationEmail ?? null,
+  seller: { legalName: privateBuild.seller.legalName, rut: privateBuild.seller.rut, address: privateBuild.seller.address, taxDocument: privateBuild.seller.taxDocument, merchantName: privateBuild.merchantName },
   analytics: { measurementId: null as string | null },
-  release: { legalApproved: false, transferFlowReviewed: false, rightsVerified: false, freeRouteVerified: false, hostingCommercialApproved: false, tallyIntegrationVerified: false, zoomCapacityVerified: false, privateDeliveryVerified: false },
+  release: { legalApproved: contractFinal, transferFlowReviewed: false, rightsVerified: true, freeRouteVerified: false, hostingCommercialApproved: true, tallyIntegrationVerified: false, zoomCapacityVerified: false, privateDeliveryVerified: false },
 } as const;
 
 export const ra01Price = new Intl.NumberFormat('es-CL', {style:'currency',currency:'CLP',maximumFractionDigits:0}).format(ra01.price);
