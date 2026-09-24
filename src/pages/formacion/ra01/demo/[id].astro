@@ -1,0 +1,7 @@
+---
+import Layout from '../../../../layouts/RA01Layout.astro';
+import {ra01,demos} from '../../../../config/ra01.config';
+export function getStaticPaths(){return demos.map(demo=>({params:{id:demo.id},props:{demo}}));}
+const {demo}=Astro.props;
+---
+<Layout title={demo.name} path={`${ra01.canonicalPath}/demo/${demo.id}`}><main data-demo-view={demo.id} id="contenido" class="section-shell ra-subpage"><p class="ra-eyebrow">Ejemplos demostrativos creados para RA01</p><h1>{demo.name}</h1><p>{demo.need} Situación comunicativa ficticia.</p><p>Prueba las tarjetas, los filtros y las opciones de accesibilidad. Los cambios que hagas en esta demostración se guardan en este navegador, separados de las otras variantes. Usa sólo información ficticia. La voz depende de que tu equipo disponga de una voz local en español.</p><a class="ra-button secondary" href={`/ra01/demos/${demo.id}.html`} target="_blank" rel="noopener noreferrer">Abrir tablero en pantalla completa</a><iframe class="ra-demo-frame" title={`Tablero demostrativo: ${demo.name}`} src={`/ra01/demos/${demo.id}.html`} loading="lazy"></iframe><p><a href={`${ra01.canonicalPath}#inscripcion`}>Quiero aprender a construir mi personalización</a></p></main></Layout>

@@ -1,0 +1,16 @@
+---
+import { ra01, ra01Price, paymentsEnabled, policyPath } from '../config/ra01.config';
+---
+<div class="ra-enrollment"><p class="ra-eyebrow">Tu participación</p><h3>Inscribirme en RA01</h3><p class="ra-small">31 de octubre · 09:00–13:30 · Zoom</p><p class="ra-price">{ra01Price} <span class="ra-small">CLP</span></p><p class="ra-small">Kit, sesión en vivo, certificado de participación y acceso a la grabación incluidos.</p>
+  <div class="ra-inline-links"><a href={policyPath('terminos')}>Términos completos</a><a href={policyPath('privacidad')}>Privacidad</a><a href={policyPath('cancelaciones')}>Cancelaciones y retracto</a></div>
+  {paymentsEnabled && ra01.tally.registrationUrl ? <><iframe title="Inscripción RA01 en Tally" data-tally-registration data-src={ra01.tally.registrationUrl} data-form-id={ra01.tally.registrationUrl.split('/').at(-1)} style="width:100%;min-height:670px;border:0" loading="lazy"></iframe><a href={ra01.tally.registrationUrl}>Abrir el formulario en una página completa</a></> : <>
+  <div class="ra-note ra-small">Recorrido de prueba. Puedes revisar la validación y los pasos siguientes. No se enviarán ni guardarán tu nombre o correo; esta simulación no genera una inscripción.</div>
+  <form class="ra-form" data-preview-registration data-terms-version={ra01.termsVersion} novalidate>
+    <div class="ra-field"><label for="ra-name">Nombre y apellido</label><input id="ra-name" name="name" autocomplete="name" required maxlength="120" aria-describedby="ra-name-error"/><p class="ra-error" id="ra-name-error" aria-live="polite"></p></div>
+    <div class="ra-field"><label for="ra-email">Correo electrónico</label><input id="ra-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="ra-email-error"/><p class="ra-error" id="ra-email-error" aria-live="polite"></p></div>
+    <div class="ra-field"><label for="ra-method">Medio de pago</label><select id="ra-method" name="payment_method"><option value="webpay">Transbank / Webpay</option><option value="transfer">Transferencia bancaria</option></select></div>
+    <div><label class="ra-check" for="ra-terms"><input id="ra-terms" type="checkbox" name="terms" required aria-describedby="ra-terms-error"/><span>He leído y acepto las <a href={policyPath('terminos')}>condiciones de participación</a> y el <a href={policyPath('privacidad')}>tratamiento de datos para gestionar RA01</a>. Comprendo que la sesión será grabada, con las medidas descritas en las <a href={policyPath('grabacion')}>condiciones de grabación</a>.</span></label><p class="ra-error" id="ra-terms-error" aria-live="polite"></p></div>
+    <button class="ra-button" type="submit">Probar el recorrido de inscripción</button>
+    <p class="ra-small">Las condiciones de este preview son borradores versionados. La inscripción real se habilitará después de completar la configuración y su revisión.</p>
+  </form></>}
+</div>

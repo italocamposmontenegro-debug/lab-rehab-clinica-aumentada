@@ -1,0 +1,22 @@
+---
+import Layout from './Layout.astro';
+import { ra01, paymentsEnabled } from '../config/ra01.config';
+import '../styles/ra01.css';
+interface Props {title?:string; description?:string; path?:string;}
+const {title=ra01.productName,description=ra01.descriptor,path=ra01.canonicalPath}=Astro.props;
+// Pages preview branches remain noindex; the production branch can be indexed
+// independently of whether registration and payments have been activated.
+const noindex = import.meta.env.CF_PAGES_BRANCH !== 'main';
+---
+<Layout title={`${title} | Ítalo Campos Montenegro`} description={description} canonicalPath={path} noindex={noindex}>
+  <a class="ra-skip" href="#contenido">Saltar al contenido</a>
+  <header class="ra-header"><div class="section-shell ra-nav">
+    <a class="ra-brand" href="/">Ítalo Campos <span>Neurorehabilitación · Educación · IA</span></a>
+    <nav aria-label="Navegación profesional"><a href="/#investigacion">Investigación</a><a href="/#sistemas">Sistemas</a><a aria-current="page" href={ra01.canonicalPath}>Formación</a><a class="ra-nav-cta" href={`${ra01.canonicalPath}#inscripcion`}>RA01</a></nav>
+  </div></header>
+  {!paymentsEnabled && <div class="ra-preview" role="note"><div class="section-shell"><strong>Vista previa</strong> · Puedes explorar la experiencia y probar el recorrido. Las inscripciones y los cobros todavía no están habilitados.</div></div>}
+  <slot />
+  <footer class="ra-footer"><div class="section-shell ra-footer-grid"><div><a class="ra-brand" href="/">{ra01.instructor}</a><p>{ra01.labName}</p><a href={`mailto:${ra01.supportEmail}`}>{ra01.supportEmail}</a></div><nav aria-label="Enlaces del pie"><a href={`${ra01.canonicalPath}/condiciones`}>Condiciones y privacidad</a><a href={ra01.orcid} target="_blank" rel="noopener noreferrer">ORCID <span class="sr-only">(nueva pestaña)</span></a><a href={ra01.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only">(nueva pestaña)</span></a><a href={ra01.instagram} target="_blank" rel="noopener noreferrer">Instagram <span class="sr-only">(nueva pestaña)</span></a><button type="button" data-privacy-settings>Preferencias de medición</button></nav></div><p class="section-shell ra-small">Prototipos educativos. La participación no acredita eficacia clínica ni habilitación profesional.</p></footer>
+  <dialog id="ra-privacy-dialog" aria-labelledby="privacy-title"><form method="dialog"><h2 id="privacy-title">Medición de esta experiencia</h2><p>Podemos medir acciones generales, como abrir una demostración. No enviamos nombres, correos ni datos de pago a analítica. Puedes continuar sin medición.</p><p class="ra-small">En esta vista previa no hay un proveedor de analítica activo. La atribución de origen usa sólo etiquetas de campaña permitidas.</p><div class="ra-actions"><button class="ra-button" value="accept">Permitir medición</button><button class="ra-button secondary" value="deny">Continuar sin medición</button></div></form></dialog>
+  <script>import '../scripts/ra01-client';</script>
+</Layout>

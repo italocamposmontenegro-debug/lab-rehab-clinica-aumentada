@@ -3,16 +3,20 @@ interface Props {
   title?: string;
   description?: string;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  canonicalPath?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'Ítalo Campos | Neurorehabilitación, educación en salud e inteligencia artificial',
   description = 'Kinesiólogo, académico e investigador. Trabajo en sistemas aumentativos para el aprendizaje clínico y la rehabilitación, investigación aplicada y adopción responsable de inteligencia artificial.',
   structuredData,
+  canonicalPath,
+  noindex = false,
 } = Astro.props;
 
 const siteURL = Astro.site ?? Astro.url;
-const canonicalURL = new URL(Astro.url.pathname, siteURL).toString();
+const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, siteURL).toString();
 const socialImageURL = new URL('/italo-profile.jpg', siteURL).toString();
 const base = import.meta.env.BASE_URL;
 ---
@@ -28,7 +32,7 @@ const base = import.meta.env.BASE_URL;
       name="keywords"
       content="Ítalo Campos, Italo Campos Montenegro, Kinesiología, inteligencia artificial, rehabilitación, neurorehabilitación, educación en salud, formación clínica, tutor virtual"
     />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <meta name="theme-color" content="#171717" />
     <link rel="canonical" href={canonicalURL} />
 

@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Private RA01 operations and participant data
+ops/ra01/private/
+ops/ra01/*.local.json
+output/

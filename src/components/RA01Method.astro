@@ -1,0 +1,13 @@
+---
+const steps=[
+ ['Necesidad','Define a quién y para qué.','Describe una persona ficticia, la actividad en la que quiere participar y la barrera comunicativa.','Una necesidad concreta.'],
+ ['Requerimientos','Convierte el criterio en instrucciones.','Decide mensajes, categorías y organización. Explicita lo que debe cambiar y las funciones que se conservan.','Un encargo delimitado.'],
+ ['IA','Pide un cambio a la vez.','Usa los prompts y las reglas del Kit para modificar la base. Revisa qué cambió antes de pedir el siguiente ajuste.','Una versión que puedes revisar.'],
+ ['Prueba','Comprueba antes de continuar.','Ensaya mensajes, voz disponible, filtros, teclado, legibilidad y privacidad. Ajusta lo que no funciona y repite la prueba.','Evidencia de funcionamiento.'],
+ ['Software','Consolida tu propia versión.','Incorpora la personalización al archivo y prepara la publicación. Comprueba el resultado en un entorno limpio y compártelo para revisión entre pares.','Tu proyecto y un método reutilizable.'],
+];
+---
+<section id="metodo" class="ra-section dark"><div class="section-shell"><p class="ra-eyebrow">Aprendizaje Basado en Proyectos</p><h2>Aprenderás construyendo conmigo.</h2><p class="ra-lead">Tu criterio dirige cada paso. La IA implementa cambios acotados; tú revisas, pruebas y decides cómo continuar.</p>
+<ol class="ra-method-system" data-ra-method>{steps.map(([name,summary,detail,result],i)=><li><button type="button" data-method-step={i} aria-pressed={i===0} aria-controls="ra-method-detail"><span class="ra-step-number">0{i+1}</span><strong>{name}</strong><span>{summary}</span></button><p class="ra-method-fallback">{detail} Resultado: {result}</p></li>)}</ol>
+<div class="ra-method-detail" id="ra-method-detail" data-method-detail hidden aria-live="polite">{steps.map(([name,,detail,result],i)=><div data-step-detail={i} hidden={i!==0}><span class="ra-eyebrow">0{i+1} / {name}</span><p>{detail}</p><strong>{result}</strong></div>)}</div>
+</div></section>

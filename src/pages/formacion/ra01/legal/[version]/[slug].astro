@@ -1,0 +1,8 @@
+---
+import Layout from '../../../../../layouts/RA01Layout.astro';
+import {ra01} from '../../../../../config/ra01.config';
+import {policies} from '../../../../../data/ra01-policies';
+export function getStaticPaths(){return policies.map(policy=>({params:{version:ra01.termsVersion,slug:policy.slug},props:{policy}}));}
+const {policy}=Astro.props;
+---
+<Layout title={policy.title} path={`${ra01.canonicalPath}/legal/${ra01.termsVersion}/${policy.slug}`}><main id="contenido" class="section-shell ra-subpage ra-policy"><p class="ra-eyebrow">Versión {ra01.termsVersion} · Borrador preproducción</p><h1>{policy.title}</h1><div class="ra-actions"><a class="ra-button secondary" download href={`${ra01.canonicalPath}/legal/${ra01.termsVersion}/condiciones.txt`}>Guardar las siete políticas completas</a><button class="ra-button secondary" data-print-policy>Imprimir / guardar PDF</button></div>{policy.sections.map(([heading,text])=><section><h2>{heading}</h2><p>{text}</p></section>)}{policy.sources.length>0&&<section><h2>Fuentes oficiales y documentación</h2><ul>{policy.sources.map(([title,url])=><li><a href={url} rel="noopener noreferrer" target="_blank">{title}</a></li>)}</ul></section>}<p><a href={`${ra01.canonicalPath}/condiciones`}>Todas las condiciones RA01</a></p></main></Layout>

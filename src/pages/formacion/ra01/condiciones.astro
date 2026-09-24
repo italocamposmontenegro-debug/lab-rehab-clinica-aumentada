@@ -1,0 +1,14 @@
+---
+import Layout from '../../../layouts/RA01Layout.astro';
+import {ra01,policyPath} from '../../../config/ra01.config';
+import {policies} from '../../../data/ra01-policies';
+const additionalFaqs=[
+ ['¿Puedo incorporar datos de pacientes?', 'No. Trabajaremos con situaciones comunicativas ficticias. No incluyas nombres reales, RUT, historias clínicas, fotografías identificables ni diagnósticos asociados a personas en el software, los prompts o la sesión.'],
+ ['¿El resultado queda clínicamente validado?', 'No. Es un prototipo educativo. No se entrega como dispositivo médico ni sustituye evaluación, adaptación y pruebas profesionales. Una aplicación real posterior exige las medidas de privacidad, seguridad y regulación que correspondan.'],
+ ['¿Es lo mismo que hice en el Magíster?', 'RA01 utiliza el mismo proyecto central y metodología de la actividad realizada en el Magíster en Inclusión de Personas con Discapacidad de la Universidad Viña del Mar. Si ya la realizaste y buscas un objeto de construcción diferente, te recomiendo esperar próximas experiencias. Esta convocatoria es independiente de la universidad.'],
+ ['¿Las tarjetas se sincronizan entre dispositivos?', 'No. Las tarjetas creadas desde el tablero se almacenan en ese navegador. La personalización que quieras publicar debe quedar incorporada al archivo: aprenderemos a distinguir ambas y a probar el enlace en una ventana privada.'],
+ ['¿Qué acompañamiento recibiré?', 'Preparación y consultas sobre materiales, método y funcionamiento del proyecto hasta el 31 de enero de 2027, por correo y con respuesta de referencia dentro de un día hábil. No incluye desarrollo por encargo, nuevas funciones ilimitadas ni atención clínica.'],
+ ['¿Qué sucede después de pagar?', 'El pago se asocia al nombre y correo registrados previamente. Tu inscripción quedará confirmada por correo una vez verifiquemos el pago. Recibirás el Kit, guía, calendario e instrucciones privadas de Zoom. Un comprobante o una página de regreso no confirman por sí solos la inscripción.'],
+];
+---
+<Layout title="Condiciones y privacidad RA01" path={`${ra01.canonicalPath}/condiciones`}><main id="contenido" class="section-shell ra-subpage"><p class="ra-eyebrow">Versión {ra01.termsVersion}</p><h1>Condiciones claras antes de participar</h1><p>Estos siete documentos forman las condiciones de RA01. Puedes consultarlos y conservar una copia íntegra antes de aceptar. Son borradores de preproducción: aún se deben completar la identidad comercial y las revisiones señaladas.</p><ul>{policies.map(p=><li><a href={policyPath(p.slug)}>{p.title}</a></li>)}</ul><a class="ra-button" download href={`${ra01.canonicalPath}/legal/${ra01.termsVersion}/condiciones.txt`}>Guardar condiciones completas</a><h2>Otras preguntas sobre participación</h2><div class="ra-faq">{additionalFaqs.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</div></main></Layout>

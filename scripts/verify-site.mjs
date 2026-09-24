@@ -37,7 +37,7 @@ if (existsSync(htmlPath)) {
   expect(html.includes('https://observatorioitd.cl/'), 'Falta el enlace al Observatorio de inclusión, territorio y discapacidad.');
   expect(html.includes('social_impact_observatory_click'), 'Falta el evento de conversión del Observatorio.');
   expect(html.includes('Felipe Herrera Miranda'), 'Falta la atribución de cocreación del Observatorio al Dr. Felipe Herrera Miranda.');
-  expect(!/\baumentad[oa]s?\b/i.test(html), 'Persiste terminología aumentada/aumentado en el contenido publicado.');
+  expect(html.includes('Laboratorio de Rehabilitación Clínica Aumentada'), 'Falta la denominación de laboratorio confirmada.');
   const testSalivalVideo = html.match(/<video[^>]+aria-label="Demostración en video del sistema Test Salival"[^>]*>/)?.[0] ?? '';
   expect(Boolean(testSalivalVideo), 'Falta el video demostrativo de Test Salival.');
   expect(['autoplay', 'muted', 'loop', 'playsinline'].every((attribute) => new RegExp(`\\b${attribute}(?:=|\\s|>)`).test(testSalivalVideo)), 'El video de Test Salival no conserva la configuración de reproducción automática móvil.');

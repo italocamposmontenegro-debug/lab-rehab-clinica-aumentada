@@ -1,0 +1,18 @@
+---
+const variants=[
+ {id:'base',label:'Base',title:'ComunicApp · el punto de partida',description:'Mensajes iniciales para expresar necesidades, solicitar apoyo, comunicar preferencias y participar. Desde esta estructura común parten las distintas personalizaciones.',link:'#demostraciones',cta:'Comparar los tres resultados'},
+ {id:'casa',label:'Hogar',title:'Mi voz en casa',description:'La misma estructura, con mensajes para expresar preferencias y pedir apoyo en la vida cotidiana.',link:'/formacion/ra01/demo/casa',cta:'Probar la versión de hogar'},
+ {id:'rehabilitacion',label:'Rehabilitación',title:'Participar en rehabilitación',description:'La misma estructura, con mensajes para decidir, comprender y regular el ritmo de una actividad.',link:'/formacion/ra01/demo/rehabilitacion',cta:'Probar la versión de rehabilitación'},
+ {id:'comunidad',label:'Comunidad',title:'Encuentro comunitario',description:'La misma estructura, con mensajes para tomar turnos, proponer y participar en un grupo.',link:'/formacion/ra01/demo/comunidad',cta:'Probar la versión comunitaria'},
+];
+---
+<figure class="ra-hero-figure ra-explorer" data-ra-explorer>
+ <div class="ra-window-top"><span>Una base · distintas posibilidades</span><span>RA01 / CAA</span></div>
+ <div class="ra-variant-tabs" data-variant-tabs role="group" aria-label="Explorar personalizaciones">{variants.map((v,i)=><button type="button" disabled data-variant-choice={v.id} data-title={v.title} data-description={v.description} data-link={v.link} data-cta={v.cta} aria-pressed={i===0} aria-controls="ra-product-preview">{v.label}</button>)}</div>
+ <div id="ra-product-preview" class="ra-product-preview" aria-label="Vista del software seleccionado">
+  <div class="ra-preview-heading"><span data-variant-title>{variants[0].title}</span><span class="ra-small">Detalle real</span></div>
+  <img data-variant-image src="/ra01/demos/hero-base.webp" srcset="/ra01/demos/hero-base-sm.webp 640w, /ra01/demos/hero-base.webp 1088w" sizes="(min-width: 1200px) 490px, (min-width: 901px) 42vw, (min-width: 641px) 600px, calc(100vw - 80px)" width="1088" height="710" fetchpriority="high" alt="Detalle real de las dos primeras filas del tablero base: mensajes iniciales para expresar necesidades y solicitar apoyo."/>
+ </div>
+ <div class="ra-annotations" aria-label="Funciones conservadas"><span>Mensajes personalizados</span><span>Categorías adaptables</span><span>Lectura en voz alta</span></div>
+ <figcaption><p data-variant-description class="ra-small" aria-live="polite">{variants[0].description}</p><a class="quiet-link" data-variant-link href={variants[0].link}>{variants[0].cta} →</a><p class="ra-small ra-demo-disclosure">Vista parcial · Situaciones ficticias · Prototipos educativos</p></figcaption>
+</figure>
