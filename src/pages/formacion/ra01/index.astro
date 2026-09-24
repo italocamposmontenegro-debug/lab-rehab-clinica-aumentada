@@ -26,6 +26,30 @@ const faqs = [
   </section>
   <aside class="ra-authority"><div class="section-shell"><strong>Ítalo Campos Montenegro</strong><span>Académico e investigador · IA aplicada a salud y educación clínica</span><a href="#quien-guia">Metodología implementada previamente en formación de postgrado →</a></div></aside>
   <section id="demostraciones" class="ra-section"><div class="section-shell"><p class="ra-eyebrow">El resultado de tus decisiones</p><h2>Una arquitectura.<br/>Tres necesidades. Tres resultados.</h2><p class="ra-lead">El profesional interpreta la necesidad; la IA ayuda a implementar los cambios. Estas tres versiones parten de la misma base y conservan voz, filtros y controles de accesibilidad.</p><div class="ra-shared-base"><span>SOFTWARE BASE</span><span>Mensajes + categorías + voz + accesibilidad</span><span>Tres personalizaciones ↓</span></div><div class="ra-three">{demos.map((d,i)=><article class="ra-demo"><div class="ra-demo-label"><span>0{i+1} / Misma arquitectura</span><span>RA01</span></div><img src={d.image.replace('.png','.webp')} srcset={`${d.image.replace('.png','-sm.webp')} 640w, ${d.image.replace('.png','.webp')} 1088w`} sizes="(min-width: 901px) 340px, (min-width: 641px) 29vw, calc(100vw - 48px)" alt={`Vista real de ${d.name}, ejemplo de ${d.context.toLowerCase()}.`} width="1088" height="1313" loading="lazy"/><div class="ra-demo-annotation">{['Mensajes personalizados','Interacción por voz','Organización según contexto'][i]}</div><div class="ra-demo-body"><h3>{d.name}</h3><dl class="ra-context"><div><dt>Usuario</dt><dd>{['Persona que requiere apoyo para comunicar sus preferencias en casa.','Persona que necesita expresar decisiones durante una actividad de rehabilitación.','Integrante de un grupo que requiere apoyo para tomar la palabra.'][i]} <span class="ra-small">Caso ficticio.</span></dd></div><div><dt>Contexto</dt><dd>{d.context}</dd></div><div><dt>Necesidad</dt><dd>{d.need}</dd></div><div><dt>Qué cambió</dt><dd>{d.changes}</dd></div></dl><a href={`${ra01.canonicalPath}/demo/${d.id}`} data-ra-event="ra01_demo_view" data-variant={d.id}>Probar esta versión →</a></div></article>)}</div><p class="ra-small" style="margin-top:20px">Ejemplos demostrativos creados para RA01. No son proyectos históricos de estudiantes ni evidencia de eficacia clínica. Las tarjetas se guardan en ese navegador; para publicar la personalización hay que incorporarla al archivo y probarla en una ventana privada.</p></div></section>
+  <section id="personalizacion" class="ra-section ra-personalization" aria-labelledby="ra-personalization-title">
+    <div class="section-shell">
+      <p class="ra-eyebrow">El criterio detrás de cada versión</p>
+      <div class="ra-personalization-intro">
+        <h2 id="ra-personalization-title">Personalizar no es sólo cambiar las palabras.</h2>
+        <div class="ra-personalization-copy">
+          <p>Existen soluciones gratuitas de Comunicación Aumentativa y Alternativa que pueden ser suficientes para muchas personas; algunas también permiten personalizar. RA01 no busca reemplazarlas.</p>
+          <p>La experiencia comienza cuando necesitas ir más allá de una configuración estándar: decidir qué mensajes aparecen, cómo se agrupan, dónde se ubican, qué tamaño tienen los elementos, qué colores y contrastes utilizar, cómo organizar la navegación y cómo debe responder la interfaz.</p>
+          <p>La accesibilidad requiere considerar la relación entre las características de la persona, la tarea, el contexto y la interfaz. No existe una única configuración óptima para todas las personas.</p>
+        </div>
+      </div>
+      <div class="ra-personalization-system" aria-label="Cuatro dimensiones de la personalización">
+        <p class="ra-personalization-system-label">Misma arquitectura funcional <span aria-hidden="true">→</span> decisiones según persona, necesidad y contexto</p>
+        <ol class="ra-personalization-dimensions">
+          <li><span>01</span><div><h3>Contenido</h3><p>Qué necesita comunicar.</p></div></li>
+          <li><span>02</span><div><h3>Organización</h3><p>Cómo se distribuyen categorías, mensajes y elementos.</p></div></li>
+          <li><span>03</span><div><h3>Interfaz</h3><p>Tamaño, contraste, color, jerarquía y disposición.</p></div></li>
+          <li><span>04</span><div><h3>Interacción</h3><p>Cómo la persona accede y utiliza el sistema.</p></div></li>
+        </ol>
+      </div>
+      <p class="ra-personalization-method">En RA01 aprenderás a utilizar inteligencia artificial para dirigir estas modificaciones desde tu razonamiento profesional, partiendo de una arquitectura funcional y comprobando los cambios en el software.</p>
+      <p class="ra-personalization-statement">No personalizas el tablero para que se vea diferente.<br/><strong>Lo personalizas para que funcione mejor para esa persona.</strong></p>
+    </div>
+  </section>
   <section id="para-quien" class="ra-section soft"><div class="section-shell ra-split"><div><p class="ra-eyebrow">Tu criterio es el punto de partida</p><h2>Para profesionales que quieren construir desde una necesidad.</h2><p class="ra-lead">Fonoaudiología, Terapia Ocupacional, Kinesiología y áreas vinculadas con rehabilitación, discapacidad, inclusión y comunicación. También pueden participar estudiantes avanzados de áreas relacionadas.</p></div><div><ul class="ra-list"><li>Te interesa adaptar tecnología a situaciones clínicas, domiciliarias, comunitarias, educativas o sociales.</li><li>Quieres formular requerimientos concretos y revisar lo que la IA modifica.</li><li>Buscas una experiencia aplicada, con un proyecto y un método para seguir trabajando.</li><li>No necesitas saber programar. Sí disponer de computador y completar la preparación.</li></ul></div></div></section>
   <section class="ra-positioning"><div class="section-shell"><p class="ra-eyebrow">Construcción guiada · criterio profesional</p><h2>NO VIENES A ESCUCHAR SOBRE IA.<br/><em>VIENES A CONSTRUIR CON ELLA.</em></h2><ul><li>Software funcional</li><li>Proyecto personalizado</li><li>Método reutilizable</li></ul></div></section>
   <Method/>
