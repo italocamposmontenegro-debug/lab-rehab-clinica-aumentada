@@ -16,37 +16,44 @@ export const ra01 = {
   instagram: 'https://www.instagram.com/italo_campos_montenegro/',
   orcid: 'https://orcid.org/0009-0007-0325-3344',
   linkedin: 'https://cl.linkedin.com/in/italo-campos-montenegro-789534376',
-  termsVersion: '2026-09-24.1', privacyVersion: '2026-09-24.1', formVersion: 'ra01-v2',
+  termsVersion: '2026-09-24.2', privacyVersion: '2026-09-24.2', formVersion: 'ra01-v3',
   mode: 'preview' as 'preview' | 'production',
   tally: { registrationUrl: 'https://tally.so/r/7RGv6a' as string | null, technicalCheckUrl: 'https://tally.so/r/pbaWj8' as string | null, waitlistUrl: 'https://tally.so/r/KYbJQX' as string | null },
   // Operator-controlled availability. Update after checking Sheets and payment channels; no live stock is implied.
   transferAvailability: 'normal' as 'normal' | 'limited' | 'closed',
-  transbankPaymentUrl: privateBuild.transbankPaymentUrl,
+  onlinePaymentProvider: 'flow',
+  onlinePaymentUrl: privateBuild.onlinePaymentUrl,
+  onlinePaymentLabel: 'Pagar online con Flow',
   bankAccountHolder: privateBuild.bank?.holder ?? null, bankRut: privateBuild.bank?.rut ?? null,
   bankName: privateBuild.bank?.bankName ?? null, bankAccountType: privateBuild.bank?.accountType ?? null,
   bankAccountNumber: privateBuild.bank?.accountNumber ?? null, bankEmail: privateBuild.bank?.notificationEmail ?? null,
-  seller: { legalName: privateBuild.seller.legalName, rut: privateBuild.seller.rut, address: privateBuild.seller.address, taxDocument: privateBuild.seller.taxDocument, merchantName: privateBuild.merchantName },
+  seller: { legalName: privateBuild.seller.legalName, rut: privateBuild.seller.rut, address: privateBuild.seller.address, taxDocument: privateBuild.seller.taxDocument },
   analytics: { measurementId: null as string | null },
-  release: { legalApproved: contractFinal, transferFlowReviewed: false, rightsVerified: true, freeRouteVerified: false, hostingCommercialApproved: true, tallyIntegrationVerified: false, zoomCapacityVerified: false, privateDeliveryVerified: false },
+  release: { legalApproved: contractFinal, transferFlowReviewed: true, rightsVerified: true, freeRouteVerified: false, hostingCommercialApproved: true, tallyIntegrationVerified: true, onlinePaymentVerified: false, privateDeliveryVerified: false },
 } as const;
 
 export const ra01Price = new Intl.NumberFormat('es-CL', {style:'currency',currency:'CLP',maximumFractionDigits:0}).format(ra01.price);
 export const policyPath = (slug: string) => `${ra01.canonicalPath}/legal/${ra01.termsVersion}/${slug}`;
-export const isOfficialWebpay = (value: string | null) => {
+export const isOfficialOnlinePayment = (provider: string, value: string | null) => {
   if (!value) return false;
-  try { const u = new URL(value); return u.protocol === 'https:' && ['webpay.cl', 'www.webpay.cl'].includes(u.hostname) && !u.username && !u.password; } catch { return false; }
+  try {
+    const u = new URL(value);
+    return provider === 'flow' && u.protocol === 'https:' && u.hostname === 'www.flow.cl' && /^\/uri\/[A-Za-z0-9]+$/.test(u.pathname) && !u.username && !u.password && !u.search && !u.hash;
+  } catch { return false; }
 };
 export function productionBlockers() {
   const blocks: string[] = [];
   if (ra01.mode !== 'production') blocks.push('preview');
   for (const [key, value] of Object.entries(ra01.release)) if (!value) blocks.push(key);
-  if (!isOfficialWebpay(ra01.transbankPaymentUrl)) blocks.push('transbankPaymentUrl');
+  if (!isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentUrl)) blocks.push('onlinePaymentUrl');
   for (const key of ['bankAccountHolder','bankRut','bankName','bankAccountType','bankAccountNumber'] as const) if (!ra01[key]) blocks.push(key);
   for (const [key, value] of Object.entries(ra01.seller)) if (!value) blocks.push(`seller.${key}`);
   if (!ra01.tally.registrationUrl?.startsWith('https://tally.so/')) blocks.push('tally.registrationUrl');
   return blocks;
 }
 export const paymentsEnabled = productionBlockers().length === 0;
+export const registrationEnabled = paymentsEnabled;
+export const onlinePaymentEnabled = paymentsEnabled && isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentUrl);
 export const agenda = [
   ['09:00–09:25', 'El punto de partida', 'Demostración, propósito y funciones que conservaremos.'],
   ['09:25–09:50', 'La necesidad primero', 'Usuario ficticio, contexto de participación y requerimientos.'],

@@ -5,7 +5,7 @@ let local = {};
 if (process.env.RA01_USE_LOCAL_PRIVATE === '1') {
   local = JSON.parse(readFileSync('ops/ra01/private/datos-produccion.json', 'utf8'));
 }
-const publicIdentityPath='docs/ra01/contratos/2026-09-24.1/identity.public.json';
+const publicIdentityPath='docs/ra01/contratos/2026-09-24.2/identity.public.json';
 const publicIdentity=existsSync(publicIdentityPath)?JSON.parse(readFileSync(publicIdentityPath,'utf8')):{};
 
 const pick = (env, fallback) => clean(process.env[env]) ?? clean(fallback);
@@ -28,8 +28,7 @@ export const privateBuild = {
     accountNumber: pick('RA01_BANK_ACCOUNT_NUMBER', local.bank?.accountNumber),
     notificationEmail: pick('RA01_BANK_NOTIFICATION_EMAIL', local.bank?.notificationEmail),
   } : null,
-  merchantName: commerceBuild ? pick('RA01_MERCHANT_NAME', local.merchantName) : null,
-  transbankPaymentUrl: commerceBuild ? pick('RA01_TRANSBANK_PAYMENT_URL', local.transbankPaymentUrl) : null,
+  onlinePaymentUrl: commerceBuild ? pick('RA01_ONLINE_PAYMENT_URL', local.onlinePaymentUrl) : null,
 };
 
 if (contractFinal && Object.entries(privateBuild.seller).some(([, value]) => !value)) {

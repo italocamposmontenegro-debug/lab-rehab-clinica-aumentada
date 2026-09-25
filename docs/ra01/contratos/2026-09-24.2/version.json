@@ -1,0 +1,12 @@
+{
+  "version": "2026-09-24.2",
+  "privacyVersion": "2026-09-24.2",
+  "frozenAt": "2026-09-25T02:04:03.4815202Z",
+  "sha256": "2975975617159d8482bd6359b483771423f691533200fc5290f4b1ea94442a2e",
+  "source": "RA01 Flow final activation candidate; seven policies",
+  "supersedes": "2026-09-24.1",
+  "changes": [
+    "Payment provider and checkout verification clarified in terms",
+    "Flow processing and provider references clarified in privacy"
+  ]
+}
