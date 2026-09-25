@@ -22,6 +22,7 @@ export const ra01 = {
   // Operator-controlled availability. Update after checking Sheets and payment channels; no live stock is implied.
   transferAvailability: 'normal' as 'normal' | 'limited' | 'closed',
   onlinePaymentProvider: 'flow',
+  onlinePaymentType: 'payment_button',
   onlinePaymentUrl: privateBuild.onlinePaymentUrl,
   onlinePaymentLabel: 'Pagar online con Flow',
   bankAccountHolder: privateBuild.bank?.holder ?? null, bankRut: privateBuild.bank?.rut ?? null,
@@ -34,18 +35,18 @@ export const ra01 = {
 
 export const ra01Price = new Intl.NumberFormat('es-CL', {style:'currency',currency:'CLP',maximumFractionDigits:0}).format(ra01.price);
 export const policyPath = (slug: string) => `${ra01.canonicalPath}/legal/${ra01.termsVersion}/${slug}`;
-export const isOfficialOnlinePayment = (provider: string, value: string | null) => {
+export const isOfficialOnlinePayment = (provider: string, type: string, value: string | null) => {
   if (!value) return false;
   try {
     const u = new URL(value);
-    return provider === 'flow' && u.protocol === 'https:' && u.hostname === 'www.flow.cl' && /^\/uri\/[A-Za-z0-9]+$/.test(u.pathname) && !u.username && !u.password && !u.search && !u.hash;
+    return provider === 'flow' && type === 'payment_button' && u.protocol === 'https:' && u.hostname === 'www.flow.cl' && u.pathname === '/btn.php' && /^\?token=[a-f0-9]{40}$/.test(u.search) && !u.username && !u.password && !u.hash;
   } catch { return false; }
 };
 export function productionBlockers() {
   const blocks: string[] = [];
   if (ra01.mode !== 'production') blocks.push('preview');
   for (const [key, value] of Object.entries(ra01.release)) if (!value) blocks.push(key);
-  if (!isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentUrl)) blocks.push('onlinePaymentUrl');
+  if (!isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentType, ra01.onlinePaymentUrl)) blocks.push('onlinePaymentUrl');
   for (const key of ['bankAccountHolder','bankRut','bankName','bankAccountType','bankAccountNumber'] as const) if (!ra01[key]) blocks.push(key);
   for (const [key, value] of Object.entries(ra01.seller)) if (!value) blocks.push(`seller.${key}`);
   if (!ra01.tally.registrationUrl?.startsWith('https://tally.so/')) blocks.push('tally.registrationUrl');
@@ -53,7 +54,7 @@ export function productionBlockers() {
 }
 export const paymentsEnabled = productionBlockers().length === 0;
 export const registrationEnabled = paymentsEnabled;
-export const onlinePaymentEnabled = paymentsEnabled && isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentUrl);
+export const onlinePaymentEnabled = paymentsEnabled && isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentType, ra01.onlinePaymentUrl);
 export const agenda = [
   ['09:00–09:25', 'El punto de partida', 'Demostración, propósito y funciones que conservaremos.'],
   ['09:25–09:50', 'La necesidad primero', 'Usuario ficticio, contexto de participación y requerimientos.'],
