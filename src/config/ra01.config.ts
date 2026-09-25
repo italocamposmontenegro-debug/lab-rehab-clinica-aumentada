@@ -17,8 +17,8 @@ export const ra01 = {
   orcid: 'https://orcid.org/0009-0007-0325-3344',
   linkedin: 'https://cl.linkedin.com/in/italo-campos-montenegro-789534376',
   termsVersion: '2026-09-24.2', privacyVersion: '2026-09-24.2', formVersion: 'ra01-v3',
-  mode: 'preview' as 'preview' | 'production',
-  tally: { registrationUrl: 'https://tally.so/r/7RGv6a' as string | null, technicalCheckUrl: 'https://tally.so/r/pbaWj8' as string | null, waitlistUrl: 'https://tally.so/r/KYbJQX' as string | null },
+  mode: 'production' as 'preview' | 'production',
+  tally: { registrationUrl: 'https://tally.so/r/7RGv6a' as string | null, technicalCheckUrl: 'https://tally.so/r/pbaWj8' as string | null, waitlistUrl: null as string | null },
   // Operator-controlled availability. Update after checking Sheets and payment channels; no live stock is implied.
   transferAvailability: 'normal' as 'normal' | 'limited' | 'closed',
   onlinePaymentProvider: 'flow',
@@ -30,7 +30,7 @@ export const ra01 = {
   bankAccountNumber: privateBuild.bank?.accountNumber ?? null, bankEmail: privateBuild.bank?.notificationEmail ?? null,
   seller: { legalName: privateBuild.seller.legalName, rut: privateBuild.seller.rut, address: privateBuild.seller.address, taxDocument: privateBuild.seller.taxDocument },
   analytics: { measurementId: null as string | null },
-  release: { legalApproved: contractFinal, transferFlowReviewed: true, rightsVerified: true, freeRouteVerified: false, hostingCommercialApproved: true, tallyIntegrationVerified: true, onlinePaymentVerified: false, privateDeliveryVerified: false },
+  release: { legalApproved: contractFinal, transferFlowReviewed: true, rightsVerified: true, freeRouteVerified: true, hostingCommercialApproved: true, tallyIntegrationVerified: true, onlinePaymentVerified: true, privateDeliveryVerified: true },
 } as const;
 
 export const ra01Price = new Intl.NumberFormat('es-CL', {style:'currency',currency:'CLP',maximumFractionDigits:0}).format(ra01.price);
