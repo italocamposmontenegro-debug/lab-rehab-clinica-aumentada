@@ -18,7 +18,7 @@ function track(event:string,detail:Partial<SafeEvent>={}){
  if(!allowedEvents.has(event))return;
  const payload:SafeEvent={event,edition:'RA01'};
  if(['flow','transfer'].includes(detail.method??''))payload.method=detail.method;
- if(['casa','rehabilitacion','comunidad','base'].includes(detail.variant??''))payload.variant=detail.variant;
+ if(['casa','rehabilitacion','comunidad','base','apoyo-cognitivo','acceso-motor'].includes(detail.variant??''))payload.variant=detail.variant;
  if(['preview','submitted','complete','unavailable','help'].includes(detail.status??''))payload.status=detail.status;
  window.ra01Events=[...(window.ra01Events??[]).slice(-99),payload];
  window.dispatchEvent(new CustomEvent('ra01:event',{detail:payload}));

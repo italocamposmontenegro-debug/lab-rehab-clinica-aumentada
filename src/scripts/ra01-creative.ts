@@ -5,17 +5,17 @@ function arrowNavigation(buttons:HTMLButtonElement[]){buttons.forEach((button,i)
 const explorer=document.querySelector<HTMLElement>('[data-ra-explorer]');
 if(explorer){
  const buttons=[...explorer.querySelectorAll<HTMLButtonElement>('[data-variant-choice]')];
- const img=explorer.querySelector<HTMLImageElement>('[data-variant-image]')!;let request=0;
+ const img=explorer.querySelector<HTMLImageElement>('[data-variant-image]')!;
+ const frame=explorer.querySelector<HTMLIFrameElement>('[data-variant-frame]')!;
  buttons.forEach(b=>b.disabled=false);
- buttons.forEach(button=>button.addEventListener('click',async()=>{
-  const token=++request,id=button.dataset.variantChoice!;const next=new Image();next.sizes=img.sizes;next.srcset=`/ra01/demos/hero-${id}-sm.webp 640w, /ra01/demos/hero-${id}.webp 1088w`;next.src=`/ra01/demos/hero-${id}.webp`;explorer.setAttribute('aria-busy','true');
-  try{await next.decode();if(token!==request)return;img.srcset=next.srcset;img.src=next.src;img.alt=`Detalle real de ${button.dataset.title}: las dos primeras filas del tablero de un caso ficticio.`;
-   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-   explorer.querySelector('[data-variant-title]')!.textContent=button.dataset.title!;
-   explorer.querySelector('[data-variant-description]')!.textContent=button.dataset.description!;
-   const link=explorer.querySelector<HTMLAnchorElement>('[data-variant-link]')!;link.href=button.dataset.link!;link.textContent=button.dataset.cta+' →';feedback(img);
-  }catch{if(token===request)explorer.querySelector('[data-variant-description]')!.textContent='No se pudo cargar esta vista. Puedes abrir las demostraciones en la sección siguiente.';}
-  finally{if(token===request)explorer.removeAttribute('aria-busy');}
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  const id=button.dataset.variantChoice!;
+  img.hidden=id!=='base';frame.hidden=id==='base';
+  if(id!=='base'&&frame.dataset.view!==id){frame.src=`/ra01/demos/functional.html?view=${id}`;frame.dataset.view=id;}
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  explorer.querySelector('[data-variant-title]')!.textContent=button.dataset.title!;
+  explorer.querySelector('[data-variant-description]')!.textContent=button.dataset.description!;
+  const link=explorer.querySelector<HTMLAnchorElement>('[data-variant-link]')!;link.href=button.dataset.link!;link.textContent=button.dataset.cta+' →';feedback(frame.hidden?img:frame);
  }));arrowNavigation(buttons);
 }
 const method=document.querySelector<HTMLElement>('[data-ra-method]');

@@ -67,7 +67,7 @@ export const agenda = [
   ['12:55–13:30', 'Revisión y próximos pasos', 'Retroalimentación entre pares y cierre del proceso.'],
 ] as const;
 export const demos = [
-  {id:'casa',name:'Mi voz en casa',context:'Vida cotidiana',need:'Expresar preferencias y pedir apoyo en una rutina domiciliaria.',changes:'Vocabulario cotidiano, decisiones y necesidades.',image:'/ra01/demos/casa.png'},
-  {id:'rehabilitacion',name:'Participar en rehabilitación',context:'Rehabilitación',need:'Pedir una pausa, solicitar una explicación y expresar cómo continuar.',changes:'Ritmo de la actividad, comprensión y participación.',image:'/ra01/demos/rehabilitacion.png'},
-  {id:'comunidad',name:'Encuentro comunitario',context:'Participación comunitaria',need:'Tomar un turno, proponer una actividad y pedir que repitan una instrucción.',changes:'Turnos, acuerdos y participación en grupo.',image:'/ra01/demos/comunidad.png'},
+  {id:'base',name:'BASE',context:'Punto de partida',need:'Expresar necesidades, solicitar apoyo y participar.',changes:'Tablero inicial con mensajes y voz local opcional.',annotation:'Punto de partida'},
+  {id:'apoyo-cognitivo',name:'APOYO COGNITIVO',context:'Actividad secuencial',need:'Seguir los pasos de una colación ficticia.',changes:'Secuencia de cinco pasos con ayudas altas, medias o bajas.',annotation:'Ayudas graduadas durante una actividad'},
+  {id:'acceso-motor',name:'ACCESO MOTOR',context:'Espacio de acceso',need:'Utilizar los mismos mensajes en una zona elegida manualmente.',changes:'La cuadrícula cambia de posición y tamaño según el alcance seleccionado.',annotation:'Distribución adaptada al espacio de alcance'},
 ] as const;

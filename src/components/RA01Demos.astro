@@ -1,0 +1,24 @@
+---
+import {ra01,demos} from '../config/ra01.config';
+---
+<section id="demostraciones" class="ra-section">
+ <div class="section-shell">
+  <p class="ra-eyebrow">El resultado de tus decisiones</p>
+  <h2>Misma base. Distintas necesidades.<br/>Distintas adaptaciones.</h2>
+  <p class="ra-lead">No se trata sólo de cambiar palabras o colores. Una misma arquitectura puede reorganizarse, modificar su interacción y cambiar el apoyo que entrega según la persona, la tarea y el contexto.</p>
+  <div class="ra-shared-base"><span>ARQUITECTURA COMÚN</span><span>Mensajes + botones + voz local opcional</span><span>Dos adaptaciones funcionales ↓</span></div>
+  <div class="ra-three">
+   {demos.map((demo,i)=><article class="ra-demo">
+    <div class="ra-demo-label"><span>0{i+1} / {i===0?'Origen común':'Adaptación funcional'}</span><span>RA01</span></div>
+    <div class={`ra-functional-preview ra-functional-preview--${demo.id}`} aria-label={`Vista de ${demo.name}`}>
+     {demo.id==='base'&&<div class="ra-functional-mini"><span>COMUNICAPP · PUNTO DE PARTIDA</span><strong>Selecciona un mensaje</strong><div class="ra-mini-base"><span>✅<b>Sí.</b></span><span>⛔<b>No.</b></span><span>💬<b>Quiero comunicarme.</b></span><span>🙋<b>Necesito ayuda.</b></span><span>⏸️<b>Necesito una pausa.</b></span><span>✋<b>Quiero participar.</b></span></div><small>Contenido funcional y voz local opcional</small></div>}
+     {demo.id==='apoyo-cognitivo'&&<div class="ra-functional-mini"><span>ACTIVIDAD · 1 DE 5</span><strong>Preparar una colación</strong><div class="ra-mini-support"><b>ALTO</b><span>MEDIO</span><span>BAJO</span></div><div class="ra-mini-step"><span aria-hidden="true">🧺</span><b>Preparar materiales</b><small>Busca el recipiente, el alimento y la bebida.</small></div><div class="ra-mini-next">Siguiente paso →</div></div>}
+     {demo.id==='acceso-motor'&&<div class="ra-functional-mini"><span>ZONA DE ALCANCE · MANUAL</span><strong>Los mismos mensajes</strong><div class="ra-mini-support"><b>IZQUIERDO</b><span>CENTRAL</span><span>DERECHO</span></div><div class="ra-mini-reach"><div><span>✅ Sí</span><span>⛔ No</span><span>🙋 Ayuda</span><span>⏸️ Pausa</span></div></div><small>Otra distribución para el espacio elegido</small></div>}
+    </div>
+    <div class="ra-demo-annotation">{demo.annotation}</div>
+    <div class="ra-demo-body"><h3>{demo.name}</h3><dl class="ra-context"><div><dt>Necesidad</dt><dd>{demo.need} <span class="ra-small">Caso ficticio.</span></dd></div><div><dt>Qué cambió</dt><dd>{demo.changes}</dd></div></dl><a href={`${ra01.canonicalPath}/demo/${demo.id}`} data-ra-event="ra01_demo_view" data-variant={demo.id}>Probar esta versión →</a></div>
+   </article>)}
+  </div>
+  <p class="ra-small" style="margin-top:20px">Ejemplos de posibilidades de adaptación, no productos clínicos terminados ni evidencia de eficacia. La elección y prueba de cada adaptación corresponde al profesional.</p>
+ </div>
+</section>

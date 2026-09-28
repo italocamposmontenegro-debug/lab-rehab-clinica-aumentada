@@ -2,11 +2,12 @@
 import RA01Layout from '../../../layouts/RA01Layout.astro';
 import Registration from '../../../components/RA01Registration.astro';
 import Explorer from '../../../components/RA01Explorer.astro';
+import Demos from '../../../components/RA01Demos.astro';
 import Method from '../../../components/RA01Method.astro';
 import Toolkit from '../../../components/RA01Toolkit.astro';
 import '../../../styles/ra01-creative.css';
 import AnimatedButton from '../../../components/AnimatedButton.astro';
-import { ra01, ra01Price, demos, agenda, policyPath } from '../../../config/ra01.config';
+import { ra01, ra01Price, agenda, policyPath } from '../../../config/ra01.config';
 const faqs = [
  ['¿Necesito saber programar?', 'No. Comenzarás con una base funcional y una guía de modificaciones. Necesitas manejar archivos, seguir la preparación y revisar críticamente el resultado.'],
  ['¿Qué construiré exactamente?', 'Una versión personalizada de software asistivo de Comunicación Aumentativa y Alternativa: un tablero con mensajes, símbolos, categorías y voz cuando el navegador disponga de una voz compatible.'],
@@ -25,7 +26,7 @@ const faqs = [
     <Explorer/>
   </section>
   <aside class="ra-authority"><div class="section-shell"><strong>Ítalo Campos Montenegro</strong><span>Académico e investigador · IA aplicada a salud y educación clínica</span><a href="#quien-guia">Metodología implementada previamente en formación de postgrado →</a></div></aside>
-  <section id="demostraciones" class="ra-section"><div class="section-shell"><p class="ra-eyebrow">El resultado de tus decisiones</p><h2>Una arquitectura.<br/>Tres necesidades. Tres resultados.</h2><p class="ra-lead">El profesional interpreta la necesidad; la IA ayuda a implementar los cambios. Estas tres versiones parten de la misma base y conservan voz, filtros y controles de accesibilidad.</p><div class="ra-shared-base"><span>SOFTWARE BASE</span><span>Mensajes + categorías + voz + accesibilidad</span><span>Tres personalizaciones ↓</span></div><div class="ra-three">{demos.map((d,i)=><article class="ra-demo"><div class="ra-demo-label"><span>0{i+1} / Misma arquitectura</span><span>RA01</span></div><img src={d.image.replace('.png','.webp')} srcset={`${d.image.replace('.png','-sm.webp')} 640w, ${d.image.replace('.png','.webp')} 1088w`} sizes="(min-width: 901px) 340px, (min-width: 641px) 29vw, calc(100vw - 48px)" alt={`Vista real de ${d.name}, ejemplo de ${d.context.toLowerCase()}.`} width="1088" height="1313" loading="lazy"/><div class="ra-demo-annotation">{['Mensajes personalizados','Interacción por voz','Organización según contexto'][i]}</div><div class="ra-demo-body"><h3>{d.name}</h3><dl class="ra-context"><div><dt>Usuario</dt><dd>{['Persona que requiere apoyo para comunicar sus preferencias en casa.','Persona que necesita expresar decisiones durante una actividad de rehabilitación.','Integrante de un grupo que requiere apoyo para tomar la palabra.'][i]} <span class="ra-small">Caso ficticio.</span></dd></div><div><dt>Contexto</dt><dd>{d.context}</dd></div><div><dt>Necesidad</dt><dd>{d.need}</dd></div><div><dt>Qué cambió</dt><dd>{d.changes}</dd></div></dl><a href={`${ra01.canonicalPath}/demo/${d.id}`} data-ra-event="ra01_demo_view" data-variant={d.id}>Probar esta versión →</a></div></article>)}</div><p class="ra-small" style="margin-top:20px">Ejemplos demostrativos creados para RA01. No son proyectos históricos de estudiantes ni evidencia de eficacia clínica. Las tarjetas se guardan en ese navegador; para publicar la personalización hay que incorporarla al archivo y probarla en una ventana privada.</p></div></section>
+  <Demos />
   <section id="personalizacion" class="ra-section ra-personalization" aria-labelledby="ra-personalization-title">
     <div class="section-shell">
       <p class="ra-eyebrow">El criterio detrás de cada versión</p>
