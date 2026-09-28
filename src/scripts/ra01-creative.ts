@@ -11,7 +11,7 @@ if(explorer){
  buttons.forEach(button=>button.addEventListener('click',()=>{
   const id=button.dataset.variantChoice!;
   img.hidden=id!=='base';frame.hidden=id==='base';
-  if(id!=='base'&&frame.dataset.view!==id){frame.src=`/ra01/demos/functional.html?view=${id}`;frame.dataset.view=id;}
+  if(id!=='base'&&frame.dataset.view!==id){frame.src=`/ra01/demos/functional.html?view=${id}&embed=1`;frame.dataset.view=id;}
   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
   explorer.querySelector('[data-variant-title]')!.textContent=button.dataset.title!;
   explorer.querySelector('[data-variant-description]')!.textContent=button.dataset.description!;
