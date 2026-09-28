@@ -14,7 +14,7 @@ const demoUrl=`/ra01/demos/functional.html?view=${demo.id}`;
  <main data-demo-view={demo.id} id="contenido" class="section-shell ra-subpage">
   <p class="ra-eyebrow">Ejemplo demostrativo RA01</p><h1>{demo.name}</h1>
   {legacy&&<p>Esta demostración ahora forma parte de las adaptaciones funcionales RA01. <a href={`${ra01.canonicalPath}/demo/${demo.id}`}>Abrir su dirección actual</a>.</p>}
-  <p>{demo.need} Situación ficticia.</p>
+  <p>{demo.need}</p>
   <p>{demo.changes} Prueba los controles y recarga la página para volver al inicio. La voz depende de la disponibilidad de una voz local en tu equipo. Este ejemplo no evalúa a una persona ni recomienda una adaptación clínica.</p>
   <a class="ra-button secondary" href={demoUrl} target="_blank" rel="noopener noreferrer">Abrir demostración en pantalla completa</a>
   <iframe class="ra-demo-frame" title={`Demostración funcional: ${demo.name}`} src={demoUrl} loading="lazy"></iframe>

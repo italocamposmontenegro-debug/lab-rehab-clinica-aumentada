@@ -57,7 +57,7 @@ export const registrationEnabled = paymentsEnabled;
 export const onlinePaymentEnabled = paymentsEnabled && isOfficialOnlinePayment(ra01.onlinePaymentProvider, ra01.onlinePaymentType, ra01.onlinePaymentUrl);
 export const agenda = [
   ['09:00–09:25', 'El punto de partida', 'Demostración, propósito y funciones que conservaremos.'],
-  ['09:25–09:50', 'La necesidad primero', 'Usuario ficticio, contexto de participación y requerimientos.'],
+  ['09:25–09:50', 'La necesidad primero', 'Caso de trabajo, contexto de participación y requerimientos.'],
   ['09:50–10:25', 'Primera personalización', 'Nombre, mensajes, categorías y decisiones visuales.'],
   ['10:25–10:35', 'Pausa', 'Diez minutos para descansar.'],
   ['10:35–11:20', 'Modificar y revisar', 'Cambios acotados y primer checkpoint del proyecto.'],
@@ -68,6 +68,6 @@ export const agenda = [
 ] as const;
 export const demos = [
   {id:'base',name:'BASE',context:'Punto de partida',need:'Expresar necesidades, solicitar apoyo y participar.',changes:'Tablero inicial con mensajes y voz local opcional.',annotation:'Punto de partida'},
-  {id:'apoyo-cognitivo',name:'APOYO COGNITIVO',context:'Actividad secuencial',need:'Seguir los pasos de una colación ficticia.',changes:'Secuencia de cinco pasos con ayudas altas, medias o bajas.',annotation:'Ayudas graduadas durante una actividad'},
+  {id:'apoyo-cognitivo',name:'APOYO COGNITIVO',context:'Actividad secuencial',need:'Seguir los pasos de preparar una colación.',changes:'Secuencia de cinco pasos con ayudas altas, medias o bajas.',annotation:'Ayudas graduadas durante una actividad'},
   {id:'acceso-motor',name:'ACCESO MOTOR',context:'Espacio de acceso',need:'Utilizar los mismos mensajes en una zona elegida manualmente.',changes:'La cuadrícula cambia de posición y tamaño según el alcance seleccionado.',annotation:'Distribución adaptada al espacio de alcance'},
 ] as const;
