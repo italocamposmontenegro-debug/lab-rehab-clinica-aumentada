@@ -2,7 +2,7 @@
 export const pricing = Object.freeze({
   regularPrice: 39000,
   promoPrice: 29000,
-  promoStart: '2026-10-05T00:00:00-03:00',
+  promoStart: '2026-10-04T20:52:32-03:00',
   // Exclusive end: the whole minute 23:59 on October 7 is promotional.
   promoEnd: '2026-10-08T00:00:00-03:00',
   timezone: 'America/Santiago',

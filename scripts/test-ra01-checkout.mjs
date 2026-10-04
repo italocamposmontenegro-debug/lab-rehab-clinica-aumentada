@@ -4,8 +4,8 @@ import { activePricing, pricing } from '../src/config/ra01-pricing.mjs';
 import { paymentResponse } from '../functions/formacion/ra01/pagar.js';
 
 const boundaries = [
-  ['2026-10-04T23:59:59-03:00', 39000, pricing.regularPaymentUrl],
-  ['2026-10-05T00:00:00-03:00', 29000, pricing.promoPaymentUrl],
+  ['2026-10-04T20:52:31.999-03:00', 39000, pricing.regularPaymentUrl],
+  ['2026-10-04T20:52:32-03:00', 29000, pricing.promoPaymentUrl],
   ['2026-10-07T23:59:59.999-03:00', 29000, pricing.promoPaymentUrl],
   ['2026-10-08T00:00:00-03:00', 39000, pricing.regularPaymentUrl],
 ];
@@ -24,8 +24,11 @@ for (const [date, price, url] of boundaries) {
     assert.match(await response.text(), new RegExp(price === 29000 ? '\\$29\\.000' : '\\$39\\.000'));
   });
 }
-test('Promotion lasts exactly 72 hours', () => {
-  assert.equal(Date.parse(pricing.promoEnd) - Date.parse(pricing.promoStart), 72 * 3600000);
+test('Promotion is active before midnight and keeps the fixed Santiago cutoff', () => {
+  const state = activePricing('2026-10-04T23:59:59-03:00');
+  assert.equal(state.price, 29000);
+  assert.equal(state.nextChange, Date.parse('2026-10-08T00:00:00-03:00'));
+  assert.equal(activePricing('2026-10-08T00:00:00-03:00').nextChange, null);
 });
 test('Closed environment cannot redirect to a payment', () => {
   const response = paymentResponse(Date.parse(pricing.promoStart), false);
