@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { onlinePaymentEnabled, ra01Price, ra01 } from '../../../config/ra01.config';
+import '../../../styles/ra01.css';
+---
+<Layout title="Continuar al pago · RA01" canonicalPath={`${ra01.canonicalPath}/pagar`} noindex>
+  <main class="section-shell ra-subpage" data-ra-payment-redirect={onlinePaymentEnabled ? 'enabled' : undefined}>
+    <p>{onlinePaymentEnabled ? 'Datos recibidos. Continuando al pago seguro…' : 'Inscripciones y pagos cerrados.'}</p>
+    {onlinePaymentEnabled && <><a class="ra-button" href={ra01.regularPaymentUrl} data-ra-flow-fallback>PAGAR AHORA · {ra01Price}</a><p><a href={`${ra01.canonicalPath}/pago/?method=transfer`}>Prefiero pagar mediante transferencia</a></p></>}
+  </main>
+  <script>import '../../../scripts/ra01-pricing-client';</script>
+</Layout>

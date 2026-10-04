@@ -7,7 +7,7 @@
     "lint": "astro check",
     "build": "astro build",
     "verify": "node scripts/verify-site.mjs",
-    "test": "npm run build && npm run verify",
+    "test": "npm run build && npm run verify && node --test scripts/test-ra01-checkout.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -1,12 +1,17 @@
 import {contractFinal, privateBuild} from './ra01-private-build.mjs';
+import { pricing, formatPrice } from './ra01-pricing.mjs';
 /** Public, non-secret edition configuration. Never put Zoom, Drive grants or credentials here. */
 export const ra01 = {
   edition: 'RA01', productName: 'Rehabilitación Aumentada 01',
   labName: 'Laboratorio de Rehabilitación Clínica Aumentada',
   instructor: 'Ítalo Campos Montenegro',
-  descriptor: 'Diseña y personaliza software asistivo de Comunicación Aumentativa y Alternativa con Inteligencia Artificial, sin requerir conocimientos previos de programación.',
+  descriptor: 'Aprende a adaptar funcionalmente software asistivo con inteligencia artificial a partir de una necesidad concreta y tu criterio profesional.',
+  introduction: 'En RA01 trabajaremos sobre una base funcional de Comunicación Aumentativa y Alternativa como caso de construcción. No necesitas programar desde cero.',
   date: '2026-10-31', timezone: 'America/Santiago', startTime: '09:00', endTime: '13:30',
-  price: 39000, currency: 'CLP', platform: 'Zoom',
+  price: pricing.regularPrice, currency: 'CLP', platform: 'Zoom',
+  regularPrice: pricing.regularPrice, promoPrice: pricing.promoPrice,
+  promoStart: pricing.promoStart, promoEnd: pricing.promoEnd,
+  regularPaymentUrl: pricing.regularPaymentUrl, promoPaymentUrl: pricing.promoPaymentUrl,
   registrationClose: '2026-10-26T18:00:00-03:00',
   supportEmail: 'italo.campos.montenegro@gmail.com',
   supportUntil: '2027-01-31', materialsAccessUntil: '2027-01-31', recordingAccessUntil: '2027-01-31',
@@ -16,7 +21,7 @@ export const ra01 = {
   instagram: 'https://www.instagram.com/italo_campos_montenegro/',
   orcid: 'https://orcid.org/0009-0007-0325-3344',
   linkedin: 'https://cl.linkedin.com/in/italo-campos-montenegro-789534376',
-  termsVersion: '2026-09-24.2', privacyVersion: '2026-09-24.2', formVersion: 'ra01-v3',
+  termsVersion: '2026-09-24.2', privacyVersion: '2026-09-24.2', formVersion: 'ra01-v4',
   mode: 'production' as 'preview' | 'production',
   tally: { registrationUrl: 'https://tally.so/r/7RGv6a' as string | null, technicalCheckUrl: 'https://tally.so/r/pbaWj8' as string | null, waitlistUrl: null as string | null },
   // Operator-controlled availability. Update after checking Sheets and payment channels; no live stock is implied.
@@ -33,7 +38,10 @@ export const ra01 = {
   release: { legalApproved: contractFinal, transferFlowReviewed: true, rightsVerified: true, freeRouteVerified: true, hostingCommercialApproved: true, tallyIntegrationVerified: true, onlinePaymentVerified: true, privateDeliveryVerified: true },
 } as const;
 
-export const ra01Price = new Intl.NumberFormat('es-CL', {style:'currency',currency:'CLP',maximumFractionDigits:0}).format(ra01.price);
+export const ra01Price = formatPrice(ra01.price);
+const tallyUrl = new URL(ra01.tally.registrationUrl!);
+for (const [key, value] of Object.entries({edition:ra01.edition, form_version:ra01.formVersion, terms_version:ra01.termsVersion, privacy_version:ra01.privacyVersion})) tallyUrl.searchParams.set(key, value);
+export const registrationUrl = tallyUrl.toString();
 export const policyPath = (slug: string) => `${ra01.canonicalPath}/legal/${ra01.termsVersion}/${slug}`;
 export const isOfficialOnlinePayment = (provider: string, type: string, value: string | null) => {
   if (!value) return false;

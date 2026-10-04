@@ -1,0 +1,6 @@
+---
+import { registrationEnabled, registrationUrl, ra01Price } from '../config/ra01.config';
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+---
+{registrationEnabled ? <a class:list={['ra-button', className]} href={registrationUrl} data-registration-cta data-ra-event="ra01_registration_start">INSCRIBIRME Y PAGAR · {ra01Price}</a> : <button class:list={['ra-button', className]} disabled>Inscripciones cerradas</button>}

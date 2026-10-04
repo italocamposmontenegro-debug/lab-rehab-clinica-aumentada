@@ -1,7 +1,6 @@
 type PaymentMethod = 'flow' | 'transfer';
 type SafeEvent = { event: string; edition: 'RA01'; method?: string; variant?: string; status?: string };
 declare global { interface Window { ra01Events?: SafeEvent[]; gtag?: (...args: unknown[]) => void; } }
-const BASE='/formacion/ra01';
 const allowedEvents=new Set(['ra01_landing_view','ra01_demo_view','ra01_registration_start','ra01_registration_submit','ra01_flow_click','ra01_transfer_select','ra01_transfer_copy','ra01_payment_help','ra01_waitlist','ra01_professional_profile_click','ra01_materials_open','ra01_technical_check_complete']);
 const sources=new Set(['instagram','linkedin','whatsapp','recomendacion','red_academica','magister_uvm','otro']);
 const media=new Set(['organic_social','paid_social','referral','email']);
@@ -14,6 +13,15 @@ if(media.has(params.get('utm_medium')??''))touch.utm_medium=params.get('utm_medi
 if(params.get('utm_campaign')==='ra01_2026_10')touch.utm_campaign='ra01_2026_10';
 if(contents.has(params.get('utm_content')??''))touch.utm_content=params.get('utm_content')!;
 if(Object.keys(touch).length)safeStore.set('ra01.touch',JSON.stringify(touch));
+let storedTouch:Record<string,string>={};
+try { storedTouch=JSON.parse(safeStore.get('ra01.touch')??'{}'); } catch { /* No attribution is required to register. */ }
+document.querySelectorAll<HTMLAnchorElement>('[data-registration-cta], [data-registration-link]').forEach(link=>{
+ const url=new URL(link.href);
+ for(const [key,value] of Object.entries(storedTouch)) {
+  if((key==='utm_source'&&sources.has(value))||(key==='utm_medium'&&media.has(value))||(key==='utm_campaign'&&value==='ra01_2026_10')||(key==='utm_content'&&contents.has(value))) url.searchParams.set(key,value);
+ }
+ link.href=url.toString();
+});
 function track(event:string,detail:Partial<SafeEvent>={}){
  if(!allowedEvents.has(event))return;
  const payload:SafeEvent={event,edition:'RA01'};
@@ -31,29 +39,8 @@ const demoView=document.querySelector<HTMLElement>('[data-demo-view]');if(demoVi
 const privacy=document.querySelector<HTMLDialogElement>('#ra-privacy-dialog');
 document.querySelectorAll('[data-privacy-settings]').forEach(b=>b.addEventListener('click',()=>privacy?.showModal()));
 privacy?.addEventListener('close',()=>{if(['accept','deny'].includes(privacy.returnValue))safeStore.set('ra01.measurement',privacy.returnValue==='accept'?'allow':'deny')});
-const previewForm=document.querySelector<HTMLFormElement>('[data-preview-registration]');
-if(previewForm){let busy=false;let started=false;
- previewForm.addEventListener('focusin',()=>{if(!started){track('ra01_registration_start');started=true}});
- previewForm.addEventListener('submit',event=>{event.preventDefault();if(busy)return;
- const name=previewForm.querySelector<HTMLInputElement>('[name="name"]')!;
- const email=previewForm.querySelector<HTMLInputElement>('[name="email"]')!;
- const terms=previewForm.querySelector<HTMLInputElement>('[name="terms"]')!;
- const method=previewForm.querySelector<HTMLSelectElement>('[name="payment_method"]')!;
- const errors:[HTMLInputElement,string][]=[[name,name.value.trim().length<2?'Escribe tu nombre y apellido.':''],[email,!email.value.trim()||!email.validity.valid?'Escribe un correo válido.':''],[terms,!terms.checked?'Debes leer y aceptar las condiciones para continuar.':'']];
- let first:HTMLInputElement|undefined;
- for(const [field,message] of errors){field.setAttribute('aria-invalid',String(Boolean(message)));document.getElementById(`${field.id}-error`)!.textContent=message;if(message&&!first)first=field;}
- if(first){first.focus();return;}busy=true;
- const existing=safeStore.get('ra01.preview.registration');let id='';try{id=JSON.parse(existing??'{}').id??''}catch{/* corrupted session */}
- if(!/^preview-[a-f0-9-]{36}$/.test(id))id=`preview-${crypto.randomUUID()}`;
- // Never persist name or email, even in a preview. No network request is made.
- safeStore.set('ra01.preview.registration',JSON.stringify({id,method:method.value==='transfer'?'transfer':'flow',termsVersion:previewForm.dataset.termsVersion,acceptedAt:new Date().toISOString()}));
- track('ra01_registration_submit',{method:method.value,status:'preview'});
- name.value='';email.value='';location.assign(`${BASE}/pago?preview=1`);
- });
- previewForm.querySelector<HTMLSelectElement>('[name="payment_method"]')?.addEventListener('change',e=>{if((e.target as HTMLSelectElement).value==='transfer')track('ra01_transfer_select',{method:'transfer'})});
-}
 const payment=document.querySelector<HTMLElement>('[data-ra-payment]');
-if(payment){let method:PaymentMethod='flow';try{const r=JSON.parse(safeStore.get('ra01.preview.registration')??'{}');if(r.method==='transfer')method='transfer';const ref=document.querySelector('[data-preview-reference]');if(ref&&/^preview-[a-f0-9-]{36}$/.test(r.id??''))ref.textContent=r.id;}catch{/* keep safe default */}
+if(payment){let method:PaymentMethod=params.get('method')==='transfer'?'transfer':'flow';try{const r=JSON.parse(safeStore.get('ra01.preview.registration')??'{}');if(r.method==='transfer')method='transfer';const ref=document.querySelector('[data-preview-reference]');if(ref&&/^preview-[a-f0-9-]{36}$/.test(r.id??''))ref.textContent=r.id;}catch{/* keep safe default */}
  const renderMethod=(value:PaymentMethod)=>{method=value;document.querySelectorAll<HTMLElement>('[data-payment-panel]').forEach(el=>el.hidden=el.dataset.paymentPanel!==method);document.querySelectorAll<HTMLButtonElement>('[data-select-method]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.selectMethod===method)));};
  renderMethod(method);document.querySelectorAll<HTMLButtonElement>('[data-select-method]').forEach(b=>b.addEventListener('click',()=>{renderMethod(b.dataset.selectMethod==='transfer'?'transfer':'flow');if(method==='transfer')track('ra01_transfer_select',{method})}));
  document.querySelectorAll<HTMLButtonElement>('[data-preview-availability]').forEach(b=>b.addEventListener('click',()=>{
@@ -67,7 +54,4 @@ if(payment){let method:PaymentMethod='flow';try{const r=JSON.parse(safeStore.get
 }
 document.querySelectorAll<HTMLElement>('[data-local-checklist]').forEach(container=>{const button=container.querySelector('button');button?.addEventListener('click',()=>{const inputs=[...container.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];const complete=inputs.every(i=>i.checked);const status=container.querySelector<HTMLElement>('[role="status"]')!;status.textContent=complete?'Prueba local completada. En producción el checkpoint se registra mediante el formulario privado de preparación.':'Revisa los pasos pendientes. Puedes solicitar ayuda por correo.';if(complete)track('ra01_technical_check_complete',{status:'preview'});});});
 document.querySelectorAll<HTMLButtonElement>('[data-print-policy]').forEach(b=>b.addEventListener('click',()=>print()));
-// A production embed is configured only after external integration and release checks pass.
-const tallyFrame=document.querySelector<HTMLIFrameElement>('[data-tally-registration]');
-if(tallyFrame&&tallyFrame.dataset.src){const url=new URL(tallyFrame.dataset.src);let stored:Record<string,string>={};try{stored=JSON.parse(safeStore.get('ra01.touch')??'{}')}catch{/* missing attribution */}for(const [k,v] of Object.entries(stored))if((k==='utm_source'&&sources.has(v))||(k==='utm_medium'&&media.has(v))||(k==='utm_campaign'&&v==='ra01_2026_10')||(k==='utm_content'&&contents.has(v)))url.searchParams.set(k,v);tallyFrame.src=url.toString();const seen=new Set<string>();window.addEventListener('message',e=>{if(e.origin!=='https://tally.so'||e.source!==tallyFrame.contentWindow)return;let data;try{data=typeof e.data==='string'?JSON.parse(e.data):e.data}catch{return}if(data?.event!=='Tally.FormSubmitted'||data?.payload?.formId!==tallyFrame.dataset.formId)return;const id=String(data.payload.submissionId??'');if(!/^[a-zA-Z0-9_-]{6,100}$/.test(id)||seen.has(id))return;seen.add(id);track('ra01_registration_submit',{status:'submitted'});});}
 export {};
