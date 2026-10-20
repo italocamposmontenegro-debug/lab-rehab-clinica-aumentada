@@ -23,11 +23,32 @@ const faqs = [
 <RA01Layout>
 <main id="contenido" data-ra-landing>
   <section class="section-shell ra-hero">
-    <div><p class="ra-eyebrow">{ra01.labName} · RA01</p><h1 class="ra-title">Rehabilitación<br/><span>Aumentada 01</span></h1><p class="ra-descriptor">{ra01.descriptor}</p><p class="ra-intro">{ra01.introduction}</p><div class="ra-facts"><strong>31 de octubre de 2026</strong><span>09:00–13:30 h · Santiago</span><span>Online en vivo por Zoom</span></div><div class="ra-actions"><CTA/><Price/></div><p class="ra-small" style="margin-top:16px">La construcción requiere computador. <a class="quiet-link" href="#requisitos">Revisa la preparación mínima.</a></p></div>
+    <div><p class="ra-eyebrow">{ra01.labName} · RA01</p><h1 class="ra-title">Rehabilitación<br/><span>Aumentada 01</span></h1><p class="ra-descriptor">{ra01.descriptor}</p><p class="ra-intro">{ra01.introduction}</p><p class="ra-small"><a href="#mosaico" class="quiet-link">Conocer Mosaico en una situación cotidiana ↓</a></p><div class="ra-facts"><strong>31 de octubre de 2026</strong><span>09:00–13:30 h · Santiago</span><span>Online en vivo por Zoom</span></div><div class="ra-actions"><CTA/><Price/></div><p class="ra-small" style="margin-top:16px">La construcción requiere computador. <a class="quiet-link" href="#requisitos">Revisa la preparación mínima.</a></p></div>
     <Explorer/>
   </section>
   <aside class="ra-authority"><div class="section-shell"><strong>Ítalo Campos Montenegro</strong><span>Académico e investigador · IA aplicada a salud y educación clínica</span><a href="#quien-guia">Metodología implementada previamente en formación de postgrado →</a></div></aside>
   <Demos />
+
+  <section id="mosaico" class="ra-section ra-mosaico" aria-labelledby="ra-mosaico-heading">
+    <div class="section-shell ra-mosaico-grid">
+      <div class="ra-mosaico-copy">
+        <p class="ra-eyebrow">Mosaico · Comunicación contextualizada</p>
+        <h2 id="ra-mosaico-heading">Una once.<br/><span>Su propia voz.</span></h2>
+        <p class="ra-lead">La comunicación también ocurre en las decisiones pequeñas: pedir agua, expresar una preferencia o participar en una conversación familiar.</p>
+        <p>Mosaico explora interfaces de Comunicación Aumentativa y Alternativa basadas en imágenes y escenas de la vida cotidiana. Los mensajes, los objetos y las formas de interacción pueden configurarse en función de la persona, la actividad y su entorno.</p>
+        <p>En este video, una madre y su hijo interactúan durante la once. Es una situación simulada, con voces sintetizadas.</p>
+        <a class="ra-mosaico-link" href="https://www.instagram.com/reel/DesTtNUIHsU/" target="_blank" rel="noopener noreferrer" data-ra-event="ra01_mosaico_reel_click">▶ Ver video completo en Instagram ↗</a>
+        <p class="ra-small">Demostración de prototipo; no constituye evidencia de eficacia clínica. Una implementación con usuarios reales requiere evaluación individual, accesibilidad y protección de datos.</p>
+      </div>
+      <div class="ra-mosaico-media">
+        <div class="ra-mosaico-label"><strong>MOSAICO</strong><span>VIDEO · 36 SEGUNDOS</span></div>
+        <iframe title="Video Mosaico: interacción comunicativa durante la once" src="https://www.instagram.com/reel/DesTtNUIHsU/embed/" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <a class="ra-mosaico-fallback" href="https://www.instagram.com/reel/DesTtNUIHsU/" target="_blank" rel="noopener noreferrer">¿No aparece el video? Abrirlo directamente ↗</a>
+      </div>
+    </div>
+    <div class="section-shell ra-mosaico-disclosure"><strong>Mosaico y RA01.</strong> Mosaico muestra posibilidades de desarrollo contextualizado. La base funcional actualmente presentada en el Kit y las demostraciones de RA01 es <strong>ComunicApp</strong>. El curso enseña a personalizar software asistivo desde necesidades y especificaciones profesionales, sin anunciar la entrega del prototipo completo de Mosaico.</div>
+  </section>
+
   <section id="personalizacion" class="ra-section ra-personalization" aria-labelledby="ra-personalization-title">
     <div class="section-shell">
       <p class="ra-eyebrow">El criterio detrás de cada versión</p>
@@ -67,4 +88,23 @@ const faqs = [
 </main>
 <div class="ra-sticky ra-checkout-sticky"><CTA/></div>
 <script>import "../../../scripts/ra01-creative";</script>
+
+<style>
+.ra-mosaico{background:#f2f6f1;border-block:1px solid #dae4da}
+.ra-mosaico-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);gap:clamp(24px,5vw,68px);align-items:start}
+.ra-mosaico-copy h2{font-size:clamp(2.1rem,4.3vw,3.6rem);letter-spacing:-.03em;line-height:1.14;margin:18px 0 25px;color:#213427}
+.ra-mosaico-copy h2 span{color:#205c3d}
+.ra-mosaico-copy>p{line-height:1.75}
+.ra-mosaico-link{display:inline-flex;align-items:center;background:#1e5b3c;color:#fff;text-decoration:none;font-weight:700;border-radius:6px;padding:15px 18px;min-height:48px;margin:12px 0}
+.ra-mosaico-link:hover,.ra-mosaico-link:focus-visible{color:#fff;background:#133b2a}
+.ra-mosaico-link:focus-visible,.ra-mosaico-fallback:focus-visible{outline:3px solid #bf9c62;outline-offset:3px}
+.ra-mosaico-media{background:#10382c;padding:12px;border-radius:16px;color:#f6f8f5;box-shadow:0 18px 38px #172e201c;min-width:0}
+.ra-mosaico-label{display:flex;justify-content:space-between;gap:12px;font-size:.7rem;letter-spacing:.12em;padding:12px 10px 18px;color:#c1dac8}
+.ra-mosaico-media iframe{display:block;width:100%;height:570px;border:0;border-radius:8px;background:#1f382a}
+.ra-mosaico-fallback{display:block;text-align:center;color:#eaf2ea;font-size:.84rem;line-height:1.5;padding:14px 8px}
+.ra-mosaico-disclosure{border-top:1px solid #d1dfd3;margin-top:36px;padding-top:22px;font-size:.9rem;line-height:1.7;color:#3e5645}
+@media(max-width:860px){.ra-mosaico-grid{grid-template-columns:minmax(0,1fr)}.ra-mosaico-media{width:100%;max-width:540px;margin:auto}}
+@media(max-width:460px){.ra-mosaico-media iframe{height:500px}.ra-mosaico-label{font-size:.6rem}}
+</style>
+
 </RA01Layout>
