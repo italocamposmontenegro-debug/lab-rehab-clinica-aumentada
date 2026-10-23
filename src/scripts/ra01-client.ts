@@ -1,7 +1,7 @@
 type PaymentMethod = 'flow' | 'transfer';
 type SafeEvent = { event: string; edition: 'RA01'; method?: string; variant?: string; status?: string };
 declare global { interface Window { ra01Events?: SafeEvent[]; gtag?: (...args: unknown[]) => void; } }
-const allowedEvents=new Set(['ra01_landing_view','ra01_demo_view','ra01_registration_start','ra01_registration_submit','ra01_flow_click','ra01_transfer_select','ra01_transfer_copy','ra01_payment_help','ra01_waitlist','ra01_professional_profile_click','ra01_materials_open','ra01_technical_check_complete']);
+const allowedEvents=new Set(['ra01_landing_view','ra01_demo_view','ra01_registration_start','ra01_registration_submit','ra01_flow_click','ra01_transfer_select','ra01_transfer_copy','ra01_payment_help','ra01_waitlist','ra01_professional_profile_click','ra01_materials_open','ra01_technical_check_complete','ra01_mosaico_reel_click']);
 const sources=new Set(['instagram','linkedin','whatsapp','recomendacion','red_academica','magister_uvm','otro']);
 const media=new Set(['organic_social','paid_social','referral','email']);
 const contents=new Set(['demo_01','demo_perfil','post_metodo','invitacion_profesional','enlace_recomendacion','convocatoria','continuidad','bio','otro']);
